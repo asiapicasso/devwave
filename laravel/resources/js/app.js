@@ -6,7 +6,7 @@
 
 import "./bootstrap";
 import { createApp } from "vue";
-import Welcome from "./Welcome.vue";
+import App from "./App.vue";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -14,7 +14,7 @@ import Welcome from "./Welcome.vue";
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp(Welcome);
+const app = createApp(App);
 
 import ExampleComponent from "./components/ExampleComponent.vue";
 app.component("example-component", ExampleComponent);

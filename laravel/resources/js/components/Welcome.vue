@@ -6,3 +6,9 @@
 </template>
 <script setup>
 </script>
+<style>
+h1 {
+  padding: 16px;
+  text-align: center;
+}
+</style>

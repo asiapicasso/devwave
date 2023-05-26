@@ -1,17 +1,27 @@
 <script>
 import { watch } from 'vue';
 import Welcome from './components/Welcome.vue'
+import Header from './components/header.vue';
+import Player from './components/Player.vue';
+import Nav from './components/Nav.vue';
 
 export default {
   name: 'App',
   components: {
-    Welcome
+    Welcome,
+    Header,
+    Player,
+    Nav
+
   }
 }
 </script>
 
 <template>
-        <Welcome/>
+    <Header/>
+    <Welcome/>
+    <Player/>
+    <Nav/>
 </template>
 
 <style scoped>

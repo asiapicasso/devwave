@@ -1,4 +1,8 @@
-<script>const displaySection = (hash) => {
+<script>
+//Le but de cette page est d'afficher le contenu des différentes pages de l'application
+//Nous pouvons nous baser sur le code de la page des exercices.
+
+/*const displaySection = (hash) => {
     if(hash == '') hash = '#home'
   
     const hashSplit = hash.split('-')
@@ -41,4 +45,4 @@
   window.addEventListener('hashchange', () => displaySection(window.location.hash))
   
   // Affichage au chargement pour traiter l'url en cours (exemple: on ouvre un lien dans un nouvel onglet)
-  displaySection(window.location.hash)</script>
+  displaySection(window.location.hash)*/</script>

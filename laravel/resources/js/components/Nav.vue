@@ -1,9 +1,9 @@
 <template>
     <footer class="flex justify-center">
-  <div id="liveButton" class="border-2 border-rose-600">Live</div>
-  <div id="home" class="border-2 border-rose-600">Sondage</div>
-  <div id="music" class="border-2 border-rose-600">Musique</div>
-  <div id="profil" class="border-2 border-rose-600">Profil</div>
+  <div id="liveButton" class="border-2 border-rose-600"><a href="#live">Live</a></div>
+  <div id="home" class="border-2 border-rose-600"><a href="#sondage">Sondage</a></div>
+  <div id="music" class="border-2 border-rose-600"><a href="#musique">Musique</a></div>
+  <div id="profil" class="border-2 border-rose-600"><a href="#profil">Profil</a></div>
 </footer>
 
   </template>

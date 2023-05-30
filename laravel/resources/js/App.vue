@@ -8,7 +8,6 @@ import Nav from './components/Nav.vue';
 export default {
   name: 'App',
   components: {
-    Welcome,
     Header,
     Player,
     Nav
@@ -19,7 +18,6 @@ export default {
 
 <template>
     <Header/>
-    <Welcome/>
     <Player/>
     <Nav/>
 </template>

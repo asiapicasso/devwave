@@ -1,9 +1,9 @@
 <script>
 import { watch } from 'vue';
-import Welcome from './components/Welcome.vue'
-import Header from './components/header.vue';
-import Player from './components/Player.vue';
-import Nav from './components/Nav.vue';
+import Welcome from './components/BaseContent.vue'
+import Header from './components/BaseHeader.vue';
+import Player from './components/BasePlayer.vue';
+import Nav from './components/BaseNav.vue';
 
 export default {
   name: 'App',

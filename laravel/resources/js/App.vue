@@ -1,25 +1,30 @@
 <script>
 import { watch } from 'vue';
-import Welcome from './components/BaseContent.vue'
-import Header from './components/BaseHeader.vue';
-import Player from './components/BasePlayer.vue';
-import Nav from './components/BaseNav.vue';
+import BaseContent from './components/BaseContent.vue'
+import BaseHeader from './components/BaseHeader.vue';
+import BasePlayer from './components/BasePlayer.vue';
+import BaseNav from './components/BaseNav.vue';
+
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Player,
-    Nav
+    BaseContent,
+    BaseNav,
+    BaseHeader,
+    BasePlayer
 
   }
 }
 </script>
 
 <template>
-    <Header/>
-    <Player/>
-    <Nav/>
+  <div id="app">
+    <BaseHeader />
+    <BaseContent />
+    <BasePlayer />
+    <BaseNav />
+  </div>
 </template>
 
 <style scoped>

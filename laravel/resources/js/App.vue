@@ -26,13 +26,12 @@ export default {
 </template>
 
 <style scoped>
- body{
-  background-color: #000;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.2em;
-  text-align: center;
-  padding: 0;
-  margin: 0;
- }
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100vh;
+ } 
 </style>

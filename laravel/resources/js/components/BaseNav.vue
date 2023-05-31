@@ -10,11 +10,9 @@
   <style>
 /*Fixe Base nav en bas de la page qui a toute la largeur de l'écran et les routeurs sont équitablement espacés*/
   #nav {
-    position: fixed;
-    bottom: 0;
+
     width: 100%;
     background-color: #333;
-    overflow: auto;
     text-align: center;
   }
 

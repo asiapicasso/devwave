@@ -1,9 +1,15 @@
 <script>
+import BaseButton from '../components/BaseButton.vue';
+import { defineProps } from 'vue';
 export default{
-    name : "PageMusique"
+    name : "PageMusique",
+    components: {
+    BaseButton,
+    }
 }
 
 </script>
 <template>
-    <h1>Page Musique</h1>
+    <h1>Pageee Musique</h1>
+   <BaseButton />
 </template>

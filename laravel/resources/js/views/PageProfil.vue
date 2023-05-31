@@ -2,7 +2,7 @@
     <div id="profil">
         <div id="pageTitle">
             <h1>Mon profil</h1>
-            <button><img src="engrenage.png" /></button>
+            <button id="settingsBtn"><img src="../../assets/engrenage.png" /></button>
         </div>
         <div id="avatar">
             <img src="../../assets/avatar.jpg" />
@@ -83,6 +83,16 @@ export default {
     margin-bottom: 20px;
 
 }
-
+#settingsBtn{
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
 
 </style>

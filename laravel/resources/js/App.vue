@@ -1,6 +1,5 @@
 <script>
 import { watch } from 'vue';
-import BaseContent from './components/BaseContent.vue';
 import BaseHeader from './components/BaseHeader.vue';
 import BasePlayer from './components/BasePlayer.vue';
 import BaseNav from './components/BaseNav.vue';
@@ -9,7 +8,6 @@ import BaseNav from './components/BaseNav.vue';
 export default {
   name: 'App',
   components: {
-    BaseContent,
     BaseNav,
     BaseHeader,
     BasePlayer
@@ -21,7 +19,7 @@ export default {
 <template>
   <div id="app">
     <BaseHeader />
-    <BaseContent />
+    <router-view></router-view>
     <BasePlayer />
     <BaseNav />
   </div>

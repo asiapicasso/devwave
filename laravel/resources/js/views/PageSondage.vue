@@ -1,18 +1,16 @@
 <template>
     <h1>Sondages</h1>
     <BaseSondage v-bind="options" @addvote="addVote"></BaseSondage>
-    <TheToggle @setCheckboxVal="toggleCheckbox"></TheToggle>
 </template>
 
 <script>
 import BaseSondage from '../components/BaseSondage.vue';
-import TheToggle from '../components/TheToggle.vue';
 
 export default {
     name: 'PageSondage',
     components: {
     BaseSondage,
-    TheToggle
+
 },
   data: function(){
                 return {

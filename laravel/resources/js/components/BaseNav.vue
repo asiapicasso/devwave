@@ -1,14 +1,33 @@
 <template>
-    <footer class="flex justify-center">
-  <div id="liveButton" class="border-2 border-rose-600"><a href="#live">Live</a></div>
-  <div id="home" class="border-2 border-rose-600"><a href="#sondage">Sondage</a></div>
-  <div id="music" class="border-2 border-rose-600"><a href="#musique">Musique</a></div>
-  <div id="profil" class="border-2 border-rose-600"><a href="#profil">Profil</a></div>
-</footer>
-
-  </template>
+        <div id="nav">
+            <router-link to="/pageLive">pageLive</router-link>
+            <router-link to="/pageSondage">pageSondage</router-link>
+            <router-link to="/pageMusique">pageMusique</router-link>
+            <router-link to="/pageProfil">pageProfil</router-link>
+        </div>
+</template>
   
   <style>
+/*Fixe Base nav en bas de la page qui a toute la largeur de l'écran et les routeurs sont équitablement espacés*/
+  #nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    overflow: auto;
+    text-align: center;
+  }
+
+  #nav a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  
   </style>
   
   <script>

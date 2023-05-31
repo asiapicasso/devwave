@@ -8,6 +8,6 @@
 5. Copier/coller .env.example et le renommer en .env
 6. Lancer la commande : php artisan key:generate
 7. npm install tailwindcss
-8. npm install vue-router
+8. npm install -S vue-router@next
 9. Ouvrir un terminal et lancer la commande php artisan serve pour lancer le backend
 10. Ouvrir un deuxième terminal et lancer la commande npm run dev pour lancer le frontend

@@ -1,31 +1,36 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 //import PageSondage
 import pageSondage from '../views/pageSondage.vue'
 import pageMusique from '../views/pageMusique.vue'
 import pageProfil from '../views/pageProfil.vue'
 import pageLive from '../views/pageLive.vue'
+import pageReglages from '../views/pageReglages.vue'
 
 
-const routes = [
-    {
+const routes = [{
         path: '/pageSondage',
         name: 'PageSondage',
-        component :  pageSondage
+        component: pageSondage
     },
     {
         path: '/pageMusique',
         name: 'PageMusique',
-        component :  pageMusique
+        component: pageMusique
     },
     {
         path: '/pageProfil',
         name: 'pageProfil',
-        component :  pageProfil
+        component: pageProfil
     },
     {
         path: '/pageLive',
         name: 'pageLive',
-        component :  pageLive
+        component: pageLive
+    },
+    {
+        path: '/pageReglages',
+        name: 'pageReglages',
+        component: pageReglages
     },
 ];
 

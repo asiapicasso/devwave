@@ -2,7 +2,7 @@
     <div id="profil">
         <div id="pageTitle">
             <h1>Mon profil</h1>
-            <button id="settingsBtn"><img src="../../assets/engrenage.png" /></button>
+            <button id="settingsBtn"><router-link to="/pageReglages"><img src="../../assets/engrenage.png" /></router-link></button>
         </div>
         <div id="avatar">
             <img src="../../assets/avatar.jpg" />

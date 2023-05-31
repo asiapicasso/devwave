@@ -45,4 +45,20 @@
   window.addEventListener('hashchange', () => displaySection(window.location.hash))
   
   // Affichage au chargement pour traiter l'url en cours (exemple: on ouvre un lien dans un nouvel onglet)
-  displaySection(window.location.hash)*/</script>
+  displaySection(window.location.hash)*/
+  
+import PageSondage from '../views/PageSondage.vue';
+export default {
+  name: 'BaseContent',
+  components: {
+    PageSondage
+  }
+}
+
+</script>
+<template>
+  <div>
+    <PageSondage></PageSondage>
+  </div>
+</template>
+   

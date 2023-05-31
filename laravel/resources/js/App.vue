@@ -1,6 +1,6 @@
 <script>
 import { watch } from 'vue';
-import BaseContent from './components/BaseContent.vue'
+import BaseContent from './components/BaseContent.vue';
 import BaseHeader from './components/BaseHeader.vue';
 import BasePlayer from './components/BasePlayer.vue';
 import BaseNav from './components/BaseNav.vue';

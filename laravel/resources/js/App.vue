@@ -26,6 +26,7 @@ export default {
 </template>
 
 <style scoped>
+<<<<<<< HEAD
  body{
   background-color: #000;
   color: #fff;
@@ -34,4 +35,14 @@ export default {
   padding: 0;
   margin: 0;
  }
+=======
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100vh;
+ } 
+>>>>>>> basePlayer
 </style>

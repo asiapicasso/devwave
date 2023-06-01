@@ -1,17 +1,20 @@
 <template>
-    <div class="vue-poll">
-        <h3 class="qst" v-html="question"></h3>
-        <div class="ans-cnt">
+<div class=" m-6 sm:m-6 xl:m-56 vue-poll border-2 rounded-xl border-black p-0">
+    <!-- /* afficher la question */ -->
+    <h3 class="qst bg-jaune-fonce border-b-2 border-black rounded-t-xl h-20 flex items-center justify-left p-6 m-0" v-html="question"></h3>
+        <div class="ans-cnt p-0 m-0">
             <div v-for="(a,index) in calcAnswers" :key="index" :class="{ ans: true, [a.custom_class]: (a.custom_class) }">
-                
-                <template v-if="!finalResults">
-                    
-                    <div v-if="!visibleResults" :class="{ 'ans-no-vote noselect': true, active: a.selected }" @click.prevent="handleVote(a)" >
-                        <span class="txt" v-html="a.text"></span>
+                <template v-if="!finalResults"> 
+                    <div v-if="!visibleResults" class="h-12 m-6" :class="{ 'ans-no-vote noselect': true, active: a.selected }" @click.prevent="handleVote(a)" >
+                        <input class="border-grayPt " type="radio" :name="customId" :id="customId + '-' + index" :value="a.value" v-model="a.selected"  :checked="a.selected" />
+                        <span class="txt-black" v-html="a.text"></span>
                     </div>      
-                    <div v-else :class="{ 'ans-voted': true, selected: a.selected }" >
-                        <span v-if="a.percent" class="percent" v-text="a.percent"></span>                  
-                        <span class="txt" v-html="a.text"></span>                                       
+                    <div v-else :class="{ 'ans-voted': true, selected: a.selected }" class="flex flex-no-wrap justify-between flex items-center justify-left rounded-md h-12 m-6 border-2 border-grayPt" >
+                        <div>
+                        <input class="radio-button ml-4 mr-4 bg-red border-grayPt" type="radio" :name="customId" :id="customId + '-' + index" :value="a.value" v-model="a.selected" />
+                        <span class="txt " v-html="a.text"></span>
+                    </div>     
+                        <span v-if="a.percent" class="percent" v-text="a.percent"></span>                                                    
                     </div>
 
                     <span class="bg" :style="{ width: visibleResults ? a.percent : '0%' }"></span>
@@ -26,7 +29,7 @@
                 
             </div>
         </div>
-        <div class="votes" v-if="showTotalVotes && (visibleResults || finalResults)" v-text="totalVotesFormatted + ' votes'"></div>
+        <div class="votes flex justify-center mb-4" v-if="showTotalVotes && (visibleResults || finalResults)" v-text="totalVotesFormatted + ' votes'"></div>
         
         <template v-if="!finalResults && !visibleResults && multiple && totalSelections > 0">
              <a href="#" @click.prevent="handleMultiple" class="submit" v-text="submitButtonText"></a>
@@ -150,18 +153,23 @@
                                         
                     a.selected = !a.selected
                     return
-                }
-                
-                a.votes++
-                a.selected = true
-                this.visibleResults = true
-                                
-                let obj = { value: a.value, votes: a.votes, totalVotes: this.totalVotes }
-				
-				if (this.customId)
-					obj.customId = this.customId
-				
-                this.$emit('addvote', obj)
+                }else {
+                    a.votes++;
+                    a.selected = true;
+                    this.visibleResults = true;
+
+                    let obj = {
+                        value: a.value,
+                        votes: a.votes,
+                        totalVotes: this.totalVotes
+                    };
+
+                    if (this.customId) {
+                        obj.customId = this.customId;
+                    }
+
+                    this.$emit('addvote', obj);
+                    }
             }
         }
     }
@@ -169,6 +177,7 @@
 </script>
 
 <style>
+
     .vue-poll{        
       font-family: 'Avenir', Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -201,11 +210,11 @@
     
     .vue-poll .ans-cnt .ans-no-vote{
         text-align: center;
-        border: 2px solid #77C7F7;
+        border: 2px solid #D4D2E0;
         box-sizing: border-box;
         border-radius: 5px;
         cursor:pointer; 
-        padding: 5px 0; 
+
         transition: background .2s ease-in-out;
         -webkit-transition: background .2s ease-in-out;
         -moz-transition: background .2s ease-in-out;
@@ -239,22 +248,25 @@
         font-weight: bold;
         min-width: 51px;
         display: inline-block;
-        margin:0 10px;
+
     }
 	
 	.vue-poll .ans-cnt .ans-voted.selected .txt:after{
-		content:'✔';
 		margin-left: 10px;
+        content:'✔';
 	}
+
+
+    
+
            
     .vue-poll .ans-cnt .ans .bg{
         position: absolute;
         width: 0%;
         top: 0;
-        left: 0;
-        bottom: 0;
-        z-index: 0;
-        background-color: #E1E8ED;
+        left: 1.5rem;        bottom: 0;
+        z-index: -1;
+        background-color: #C0F6FC;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
         transition: all .3s cubic-bezier(0.5,1.2,.5,1.2);
@@ -282,5 +294,20 @@
         padding: 10px 25px;
         border-radius: 5px;
         
+    }
+    .ans-no-vote {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    }
+
+    .ans-no-vote input[type="radio"] {
+    margin-right: 1em;
+    margin-left : 1em;
+
+    }
+
+    .ans-no-vote .txt {
+    flex-grow: 1;
     }
 </style>

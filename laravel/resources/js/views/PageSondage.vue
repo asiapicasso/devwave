@@ -1,5 +1,4 @@
 <template>
-    <h1>Sondages</h1>
     <BaseSondage v-bind="options" @addvote="addVote"></BaseSondage>
 </template>
 
@@ -15,12 +14,12 @@ export default {
   data: function(){
                 return {
                     options: {
-                        question: 'What\'s your favourite <strong>JS</strong> framework?',
+                        question: "Vous avez pensé quoi de l'émission de hier soir ? &#128526",
                         answers: [
-                            { value: 1, text: 'Vue', votes: 53 },
-                            { value: 2, text: 'React', votes: 35 },
-                            { value: 3, text: 'Angular', votes: 30 },
-                            { value: 4, text: 'Other', votes: 10 } 
+                            { value: 1, text: 'Géniaaal', votes: 53 },
+                            { value: 2, text: 'Mouais', votes: 35 },
+                            { value: 3, text: "Pas d'avis", votes: 30 },
+                            { value: 4, text: 'Nul plus jamais', votes: 10 } 
                         ],
                         finalResults: false,
                         showResults: false,

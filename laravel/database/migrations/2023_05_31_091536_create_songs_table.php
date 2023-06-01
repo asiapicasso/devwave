@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('title');
             $table->integer('year');
             $table->time('duration');
-            $table->foreignId('album_id')->constrained();
             $table->timestamps();
         });
     }

@@ -4,11 +4,8 @@ import pageSondage from '../views/pageSondage.vue'
 import pageMusique from '../views/pageMusique.vue'
 import pageProfil from '../views/pageProfil.vue'
 import pageLive from '../views/pageLive.vue'
-<<<<<<< HEAD
-import pageReglages from '../views/pageReglages.vue'
-=======
 import pagePlayer from '../views/pagePlayer.vue'
->>>>>>> basePlayer
+import pageReglages from '../views/pageReglages.vue'
 
 
 const routes = [{
@@ -39,7 +36,7 @@ const routes = [{
     {
         path: '/pagePlayer',
         name: 'pagePlayer',
-        component :  pagePlayer
+        component: pagePlayer
     },
 ];
 

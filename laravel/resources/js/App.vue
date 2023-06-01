@@ -26,16 +26,6 @@ export default {
 </template>
 
 <style scoped>
-<<<<<<< HEAD
- body{
-  background-color: #000;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.2em;
-  padding: 0;
-  margin: 0;
- }
-=======
 
 #app {
   display: flex;
@@ -44,5 +34,4 @@ export default {
   justify-content: space-between;
   height: 100vh;
  } 
->>>>>>> basePlayer
 </style>

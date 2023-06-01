@@ -12,12 +12,8 @@
 <script setup>
 </script>
 <style>
-<<<<<<< HEAD
-    div {
-=======
 
-    #player {
->>>>>>> basePlayer
+#player {
         text-align: center;
         display: flex;
         flex-direction: row;
@@ -27,10 +23,9 @@
         text-align: left;
     }
 
-    #icon-player{
+#icon-player{
         width: 50px;
         height: 50px;
-
     }
 
 </style>

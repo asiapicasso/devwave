@@ -1,13 +1,17 @@
 <template>
-    <div class="button-box">
-        <button class="icon-button" @click="handleUpvote">
+    <div class="music-box">
+
+        <div class="flex flex-col">
+        <button class="icon-button"  @click="handleUpvote">
             <span class="icon" v-html="iconUp"></span>
         </button>
-        <span class="button-text">{{ text }}</span>
+                <span class="button-score">{{ score }}</span>
         <button class="icon-button" @click="handleDownvote">
             <span class="icon" v-html="iconDown"></span>
         </button>
-        <span class="button-score">{{ score }}</span>
+        </div>
+         <span class="button-text">{{ text }}</span>
+
     </div>
 </template>
 
@@ -52,7 +56,7 @@ export default {
 
 
 <style scoped>
-.button-box {
+.music-box {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,7 +69,6 @@ export default {
 
 .icon-button {
     padding: 0.5rem;
-    background-color: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 0.25rem;
     cursor: pointer;

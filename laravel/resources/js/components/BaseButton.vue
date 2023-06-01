@@ -1,62 +1,98 @@
 <template>
-    <div>
-        <div class="box-shadow"> {{ post[0].title +  " " + post[0].score }} 
-        <button id="upvote" @click="upvote" :class="{ active: post[0].voteType === 1 }"> Upvote </button>
-        <button id="downvote" @click="downvote" :class="{ active: post[0].voteType === -1 }"> Downvote </button>
-        </div><br>
+    <div class="music-box">
+
+        <div class="flex flex-col">
+        <button class="icon-button"  @click="handleUpvote">
+            <span class="icon" v-html="iconUp"></span>
+        </button>
+                <span class="button-score">{{ score }}</span>
+        <button class="icon-button" @click="handleDownvote">
+            <span class="icon" v-html="iconDown"></span>
+        </button>
+        </div>
+         <span class="button-text">{{ text }}</span>
+
     </div>
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
     name: "BaseButton",
-    data() {
-        return {
-            post: [
-                {
-                    title: 'Devil Dance Floor - Flogging Molly',
-                    score: 0,
-                },
-                {
-                    title: 'Woow - La rappresentante di lista',
-                    score: 0,
-                },
-                {
-                    title: 'The Pretender - Foo Fighters',
-                    score: 0,
-                },
-            ],
-        };
-    },
-    methods: {
-        upvote() {
-                this.post[0].score++;
-            },
-        
-        downvote() {
-                this.post[0].score--;
+    props: {
+        iconUp: {
+            type: String,
+            required: false,
+        },
+        iconDown: {
+            type: String,
+            required: false,
+        },
+        text: {
+            type: String,
+            required: true,
         },
     },
-};
+    setup(props) {
+        const score = ref(0);
 
+        const handleUpvote = () => {
+            score.value++;
+        };
+
+        const handleDownvote = () => {
+            score.value--;
+        };
+
+        return {
+            score,
+            handleUpvote,
+            handleDownvote,
+        };
+    },
+};
 </script>
 
+
 <style scoped>
-.box-shadow {
-    @apply shadow-[0px_20px_20px_10px_#fed7d7]
+.music-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.25rem;
 }
 
-.button:hover {
-    @apply bg-pink-700;
+.icon-button {
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.25rem;
+    cursor: pointer;
 }
 
-#upvote.active {
-    background: orangered;
-    color: white;
+.icon-button:hover {
+    background-color: #edf2f7;
 }
 
-#downvote.active {
-    background: rgb(119, 119, 236);
-    color: white;
+.icon {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #718096;
+}
+
+.button-text {
+    font-size: 1rem;
+    color: #4a5568;
+}
+
+.button-score {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #4a5568;
 }
 </style>

@@ -11,8 +11,9 @@
         </button>
         </div>
          <span class="button-text">{{ text }}</span>
-
     </div>
+
+    
 </template>
 
 <script>

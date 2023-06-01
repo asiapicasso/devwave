@@ -1,5 +1,5 @@
 <template>
-    <button id="cancel" @click="$emit('close')">X</button>
+    <button id="cancel" @click="$emit('close')"><img id="cancelcross" src="../../assets/cancel.png"/></button>
     <div>
         Voules-vous vraiment vous déconnecter ? Vous ne pourrez plus voter, participer au chat et proposer des musiques.
     </div>
@@ -26,5 +26,9 @@
         padding: 10px;
         margin-top: 20px;
         cursor: pointer;
+    }
+    #cancelcross{
+        width: 20px;
+        height: 20px;
     }
 </style>

@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Picture; 
 use App\Models\Group;
+use App\Models\ChosenSong;
+use App\Models\Contest;
 
 class User extends Authenticatable
 {
@@ -63,5 +65,10 @@ class User extends Authenticatable
     public function chosenSongs()
     {
         return $this->hasMany(ChosenSong::class);
+    }
+
+    public function contests()
+    {
+        return $this->belongsToMany(Contest::class);
     }
 }

@@ -6,19 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Song;
+use App\Models\Poll;
 
-class ChosenSong extends Model
+class Answer extends Model
 {
     use HasFactory, HasApiTokens, Notifiable;
 
-    public function songs()
-    {
-        return $this->belongsTo(Song::class);
-    }
+    protected $fillable =  [
+        'title',
+    ];
 
-    public function users()
+    public function polls()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Poll::class);
     }
 }

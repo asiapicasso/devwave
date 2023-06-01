@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Group::class);
     }
+
+    public function chosenSongs()
+    {
+        return $this->hasMany(ChosenSong::class);
+    }
 }

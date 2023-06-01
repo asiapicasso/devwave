@@ -18,4 +18,9 @@ class Song extends Model
         return $this->belongsToMany(Album::class);
     }
 
+    public function chosenSongs()
+    {
+        return $this->hasOne(ChosenSong::class);
+    }
+
 }

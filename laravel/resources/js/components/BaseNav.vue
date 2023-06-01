@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" class="flex bg-bleu-clair text-black mt-2">
+  <div id="nav" class="flex flex-row justify-evenly bg-bleu-clair text-black mt-2">
       <router-link to="/pageLive" class="flex-link">
         <img class="w-8 h-6 m-auto mb-1" src="../../assets/Live-actif.svg" alt="icon-live">
         <p>Live/Chat</p>

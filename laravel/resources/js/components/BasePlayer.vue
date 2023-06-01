@@ -1,32 +1,29 @@
 <template>
     <router-link to="/pagePlayer">
-    <div id="player">
+    <div id="player" class=" shadow-md bg-jaune-clair">
         <div id="info-emission">
             <p>Nom de l'émission</p>
             <p>Nom animateurs</p>
         </div>
-        <img src="../../assets/play.png"/>
+        <img id="icon-player" src="../../assets/play.png"/>
     </div>
 </router-link>
 </template>
 <script setup>
 </script>
 <style>
-    div {
-        padding: 16px;
-        text-align: center;
-    }
+
     #player {
-        background-color: #99efe6;
-        color: #070707;
         text-align: center;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        padding: 16px;
+        text-align: left;
     }
 
-    img{
+    #icon-player{
         width: 50px;
         height: 50px;
 

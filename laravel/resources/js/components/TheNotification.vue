@@ -10,11 +10,9 @@
 </template>
 
 <script>
-import Toggle from './TheToggle.vue';
     export default {
         name: 'TheNotification',
         components: {
-            Toggle
         },
         data() {
             return {

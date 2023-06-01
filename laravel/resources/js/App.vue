@@ -31,7 +31,6 @@ export default {
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.2em;
-  text-align: center;
   padding: 0;
   margin: 0;
  }

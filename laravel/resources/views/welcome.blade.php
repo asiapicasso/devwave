@@ -16,8 +16,6 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <example-component></example-component>
-            <welcome></welcome>
         </div>
     </body>
 </html>

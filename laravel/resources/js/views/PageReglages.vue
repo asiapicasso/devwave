@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Page Reglages</h1>
+        <h1 class="py-5 ml-0 text-4xl font-bold tracking-tight text-black sm:text-5xl">Reglages</h1>
     </div>
     <li><button @click="showMdpPopup=true">Changer de mot passe</button></li>
     <li><button @click="showNotifPopup=true">Notification</button></li>

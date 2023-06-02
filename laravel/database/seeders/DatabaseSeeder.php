@@ -20,11 +20,12 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(GroupsTableSeeder::class);
-        $this->call(ArtistsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(SongsTableSeeder::class);
         $this->call(AlbumsTableSeeder::class);
         $this->call(ArtistsTableSeeder::class);
+        $this->call(AlbumSongTableSeeder::class);
+        $this->call(AlbumArtistTableSeeder::class);
         $this->call(PollsTableSeeder::class);
         
 

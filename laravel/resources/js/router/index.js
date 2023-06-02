@@ -6,6 +6,8 @@ import pageProfil from '../views/pageProfil.vue'
 import pageLive from '../views/pageLive.vue'
 import pagePlayer from '../views/pagePlayer.vue'
 import pageReglages from '../views/pageReglages.vue'
+import TheChat from '../components/TheChat.vue'
+import baseSondage from '../components/baseSondage.vue'
 
 
 const routes = [{
@@ -38,6 +40,19 @@ const routes = [{
         name: 'pagePlayer',
         component: pagePlayer
     },
+    ,
+    {
+        path: '/chat',
+        name: 'chat',
+        component: TheChat
+    },
+    ,
+    {
+        path: '/sondage',
+        name: 'sondage',
+        component: baseSondage
+    },
+
 ];
 
 

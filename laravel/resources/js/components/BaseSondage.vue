@@ -1,7 +1,8 @@
 <template>
-<div class=" m-6 sm:m-6 xl:m-56 vue-poll border-2 rounded-xl border-black p-0">
+    
+<div class=" m-5 sm:m-5 xl:m-56 vue-poll border-2 rounded-xl border-black p-0">
     <!-- /* afficher la question */ -->
-    <h3 class="qst bg-jaune-fonce border-b-2 border-black rounded-t-xl h-20 flex items-center justify-left p-6 m-0" v-html="question"></h3>
+    <h3  :class="bgColor" class="qst border-b-2 border-black rounded-t-xl h-20 flex items-center justify-left p-6 m-0" v-html="question"></h3>
         <div class="ans-cnt p-0 m-0">
             <div v-for="(a,index) in calcAnswers" :key="index" :class="{ ans: true, [a.custom_class]: (a.custom_class) }">
                 <template v-if="!finalResults"> 
@@ -74,7 +75,11 @@
             customId: {
                 type: Number,
                 default: 0
-            }
+            },
+            bgColor: {
+      type: String,
+      default: "bg-jaune-fonce",
+    },
         },
         data(){
             return{

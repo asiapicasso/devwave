@@ -14,7 +14,9 @@ export default {
                 'jaune-clair': '#FFFFE5',
                 'jaune-fonce': '#FFFFAE',
                 'bleu-clair': '#C0F6FC',
-                'grayPt': ' #D4D2E0'
+                'grayPt': ' #D4D2E0',
+                'violet'  :'#C4BAF7',
+                'rose-clair': '#F0B9F9',
             },
         },
         plugins: [],

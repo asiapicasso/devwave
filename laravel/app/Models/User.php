@@ -52,10 +52,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function pictures()
-    {
-        return $this->hasOne(Picture::class);
-    }
+  
 
     public function groups()
     {

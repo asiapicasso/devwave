@@ -1,11 +1,11 @@
 <template>
-    <div class = "text-3xl font-bold bg-gradient-to-t from-bleu-clair via-middle-rose to-rose flex items-end py-2 px-4 rounded">
-    <button class="base-button" @click="clickHandler">
-        <span v-if="icon" class="button-icon">
-            <img :src="icon" alt="Button Icon" />
-        </span>
-        <span class="button-text">{{ text }}</span>
-    </button>
+    <div :class="['base-button', roleClass]">
+        <button @click="clickHandler">
+            <span v-if="icon" class="button-icon">
+                <img :src="icon" alt="Button Icon" />
+            </span>
+            <span class="button-text">{{ text }}</span>
+        </button>
     </div>
 </template>
 
@@ -24,6 +24,15 @@ export default {
         icon: {
             type: String,
             default: null,
+        },
+        role: {
+            type: String,
+            default: "principal",
+        },
+    },
+    computed: {
+        roleClass() {
+            return `role-${this.role}`;
         },
     },
 };
@@ -44,5 +53,23 @@ export default {
 
 .button-text {
     font-size: 1rem;
+}
+
+/* Styles for different roles */
+  .role-principal {
+    @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose;
+    @apply text-black;
+    @apply rounded-md;
+  }
+
+
+.role-secondaire {
+    background-color: #00ff00;
+    color: #000000;
+}
+
+.role-inactif {
+    background-color: #0000ff;
+    color: #ffffff;
 }
 </style>

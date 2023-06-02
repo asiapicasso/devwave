@@ -11,10 +11,10 @@
     
             <div id="song-box">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="searchSong" @blur="blurEventHandler($event)">
+                <input type="text" class="form-control" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="handleClick" @blur="blurEventHandler($event)">
                 <span class="input-group-btn">
                     <button class="">
-                     <BaseButton text="Go!" @click="searchSong"/>
+                     <BaseButton text="Go!" :clickHandler="handleClick" role="principal" />
                  </button>
         		</span>
               </div>
@@ -41,7 +41,7 @@
 
 <script>
 import { ref } from "vue";
-import BaseVoteMusique from "@/components/BaseVoteMusique.vue";
+import BaseVoteMusique from "../components/BaseVoteMusique.vue";
 import BaseButton from "../components/BaseButton.vue";
 
 export default {
@@ -91,7 +91,8 @@ export default {
     },
 
     methods: {
-        searchSong: function () {
+        
+        handleClick: function () {
             //empêcher de push un titre vide
             if (this.song == "") {
                 alert("Veuillez entrer un titre");
@@ -113,6 +114,8 @@ export default {
 </script>
 
 <style scoped>
+
+
  #app {
     padding-block: 10px;
     margin-left : 10px;
@@ -139,3 +142,4 @@ export default {
     color: #000000;
  }
 </style>
+

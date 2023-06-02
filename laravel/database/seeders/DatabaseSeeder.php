@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ArtistsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(SongsTableSeeder::class);
+        $this->call(AlbumsTableSeeder::class);
+        $this->call(ArtistsTableSeeder::class);
+        $this->call(PollsTableSeeder::class);
+        
 
     }
 }

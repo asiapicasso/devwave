@@ -1,45 +1,55 @@
 <template>
+            <h1 id="musiVoteTitre">MusiVote</h1>
+            <h2 id="musiVote">Propose ta musique ou vote pour les musiques en dessous 🎶</h2>
+
     <div>
-        <h1>Page Musique</h1>
-        <div class="flex flex-col">
-        <BaseButton v-for="(item, index) in post" :key="index"
-        :text="item.title"  
-        @upvote="handleUpvote(index)" @downvote="handleDownvote(index)" 
-        iconUp= '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="Layer 2" id="Layer_2"><path d="M1,16A15,15,0,1,1,16,31,15,15,0,0,1,1,16Zm2,0A13,13,0,1,0,16,3,13,13,0,0,0,3,16Z"/><path d="M10.41,19.87,16,14.29l5.59,5.58a1,1,0,0,0,1.41,0h0a1,1,0,0,0,0-1.41L16.64,12.1a.91.91,0,0,0-1.28,0L9,18.46a1,1,0,0,0,0,1.41H9A1,1,0,0,0,10.41,19.87Z"/></g></svg>' 
-        iconDown='<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="Layer 2" id="Layer_2"><path d="M16,1A15,15,0,1,1,1,16,15,15,0,0,1,16,1Zm0,28A13,13,0,1,0,3,16,13,13,0,0,0,16,29Z"/><path d="M10.41,12.13,16,17.71l5.59-5.58a1,1,0,0,1,1.41,0h0a1,1,0,0,1,0,1.41L16.64,19.9a.91.91,0,0,1-1.28,0L9,13.54a1,1,0,0,1,0-1.41H9A1,1,0,0,1,10.41,12.13Z"/></g></svg>' 
-        :score="item.score"/>
-    </div>
     <div id="app">
-      <div class="container-fluid">
-  
-        <ul class="list-group">
-          <post v-for="post in posts" :post="song"></post>
-        </ul>
+          <div class="container-fluid">
+            <ul class="list-group">
+              <post v-for="post in post" :post="song"></post>
+            </ul>
     
-        <div id="comment-box">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="searchSong">
-            <span class="input-group-btn">
-    						<button class="btn btn-primary" type="button" @click="searchSong">Go!</button>
-    					</span>
+            <div id="song-box">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="searchSong" @blur="blurEventHandler($event)">
+                <span class="input-group-btn">
+                    <button class="">
+                     <BaseButton text="Go!" @click="searchSong"/>
+                 </button>
+        		</span>
+              </div>
+            </div>
           </div>
         </div>
 
-      </div>
-
+        <div class="flex flex-col">
+        <BaseVoteMusique v-for="(item, index) in post" :key="index"
+        :text="item.title"  
+        @upvote="handleUpvote(index)" 
+        @downvote="handleDownvote(index)"  
+        iconUp='<svg width="20" height="23" viewBox="0 0 20 23" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.52637 7.20098L8.49902 0.736328C8.88418 0.349609 9.40879 0.15625 9.98652 0.15625C10.5643 0.15625 11.0822 0.349609 11.474 0.736328L18.4732 7.20098C19.3033 7.96797 19.3033 9.21836 18.4732 9.98535C17.6432 10.7523 16.3018 10.7523 15.4717 9.98535L12.1248 6.88516V20.8715C12.1248 21.9607 11.1752 22.8438 9.99981 22.8438C8.82441 22.8438 7.87481 21.9607 7.87481 20.8715V6.88516L4.52793 9.9918C3.69785 10.7588 2.35645 10.7588 1.52637 9.9918C0.696289 9.21836 0.696289 7.97441 1.52637 7.20098Z"/>
+</svg>'    
+        iconDown='<svg width="20" height="23" viewBox="0 0 20 23" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.4736 15.799L11.501 22.2637C11.1158 22.6504 10.5912 22.8437 10.0135 22.8437C9.43574 22.8437 8.91777 22.6504 8.52598 22.2637L1.52676 15.799C0.69668 15.032 0.69668 13.7816 1.52676 13.0146C2.35684 12.2477 3.69824 12.2477 4.52832 13.0146L7.8752 16.1148L7.8752 2.12852C7.8752 1.03926 8.82481 0.156249 10.0002 0.156249C11.1756 0.156249 12.1252 1.03926 12.1252 2.12852L12.1252 16.1148L15.4721 13.0082C16.3021 12.2412 17.6436 12.2412 18.4736 13.0082C19.3037 13.7816 19.3037 15.0256 18.4736 15.799Z" fill="#034249"/>
+</svg>' 
+       
+    :score="item.score"/>
     </div>
     </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import BaseButton from "@/components/BaseButton.vue";
+import BaseVoteMusique from "@/components/BaseVoteMusique.vue";
+import BaseButton from "../components/BaseButton.vue";
 
 export default {
     name: "PageMusique",
     components: {
-        BaseButton,
-    },
+    BaseVoteMusique,
+    BaseButton
+},
     data() {
         return {
             post: [
@@ -55,14 +65,6 @@ export default {
             ],
         };
     },
-    // methods: {
-    //     handleUpvote(index) {
-    //         this.post[index].score.value++;
-    //     },
-    //     handleDownvote(index) {
-    //         this.post[index].score.value--;
-    //     },
-    // },
 
     methods: {
         handleUpvote: function () {
@@ -90,16 +92,50 @@ export default {
 
     methods: {
         searchSong: function () {
-            this.post.push({
-                title: this.song,
-                votes: 0
-            })
-            this.song = "";
+            //empêcher de push un titre vide
+            if (this.song == "") {
+                alert("Veuillez entrer un titre");
+            } else {
+                this.post.unshift({
+                    title: this.song,
+                    votes: 0,
+                })
+                this.song = "";
+            }
+        },
+        blurEventHandler(event) {
+            event.target.value = "";
         }
     }
 };
+
+
 </script>
 
 <style scoped>
-/* Styles for PageMusique component */
+ #app {
+    padding-block: 10px;
+    margin-left : 10px;
+    margin-right: 10px;
+ }
+
+    .input-group {
+    stroke: #000000;
+    stroke-width: 1px;
+    stroke-opacity: 1;
+    }
+
+
+#musiVoteTitre {
+    text-align: center;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    color: #000000;
+}
+ #musiVote {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #000000;
+ }
 </style>

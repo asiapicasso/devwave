@@ -1,1 +1,0 @@
-'Just a second','Please wait','Almost there','And there we go'

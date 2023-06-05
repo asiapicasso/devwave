@@ -1,8 +1,8 @@
 <template>
     <div>
         <button id="cancel" @click="$emit('close')"><img id="cancelcross" src="../../assets/cancel.png"/></button>
-        <div id="formProfil" methods="post">
-            <form>
+        <div id="formProfil">
+            <form methods="post">
                 <label for="ancienmdp">Votre ancien mot de passe : </label>
                 <input
                     type="text"

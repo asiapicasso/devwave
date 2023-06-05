@@ -6,6 +6,8 @@ import pageProfil from '../views/pageProfil.vue'
 import pageLive from '../views/pageLive.vue'
 import pagePlayer from '../views/pagePlayer.vue'
 import pageReglages from '../views/pageReglages.vue'
+import pageSignIn from '../views/pageSignIn.vue'
+import pageSignUp from '../views/pageSignUp.vue'
 
 
 const routes = [{
@@ -37,6 +39,16 @@ const routes = [{
         path: '/pagePlayer',
         name: 'pagePlayer',
         component: pagePlayer
+    },
+    {
+        path: '/pageSignIn',
+        name: 'pageSignIn',
+        component: pageSignIn
+    },
+    {
+        path: '/pageSignUp',
+        name: 'pageSignUp',
+        component: pageSignUp
     },
 ];
 

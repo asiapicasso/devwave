@@ -14,7 +14,7 @@
                 <input type="text" class="form-control" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="handleClick" @blur="blurEventHandler($event)">
                 <span class="input-group-btn">
                     <button class="">
-                     <BaseButton text="Go!" :clickHandler="handleClick" role="principal" />
+                     <BaseButton text="Go!" :clickHandler="handleClick" role="secondaire" />
                  </button>
         		</span>
               </div>
@@ -94,6 +94,7 @@ export default {
         
         handleClick: function () {
             //empêcher de push un titre vide
+            //le prmeier enter passe quand c'est vide mais pas les suivants ??!?!?
             if (this.song == "") {
                 alert("Veuillez entrer un titre");
             } else {

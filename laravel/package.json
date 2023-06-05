@@ -19,6 +19,10 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/forms": "^0.5.3",
+        "tailwindcss-border-gradient-radius": "^3.0.1",
+        "tailwindcss-border-gradients": "^2.0.3",
         "vue-poll": "^0.1.8",
         "vue-router": "^4.0.13"
     }

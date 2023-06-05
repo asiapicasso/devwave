@@ -18,6 +18,5 @@ export default {
                 "light-turquoise": "#C0F6FC",
             },
         },
-        plugins: [],
     },
 };

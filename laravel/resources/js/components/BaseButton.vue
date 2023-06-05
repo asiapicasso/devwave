@@ -53,23 +53,43 @@ export default {
 
 .button-text {
     font-size: 1rem;
+    margin : 20px;
 }
 
-/* Styles for different roles */
   .role-principal {
-    @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose;
-    @apply text-black;
-    @apply rounded-md;
+    @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose rounded-md;
+    color: black;
   }
-
+  .bg-svg {
+  background-image: url('../../assets/CTA-secondaire.svg');
+  background-repeat: no-repeat;
+  background-position: center;  
+    background-size: 100%;
+}
 
 .role-secondaire {
-    background-color: #00ff00;
-    color: #000000;
+    @apply bg-svg;
+}
+  .role-inactif {
+  @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose opacity-50 text-gray-500 rounded-md;
 }
 
-.role-inactif {
-    background-color: #0000ff;
-    color: #ffffff;
+.base-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
+
+.button-icon {
+  margin-right: 0.5rem;
+}
+
+.button-text {
+  font-size: 1rem;
+}
+
+
+
 </style>

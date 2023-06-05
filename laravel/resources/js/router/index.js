@@ -5,14 +5,11 @@ import pageMusique from '../views/pageMusique.vue'
 import pageProfil from '../views/pageProfil.vue'
 import pageLive from '../views/pageLive.vue'
 import pagePlayer from '../views/pagePlayer.vue'
-import pageReglages from '../views/pageReglages.vue' <<
-<< << < HEAD
+import pageReglages from '../views/pageReglages.vue'
 import TheChat from '../components/TheChat.vue'
-import baseSondage from '../components/baseSondage.vue' ===
-=== =
+import baseSondage from '../components/baseSondage.vue'
 import pageSignIn from '../views/pageSignIn.vue'
-import pageSignUp from '../views/pageSignUp.vue' >>>
->>> > profilform
+import pageSignUp from '../views/pageSignUp.vue'
 
 
 const routes = [{

@@ -19,7 +19,7 @@ export default {
 <template>
   <div id="app">
     <BaseHeader />
-    <router-view></router-view>
+    <router-view ></router-view>
     <BasePlayer />
     <BaseNav />
   </div>

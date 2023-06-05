@@ -1,6 +1,6 @@
-<template>
+<template class="blur">
 
-<TheToggleChatSondage>
+<TheToggleChatSondage >
 </TheToggleChatSondage>
     <!-- <Chat></Chat>
     <Sondage v-bind="options" @addvote="addVote"></Sondage> -->

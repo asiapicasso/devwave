@@ -1,98 +1,95 @@
 <template>
-    <div class="music-box">
-
-        <div class="flex flex-col">
-        <button class="icon-button"  @click="handleUpvote">
-            <span class="icon" v-html="iconUp"></span>
+    <div :class="['base-button', roleClass]">
+        <button @click="clickHandler">
+            <span v-if="icon" class="button-icon">
+                <img :src="icon" alt="Button Icon" />
+            </span>
+            <span class="button-text">{{ text }}</span>
         </button>
-                <span class="button-score">{{ score }}</span>
-        <button class="icon-button" @click="handleDownvote">
-            <span class="icon" v-html="iconDown"></span>
-        </button>
-        </div>
-         <span class="button-text">{{ text }}</span>
-
     </div>
 </template>
 
 <script>
-import { ref } from "vue";
-
 export default {
     name: "BaseButton",
     props: {
-        iconUp: {
-            type: String,
-            required: false,
-        },
-        iconDown: {
-            type: String,
-            required: false,
-        },
         text: {
             type: String,
             required: true,
         },
+        clickHandler: {
+            type: Function,
+            required: true,
+        },
+        icon: {
+            type: String,
+            default: null,
+        },
+        role: {
+            type: String,
+            default: "principal",
+        },
     },
-    setup(props) {
-        const score = ref(0);
-
-        const handleUpvote = () => {
-            score.value++;
-        };
-
-        const handleDownvote = () => {
-            score.value--;
-        };
-
-        return {
-            score,
-            handleUpvote,
-            handleDownvote,
-        };
+    computed: {
+        roleClass() {
+            return `role-${this.role}`;
+        },
     },
 };
 </script>
 
-
 <style scoped>
-.music-box {
+.base-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: #f3f4f6;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.25rem;
-}
-
-.icon-button {
-    padding: 0.5rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
 }
 
-.icon-button:hover {
-    background-color: #edf2f7;
-}
-
-.icon {
-    display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
-    fill: #718096;
+.button-icon {
+    margin-right: 0.5rem;
 }
 
 .button-text {
     font-size: 1rem;
-    color: #4a5568;
+    margin : 20px;
 }
 
-.button-score {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #4a5568;
+  .role-principal {
+    @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose rounded-md;
+    color: black;
+  }
+  .bg-svg {
+  background-image: url('../../assets/CTA-secondaire.svg');
+  background-repeat: no-repeat;
+  background-position: center;  
+    background-size: 100%;
 }
+
+.role-secondaire {
+    @apply bg-svg;
+}
+  .role-inactif {
+  @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose opacity-50 text-gray-500 rounded-md;
+}
+
+.base-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.button-icon {
+  margin-right: 0.5rem;
+}
+
+.button-text {
+  font-size: 1rem;
+}
+
+
+
 </style>

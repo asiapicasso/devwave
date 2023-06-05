@@ -3,23 +3,32 @@ import { watch } from 'vue';
 import BaseHeader from './components/BaseHeader.vue';
 import BasePlayer from './components/BasePlayer.vue';
 import BaseNav from './components/BaseNav.vue';
+import BaseFormSign from './components/BaseFormSign.vue';
 
 
 export default {
   name: 'App',
+  data() {
+    return {
+      isConnected: true,
+    };
+  },
   components: {
     BaseNav,
     BaseHeader,
-    BasePlayer
-
-  }
+    BasePlayer,
+    BaseFormSign
+}
 }
 </script>
 
 <template>
   <div id="app">
     <BaseHeader />
-    <router-view ></router-view>
+    <router-view :class="{'notConnected': !isConnected}"></router-view>
+    <div class="formContainer" v-if="!isConnected">
+      <BaseFormSign />
+    </div>
     <BasePlayer />
     <BaseNav />
   </div>
@@ -33,5 +42,16 @@ export default {
   align-items: stretch;
   justify-content: space-between;
   height: 100vh;
- } 
+ }
+.notConnected {
+  filter: blur(5px);
+}
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  z-index: 100;
+}
 </style>

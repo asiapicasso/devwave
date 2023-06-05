@@ -5,9 +5,14 @@ import pageMusique from '../views/pageMusique.vue'
 import pageProfil from '../views/pageProfil.vue'
 import pageLive from '../views/pageLive.vue'
 import pagePlayer from '../views/pagePlayer.vue'
-import pageReglages from '../views/pageReglages.vue'
+import pageReglages from '../views/pageReglages.vue' <<
+<< << < HEAD
 import TheChat from '../components/TheChat.vue'
-import baseSondage from '../components/baseSondage.vue'
+import baseSondage from '../components/baseSondage.vue' ===
+=== =
+import pageSignIn from '../views/pageSignIn.vue'
+import pageSignUp from '../views/pageSignUp.vue' >>>
+>>> > profilform
 
 
 const routes = [{
@@ -39,20 +44,28 @@ const routes = [{
         path: '/pagePlayer',
         name: 'pagePlayer',
         component: pagePlayer
-    },
-    ,
+    }, ,
     {
         path: '/chat',
         name: 'chat',
         component: TheChat
-    },
-    ,
+    }, ,
     {
         path: '/sondage',
         name: 'sondage',
         component: baseSondage
     },
 
+    {
+        path: '/pageSignIn',
+        name: 'pageSignIn',
+        component: pageSignIn
+    },
+    {
+        path: '/pageSignUp',
+        name: 'pageSignUp',
+        component: pageSignUp
+    },
 ];
 
 

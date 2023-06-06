@@ -10,10 +10,7 @@
             </ul>
             <div id="song-box">
               <div class="input-group">
-                <input type="text" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
-                placeholder="Ta chanson sur Couleur3"
-                v-model="searchValue"/>
-                <input type="text" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="handleClick">
+                <input class="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500" type="text" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="handleClick">
                 <span class="input-group-btn">
                     <button>
                      <BaseButton text="Envoyer" :clickHandler="handleClick" role="principal" />
@@ -40,15 +37,15 @@
     </div>
     </div>
 
-    <div id="bdd">
+    <!-- <div id="bdd">
         <input type="button" @click="allUsers()" value="Select All Users">
         <br><br>
         <div v-for="user in users" v-bind:key="user.id">
             <p>{{ user.id }}</p>
             <p>{{ user.name }}</p>
             <p>{{ user.email }}</p>
-    </div>
-    </div>
+    </div> 
+    </div>-->
 </template>
 
 <script>
@@ -87,14 +84,6 @@ export default {
 
 
     methods: {
-        handleUpvote: function () {
-            this.handleUpvoted = !this.handleUpvote;
-            this.handleDownvote = false;
-        },
-        handleDownvote: function () {
-            this.handleDownvote = !this.handleDownvote;
-            this.handleUpvote = false;
-        },
 
         handleClick: function () {
             //empêcher de push un titre vide
@@ -123,14 +112,6 @@ export default {
             }
 
         },
-        songList: function () {   
-            if (this.searchValue.trim().length > 0) {
-                return this.post.filter((post) => {
-                     post.title.toLowerCase().includes(this.searchValue.toLocaleLowerCase().trim());
-                });
-            }
-            return this.post
-         },
 
 }
 }

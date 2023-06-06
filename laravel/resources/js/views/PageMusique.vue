@@ -3,18 +3,20 @@
             <h2 id="musiVote">Propose ta musique ou vote pour les musiques en dessous 🎶</h2>
 
     <div>
-    <div id="app">
+    <div id="principal">
           <div class="container-fluid">
             <ul class="list-group">
-              <post v-for="post in post" :post="song"></post>
+              <div v-for="post in post" :post="song"></div>
             </ul>
-    
             <div id="song-box">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="handleClick" @blur="blurEventHandler($event)">
+                <input type="text" class="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
+                placeholder="Ta chanson sur Couleur3"
+                v-model="searchValue"/>
+                <input type="text" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="handleClick">
                 <span class="input-group-btn">
-                    <button class="">
-                     <BaseButton text="Go!" :clickHandler="handleClick" role="secondaire" />
+                    <button>
+                     <BaseButton text="Envoyer" :clickHandler="handleClick" role="principal" />
                  </button>
         		</span>
               </div>
@@ -43,28 +45,35 @@
 import { ref } from "vue";
 import BaseVoteMusique from "../components/BaseVoteMusique.vue";
 import BaseButton from "../components/BaseButton.vue";
+import BaseInput from "../components/BaseInput.vue";
 
 export default {
     name: "PageMusique",
     components: {
     BaseVoteMusique,
-    BaseButton
+    BaseButton,
+    
 },
     data() {
         return {
+            searchValue: "",
             post: [
                 {
-                    title: "Devil Dance Floor - Flogging Molly",
+                    id: 1, title: "Devil Dance Floor - Flogging Molly",
+                    votes: 0,
                 },
                 {
-                    title: "Woow - La rappresentante di lista",
+                    id: 2, title: "Ciao Ciao - La rappresentante di lista",
+                    votes: 0,
                 },
                 {
-                    title: "The Pretender - Foo Fighters",
+                    id: 3, title: "The Pretender - Foo Fighters",
+                    votes: 0,
                 },
             ],
-        };
+        }
     },
+
 
     methods: {
         handleUpvote: function () {
@@ -74,7 +83,22 @@ export default {
         handleDownvote: function () {
             this.handleDownvote = !this.handleDownvote;
             this.handleUpvote = false;
-        }
+        },
+
+        handleClick: function () {
+            //empêcher de push un titre vide
+            //le premier enter passe quand c'est vide mais pas les suivants ??!?!?
+            if (this.song == "") {
+                alert("Veuillez entrer un titre");
+            } else {
+                this.post.unshift({
+                    title: this.song,
+                    votes: 0,
+                })
+                this.song = "";
+            }
+        },
+        
     },
 
     computed: {
@@ -87,37 +111,25 @@ export default {
                 return this.post.votes;
             }
 
-        }
-    },
-
-    methods: {
-        
-        handleClick: function () {
-            //empêcher de push un titre vide
-            //le prmeier enter passe quand c'est vide mais pas les suivants ??!?!?
-            if (this.song == "") {
-                alert("Veuillez entrer un titre");
-            } else {
-                this.post.unshift({
-                    title: this.song,
-                    votes: 0,
-                })
-                this.song = "";
-            }
         },
-        blurEventHandler(event) {
-            event.target.value = "";
-        }
-    }
-};
+        songList: function () {   
+            if (this.searchValue.trim().length > 0) {
+                return this.post.filter((post) => {
+                     post.title.toLowerCase().includes(this.searchValue.toLocaleLowerCase().trim());
+                });
+            }
+            return this.post
+         },
 
+}
+}
 
 </script>
 
 <style scoped>
 
 
- #app {
+ #musiVoteTitre {
     padding-block: 10px;
     margin-left : 10px;
     margin-right: 10px;
@@ -130,7 +142,7 @@ export default {
     }
 
 
-#musiVoteTitre {
+#principal {
     text-align: center;
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;

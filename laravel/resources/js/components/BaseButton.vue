@@ -19,7 +19,7 @@ export default {
         },
         clickHandler: {
             type: Function,
-            required: true,
+            required: false,
         },
         icon: {
             type: String,
@@ -57,8 +57,11 @@ export default {
 }
 
   .role-principal {
-    @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose rounded-md;
-    color: black;
+    
+      @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose rounded-md;
+      color: black;
+    
+  
   }
   .bg-svg {
   background-image: url('../../assets/CTA-secondaire.svg');
@@ -68,10 +71,14 @@ export default {
 }
 
 .role-secondaire {
-    @apply bg-svg;
+  
+      @apply bg-svg;
+    
 }
   .role-inactif {
-  @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose opacity-50 text-gray-500 rounded-md;
+  
+      @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose opacity-50 text-gray-500 rounded-md;
+    
 }
 
 .base-button {

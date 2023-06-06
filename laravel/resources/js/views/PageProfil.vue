@@ -1,9 +1,16 @@
 <template>
     <div id="profil">
-        <button id="settingsBtn" v-if="isConnected"><router-link to="/pageReglages"><img src="../../assets/engrenage.png" /></router-link></button>
-        <div id="pageTitle">
-            <h1>Mon profil</h1>
+        <div id="pageTitle" class="flex items-center justify-center">
+            <h1 class="flex-1 text-center">Mon profil</h1>
+            <button id="settingsBtn" class="cursor-pointer mr-2 ml-auto">
+                <router-link to="/pageReglages">
+                <img src="../../assets/engrenage.png" class="w-6 h-6" />
+                </router-link>
+            </button>
         </div>
+
+
+
         <div id="profilPicture" class="flex justify-center m-auto" >
             <img src="../../assets/avatar.jpg" id="avatar" class="h-40 w-40"  v-if="isConnected"/>
             <img src="../../assets/NoConnectedPicture.jpg" id="avatar" class="h-40 w-40" v-if="!isConnected"/>
@@ -11,130 +18,98 @@
                     <img src="../../assets/modifier.png" id="changeAvatar" class="h-10 w-10"/>
                 </button>
         </div>
-        <div id="formProfil">
+        <div id="profilData">
             <!--Les informations du profils s'affichent quand tu es connecté-->
-            <form class="form-flex-columns" v-if="isConnected">
-                <div class="ligneDeForm">
-                    <label for="pseudo">Pseudo</label>
-                <input
-                    type="text"
-                    id="pseudo"
-                    name="pseudo"
-                    placeholder="Tartempion12"
-                    required
-                />
-                <button type="submit">
-                    <img src="../../assets/modifier.png" />
-                </button></div>
-                <div class="ligneDeForm">
-                <label for="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="tart12@gmail.com"
-                    required
-                />
-                <button type="submit">
-                    <img src="../../assets/modifier.png" />
-                </button>
-            </div>
-            <div class="ligneDeForm">
-                <label for="nom">Nom</label>
-                <input
-                    type="text"
-                    id="nom"
-                    name="nom"
-                    placeholder="Tarte"
-                    required
-                />
-                <button type="submit">
+            <div class="ligneDeForm flex items-center space-x-">
+                <div class="flex flex-col" >
+                <label>Pseudo</label>
+                <label>TartePion</label>
+                </div>
+                <div class="ml-auto">
+                <button>
                     <img src="../../assets/modifier.png" />
                 </button>
                 </div>
-                <div class="ligneDeForm">
-                <label for="prenom">Prénom</label>
-                <input
-                    type="text"
-                    id="prenom"
-                    name="prenom"
-                    placeholder="Pion"
-                    required
-                />
-                <button type="submit">
+            </div>
+            <div class="ligneDeForm flex items-center space-x-">
+                <div class="flex flex-col" >
+                <label>E-mail</label>
+                <label>tart12@gmail.com</label>
+                </div>
+                <div class="ml-auto">
+                <button>
                     <img src="../../assets/modifier.png" />
                 </button>
+                </div>
             </div>
-            </form>
+            <div class="ligneDeForm flex items-center space-x-">
+                <div class="flex flex-col" >
+                <label for="pseudo">Nom</label>
+                <label>Tartem</label>
+                </div>
+                <div class="ml-auto">
+                <button>
+                    <img src="../../assets/modifier.png" />
+                </button>
+                </div>
+            </div>
+            <div class="ligneDeForm flex items-center space-x-">
+                <div class="flex flex-col" >
+                <label for="pseudo">Prénom</label>
+                <label>TartePion</label>
+                </div>
+                <div class="ml-auto">
+                <button>
+                    <img src="../../assets/modifier.png" />
+                </button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import BaseFormSign from '../components/BaseFormSign.vue';
 export default {
     name: "PageProfil",
     components: {
     },
     data() {
         return {
+            isConnected: true,
         };
     }
 };
 </script>
 
 <style>
-#baseFormSign {
-    margin-bottom: 20px;
-    margin-top: 30px;
-}
-.form-flex-columns {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10%;
-}
-
-#formProfil img{
+#profilData img{
     width: 20px;
     height: 20px;
     flex-grow: 1;
 }
 #avatar{
-    background-color: #fff;
     border-radius: 50%;
     position: center;
 }
 
-#settingsBtn {
-    position: absolute;
-    top: 15%;
-    right: 5%;
-    border: none;
-    width: 4vw;
-    height: 4vw;
-    cursor: pointer;
-}
-
 #pageTitle {
     text-align: center;
-    margin-top: 50px;
     margin-bottom: 10%;
-}
-#formProfil {
-    display: flex;
-    justify-content: center;
+    font-size: 30px;
     margin-bottom: 20px;
-    font-size: 1em;
-
+    color: #0d8d9e;
 }
-h1 {
-    font-size: 2em;
-    font-weight: bold;
+#profilData {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #fff;
+    box-sizing: border-box;
 }
-#formProfil label {
+#profilData label {
     display: inline-block;
 }
-#formProfil input {
+#profilData input {
     margin-left: 1%;
     margin-right: 1%;
     border: none;
@@ -147,10 +122,9 @@ h1 {
 
 }
 .ligneDeForm{
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 .ligneDeForm label {
   margin-right: 10px;

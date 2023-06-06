@@ -10,6 +10,7 @@ export default {
   name: 'App',
   data() {
     return {
+      //Si vous modifier cette variable en true, vous passez comme si vous étiez connecté.
       isConnected: true,
     };
   },
@@ -51,7 +52,7 @@ export default {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 30%;
+  top: 45%;
   z-index: 100;
 }
 </style>

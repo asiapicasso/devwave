@@ -79,12 +79,6 @@ import PageSignUp from "../views/PageSignUp.vue";
         width: 90%;
         margin: auto;
     }
-    h2 {
-        font-size: 1.5em;
-        font-weight: bold;
-        margin-right: 10%;
-        text-align: center;
-    }
     .page {
         display: flex;
         justify-content: center;

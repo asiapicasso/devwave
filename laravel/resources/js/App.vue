@@ -1,57 +1,57 @@
 <script>
-import { watch } from 'vue';
-import BaseHeader from './components/BaseHeader.vue';
-import BasePlayer from './components/BasePlayer.vue';
-import BaseNav from './components/BaseNav.vue';
-import BaseFormSign from './components/BaseFormSign.vue';
-
+import { watch } from "vue";
+import BaseHeader from "./components/BaseHeader.vue";
+import BasePlayer from "./components/BasePlayer.vue";
+import BaseNav from "./components/BaseNav.vue";
+import BaseFormSign from "./components/BaseFormSign.vue";
 
 export default {
-  name: 'App',
-  data() {
-    return {
-      isConnected: true,
-    };
-  },
-  components: {
-    BaseNav,
-    BaseHeader,
-    BasePlayer,
-    BaseFormSign
-}
-}
+    name: "App",
+    data() {
+        return {
+            isConnected: true,
+        };
+    },
+    components: {
+        BaseNav,
+        BaseHeader,
+        BasePlayer,
+        BaseFormSign,
+    },
+};
 </script>
 
 <template>
-  <div id="app">
-    <BaseHeader />
-    <router-view :class="{'notConnected': !isConnected}"></router-view>
-    <div class="formContainer" v-if="!isConnected">
-      <BaseFormSign />
+    <div id="app">
+        <BaseHeader class="sticky top-0 w-full"/>
+        <router-view :class="{ notConnected: !isConnected }"></router-view>
+        <div class="formContainer" v-if="!isConnected">
+            <BaseFormSign />
+        </div>
+        <div class="sticky bottom-0 w-full">
+            <BasePlayer class="z-20"/>
+            <BaseNav class="z-0"  />
+        </div>
     </div>
-    <BasePlayer />
-    <BaseNav />
-  </div>
 </template>
 
 <style scoped>
-
 #app {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: space-between;
-  height: 100vh;
- }
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 100vh;
+}
 .notConnected {
-  filter: blur(5px);
+    filter: blur(5px);
 }
 .formContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 30%;
-  z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    z-index: 100;
 }
 </style>

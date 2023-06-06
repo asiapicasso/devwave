@@ -28,7 +28,7 @@ export default {
         <div class="formContainer" v-if="!isConnected">
             <BaseFormSign />
         </div>
-        <div class="sticky bottom-0 w-full">
+        <div class="sticky bottom-0 ">
             <BasePlayer class="z-20"/>
             <BaseNav class="z-0"  />
         </div>

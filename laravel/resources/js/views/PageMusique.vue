@@ -39,6 +39,16 @@
     :score="item.score"/>
     </div>
     </div>
+
+    <div id="bdd">
+        <input type="button" @click="allUsers()" value="Select All Users">
+        <br><br>
+        <div v-for="user in users" v-bind:key="user.id">
+            <p>{{ user.id }}</p>
+            <p>{{ user.name }}</p>
+            <p>{{ user.email }}</p>
+    </div>
+    </div>
 </template>
 
 <script>
@@ -46,6 +56,7 @@ import { ref } from "vue";
 import BaseVoteMusique from "../components/BaseVoteMusique.vue";
 import BaseButton from "../components/BaseButton.vue";
 import BaseInput from "../components/BaseInput.vue";
+import axios from "axios";
 
 export default {
     name: "PageMusique",

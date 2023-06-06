@@ -33,6 +33,23 @@ export default {
             required: true,
         },
     },
+
+    methods: {
+        handleUpvote() {
+            this.$emit("upvote");
+        },
+        handleDownvote() {
+            this.$emit("downvote");
+        },
+    },
+    // handleUpvote: function () {
+    //     this.handleUpvoted = !this.handleUpvote;
+    //     this.handleDownvote = false;
+    // },
+    // handleDownvote: function () {
+    //     this.handleDownvote = !this.handleDownvote;
+    //     this.handleUpvote = false;
+    // },
     setup(props) {
         const score = ref(0);
 

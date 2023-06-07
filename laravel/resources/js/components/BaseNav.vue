@@ -24,7 +24,6 @@
   <style>
 /*Fixe Base nav en bas de la page qui a toute la largeur de l'écran et les routeurs sont équitablement espacés*/
   #nav {
-
     width: 100%;
     text-align: center;
   }

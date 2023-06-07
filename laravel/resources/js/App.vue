@@ -6,19 +6,20 @@ import BaseNav from "./components/BaseNav.vue";
 import BaseFormSign from "./components/BaseFormSign.vue";
 
 export default {
-    name: "App",
-    data() {
-        return {
-            isConnected: true,
-        };
-    },
-    components: {
-        BaseNav,
-        BaseHeader,
-        BasePlayer,
-        BaseFormSign,
-    },
-};
+  name: 'App',
+  data() {
+    return {
+      //Si vous modifier cette variable en true, vous passez comme si vous étiez connecté.
+      isConnected: true,
+    };
+  },
+  components: {
+    BaseNav,
+    BaseHeader,
+    BasePlayer,
+    BaseFormSign
+}
+}
 </script>
 
 <template>

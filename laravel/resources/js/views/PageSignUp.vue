@@ -1,53 +1,66 @@
 <template>
     <div id="formSignUp">
-        <img src="../../assets/back.png" class="absolute top-5 left-0 w-12 h-12"/>
+        <img src="../../assets/back.png" class="absolute top-5 left-0 w-10 h-10 ml-2"/>
             <h1 id="titlePageSignUp">S'inscrire</h1>
-            <form class="form-flex-columns">
-                <label class="labelFormSign" for="pseudo">Pseudo</label>
-                <input
-                    type="text"
-                    id="pseudo"
-                    name="pseudo"
-                    placeholder="unPseudo123"/>
-                <label class="labelFormSign" for="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="exemple@exemple.com"/>
-                <label class="labelFormSign" for="prenom">Prénom</label>
-                <input
-                    type="text"
-                    id="prenom"
-                    name="prenom"
-                    placeholder="unPrenom"/>
-                <label class="labelFormSign" for="nom">Nom</label>
-                <input
-                    type="text"
-                    id="nom"
-                    name="nom"
-                    placeholder="unNom"/>
-                <label class="labelFormSign" for="password">Mot de passe</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="..."
-                    required/>
-                <label class="font-bold" for="password">Confirmer le mot de passe</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="..."
-                    required/>
-                    <div class="flex justify-center mb-5">
-                        <BaseButton type="submit" text="S'inscire" class="boutonForm"/>
-                    </div>
+            <form class="form-flex-columns mt-9">
+                <div class="input-group">
+                    <label class="labelFormSign" for="pseudo">Pseudo</label>
+                    <input
+                        type="text"
+                        id="pseudo"
+                        name="pseudo"
+                        placeholder="unPseudo123"/>
+                </div>
+                <div class="input-group">
+                    <label class="labelFormSign" for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="exemple@exemple.com"/>
+                </div>
+                <div class="input-group">
+                    <label class="labelFormSign" for="prenom">Prénom</label>
+                    <input
+                        type="text"
+                        id="prenom"
+                        name="prenom"
+                        placeholder="unPrenom"/>
+                </div>
+                <div class="input-group">
+                    <label class="labelFormSign" for="nom">Nom</label>
+                    <input
+                        type="text"
+                        id="nom"
+                        name="nom"
+                        placeholder="unNom"/>
+                </div>
+                <div class="input-group">
+                    <label class="labelFormSign" for="password">Mot de passe</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="..."
+                        required/>
+                </div>
+                <div class="input-group">
+                    <label class="font-bold" for="password">Confirmer le mot de passe</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="..."
+                        required/>
+                </div>
+                <div class="flex justify-center mb-5">
+                    <BaseButton type="submit" text="S'inscrire" class="boutonForm"/>
+                </div>
             </form>
             <router-link to="/pagesignin" class="mb-5 underline">Déjà un compte ?</router-link>
         </div>
 </template>
+
 
 <script>
 import BaseButton from "../components/BaseButton.vue";
@@ -72,32 +85,44 @@ export default {
     background-color: white;
     padding-top: 20px;
 }
-#formSignUp input{
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+#formSignUp input {
     width: 300px;
     height: 30px;
     border-radius: 5px;
     border: 1px solid #d8d8d8;
-    margin-bottom: 10px;
-    padding-top: 20px;
-    padding-left: 10px;
-    padding-bottom: 20px;
+    padding: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
-#formSignUp label{
-    margin-bottom: 10px;
+
+#formSignUp label {
+    margin-bottom: 5px;
     font-weight: 600;
 }
+
 #NoAccountAsk {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 #titlePageSignUp {
     font-size: 30px;
     margin-bottom: 20px;
     color: #0d8d9e;
 }
+
 .boutonForm {
     margin-top: 20px;
 }
+
 .ligneDeSeparation {
     margin-top: 20px;
 }

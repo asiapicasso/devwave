@@ -9,7 +9,6 @@
 6. Lancer la commande : php artisan key:generate
 7. npm install tailwindcss
 8. npm install -S vue-router@next
-9. composer create-project laravel/laravel laravel-chat
 10. Dans le .env: changer BROADCAST_DRIVER en BROADCAST_DRIVER=pusher
 11. Rajouter en bas du .env:  
 PUSHER_APP_ID=1613596  

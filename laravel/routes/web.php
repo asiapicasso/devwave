@@ -29,15 +29,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // user must be signed in to access the following routes
-Route::get('/chat', function () {
+/* Route::get('/chat', function () {
     return view('chat');
-})->middleware('auth')->name('chat');
+})->middleware('auth')->name('chat'); */
 
 /* Route::get('/poll', function () {
     return view('poll');
 })->middleware('auth')->name('poll');
  */
-Route::get('/reddit', function () {
+/* Route::get('/reddit', function () {
     return view('reddit');
 })->middleware('auth')->name('reddit');
 
@@ -50,7 +50,7 @@ Route::get('/update/{profile_picture}', [ProfileController::class, 'showProfile'
 Route::get('/update/{username}', [ProfileController::class, 'showProfile'])->middleware('auth')->name('update_username');
 Route::get('/update/{firstname}', [ProfileController::class, 'showProfile'])->middleware('auth')->name('update_firstname');
 Route::get('/update/{lastname}', [ProfileController::class, 'showProfile'])->middleware('auth')->name('update_lastname');
-Route::get('/poll', [PollController::class, 'index'])->name('poll.index');
+Route::get('/poll', [PollController::class, 'index'])->name('poll.index'); */
 
 
 Route::get('/', function () {

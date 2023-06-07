@@ -1,5 +1,8 @@
 <template>
-    voiture
+    <div class="flex-col">
+        <p class="place-content-center">Tu conduis, concentre toi !</p>
+        <img @click="" class="h-20 w-20 mt-1.5 mr-4" src="../../assets/micro-inactif.svg" alt="icon micro inactif" />
+    </div>
 </template>
 
 <script>
@@ -16,7 +19,8 @@ export default {
         }
     }
 };
+
+
 </script>
 
-<style>
-</style>
+<style></style>

@@ -1,6 +1,6 @@
 <template>
     <div class="flex-col">
-        <p class="place-content-center">Tu conduis, concentre toi !</p>
+        <p class="place-content-center text-gris+4">Tu conduis, concentre toi !</p>
         <img @click="" class="h-20 w-20 mt-1.5 mr-4" src="../../assets/micro-inactif.svg" alt="icon micro inactif" />
     </div>
 </template>

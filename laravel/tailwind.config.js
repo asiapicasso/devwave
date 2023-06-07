@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
 export default {
     content: [
         "./resources/**/*.blade.php",
@@ -54,4 +55,16 @@ export default {
               }
         },
     },
+    plugins: [
+        plugin(function({ addBase, theme }) {
+          addBase({
+            'h1': { fontSize: theme('fontSize.4xl'), fontFamily: "'Frank Ruhl Libre', serif" },
+            'h2': { fontSize: theme('fontSize.xl'), fontFamily: "'Quicksand', sans-serif"},
+            'p': { fontSize: theme('fontSize.base'), fontFamily: "'Open Sans', sans-serif"},
+            'small': { fontSize: theme('fontSize.sm'), fontFamily: "'Open Sans', sans-serif"},
+            'span': { fontSize: theme('fontSize.xs'), fontFamily: "'Open Sans', sans-serif"},
+            'a': { fontSize: theme('fontSize.sm'), fontFamily: "'Open Sans', sans-serif", color: theme('colors.bleu+4'), 'text-decoration-line': 'underline'},
+          })
+        })
+      ]
 };

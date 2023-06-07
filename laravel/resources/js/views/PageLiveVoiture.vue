@@ -13,7 +13,7 @@ export default {
             title: 'My Header'
         };
     },
-    methods: {
+    methods: { 
         launchPhoneApp() {
             window.open('tel:0840 003 003'); // Remplacez +123456789 par le numéro de téléphone souhaité
         }

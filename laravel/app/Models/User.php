@@ -111,4 +111,16 @@ class User extends Authenticatable
         $this->access_type = $accessType;
         return $this->save();
     }
+
+    public function messages()
+
+    {
+
+        return $this->hasMany(Message::class);
+
+    }    
+
+
+
+    
 }

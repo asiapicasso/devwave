@@ -3,7 +3,7 @@
     <img class="-mb-1 ml-4 h-16 w-26 fill-current" src="../../assets/Logo-Interact.png" alt="logo">
     <div class="flex">
       <img @click="launchPhoneApp" class="h-8 w-8 mt-1.5 mr-4" src="../../assets/telephone.svg" alt="icon de téléphone" />
-      <img class="h-12 w-12" src="../../assets/voiture.svg" alt="icon de voiture" />
+      <router-link to="/pageLiveVoiture"><img class="h-12 w-12" src="../../assets/voiture.svg" alt="icon de voiture" /></router-link>
     </div>
   </div>
 </template>

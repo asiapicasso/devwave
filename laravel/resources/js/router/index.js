@@ -10,6 +10,7 @@ import TheChat from '../components/TheChat.vue'
 import baseSondage from '../components/baseSondage.vue'
 import pageSignIn from '../views/pageSignIn.vue'
 import pageSignUp from '../views/pageSignUp.vue'
+import pageLiveVoiture from '../views/pageLiveVoiture.vue'
 
 
 const routes = [{
@@ -63,6 +64,11 @@ const routes = [{
         name: 'pageSignUp',
         component: pageSignUp
     },
+    {
+        path: '/pageLiveVoiture',
+        name: 'pageLiveVoiture',
+        component: pageLiveVoiture
+    }
 ];
 
 

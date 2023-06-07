@@ -22,6 +22,8 @@ VITE_PUSHER_PORT="${PUSHER_PORT}"
 VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"  
 VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"  
 
+À ÉCRIRE DANS LE DOSSIER LARAVEL !!!!!
+
 12. composer require pusher/pusher-php-server
 13. npm install --save laravel-echo pusher-js
 14. Ouvrir un terminal et lancer la commande php artisan serve pour lancer le backend

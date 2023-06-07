@@ -1,5 +1,5 @@
 <template>
-    <div id="player" class="h-20 shadow-md bg-jaune-clair">
+    <div id="player" class="h-20 shadow-2xl bg-jaune-clair">
         <div class="flex-grow">
             <router-link to="/pagePlayer">
                 <div class="grow ml-5" id="info-emission">

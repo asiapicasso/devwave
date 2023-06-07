@@ -97,7 +97,7 @@ export default {
     margin-bottom: 10%;
     font-size: 30px;
     margin-bottom: 20px;
-    color: #0d8d9e;
+    color: #055488;
 }
 #profilData {
     margin-top: 5%;

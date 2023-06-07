@@ -1,11 +1,13 @@
 <template>
-    <div>
-        <h1 class="py-5 ml-0 text-4xl font-bold tracking-tight text-black sm:text-5xl">Reglages</h1>
+      <div id="pageTitle" class="flex items-center justify-center">
+        Réglages
     </div>
     <li><button @click="showMdpPopup=true">Changer de mot passe</button></li>
+    <HR ALIGN=CENTER WIDTH="70%" class="mb-0 mt-9"/>
     <li><button @click="showNotifPopup=true">Notification</button></li>
-    <li>-------------------------------------</li>
+    <HR ALIGN=CENTER WIDTH="70%" class="mb-0 mt-9"/>
     <li><button @click="showLogoutPopup=true">Se déconnecter</button></li>
+    <HR ALIGN=CENTER WIDTH="70%" class="mb-0 mt-9"/>
 
     <Logout v-if="showLogoutPopup" @close="showLogoutPopup = false" />
     <Notif v-if="showNotifPopup" @close="showNotifPopup = false" />

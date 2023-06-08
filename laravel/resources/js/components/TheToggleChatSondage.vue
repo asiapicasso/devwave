@@ -1,6 +1,5 @@
 <template>
     <div>
-        <div class="w-full h-60 bg-indigo-500"></div>
         <div class="justify-center bg-bleu-clair flex items-center flex-wrap">
             <button
                 @click="showComponentChat"

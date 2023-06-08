@@ -1,5 +1,5 @@
 <template class="blur">
-
+<TheVideo></TheVideo>
 <TheToggleChatSondage >
 </TheToggleChatSondage>
     <!-- <Chat></Chat>
@@ -9,11 +9,13 @@
 
 <script>
 import TheToggleChatSondage from '../components/TheToggleChatSondage.vue';
+import TheVideo from '../components/TheVideo.vue';
 export default {
   name: "pageLive",
   components: {
-    TheToggleChatSondage
-  },
+    TheToggleChatSondage,
+    TheVideo
+},
 //   data: function(){
 //                 return {
 //                     options: {

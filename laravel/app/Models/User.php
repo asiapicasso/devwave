@@ -10,11 +10,17 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
 
+    use HasApiTokens, HasFactory, Notifiable;
+    public $timestamps = false;
     public function isAdmin()
     {
         return $this->access_type === 'admin'; // Remplacez 'type' par le champ correspondant dans votre table "users"
+    }
+
+    public function isReader()
+    {
+        return $this->access_type === 'reader'; // Remplacez 'type' par le champ correspondant dans votre table "users"
     }
 
     /**
@@ -52,7 +58,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-     /**
+    /**
      * Update the user's name in the database.
      *
      * @param  string  $name
@@ -111,4 +117,13 @@ class User extends Authenticatable
         $this->access_type = $accessType;
         return $this->save();
     }
+    /* public function polls()
+    {
+
+        return $this->belongsToMany(Poll::class, 'user_has_poll')
+            ->using(UserHasPoll::class)
+            ->withPivot('user_status')
+            ->withPivot(['created_at', 'updated_at']) // Ignorer les timestamps
+            ->withTimestamps();
+    } */
 }

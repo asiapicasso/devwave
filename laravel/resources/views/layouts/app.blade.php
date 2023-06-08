@@ -17,7 +17,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-
+@stack('scripts')
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -55,6 +55,10 @@
 
 
                         @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home', ['home' => 'home']) }}">{{ __('Home')
+                                }}</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('profile', ['profile' => 'profile']) }}">{{ __('Profile')
                                 }}</a>

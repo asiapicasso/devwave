@@ -16,10 +16,11 @@ class PollController extends Controller
     public function index()
     {
         $currentUser = Auth::user();
+        $polls = Poll::with('answers')->get();
+        // dd($polls);
 
-        $polls = Poll::all();
 
-        return view('poll', ['polls' => $polls, 'currentUser'=> $currentUser]);
+        return view('poll', ['polls' => $polls, 'currentUser' => $currentUser]);
     }
 
     /**
@@ -45,6 +46,9 @@ class PollController extends Controller
 
         return redirect()->route('poll.index')->with('success', 'Sondage créé avec succès');
     }
+
+
+
 
     /**
      * Display the specified resource.

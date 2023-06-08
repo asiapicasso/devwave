@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatsController extends Controller
 {
-    public function __construct()
+    /* public function __construct()
     {
         $this->middleware('auth');
-    }
+    } */
 
     public function index()
     {

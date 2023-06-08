@@ -1,7 +1,7 @@
 <template>
 <div class="input-group">
 
-//Input field.
+
 
 <input
 
@@ -23,11 +23,11 @@
 
 />
 
-//Button
+
 
 <span class="input-group-btn">
 
-  //Call sendMessage() this button is clicked.
+ 
 
   <button class="btn btn-primary btn-sm" id="btn-chat" @click="sendMessage">
 

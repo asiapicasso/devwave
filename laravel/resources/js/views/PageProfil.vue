@@ -4,20 +4,35 @@
             <h1 class="flex-1 text-center">Mon profil</h1>
             <button id="settingsBtn" class="cursor-pointer mr-2 ml-auto">
                 <router-link to="/pageReglages">
-                <img src="../../assets/engrenage.png" class="w-6 h-6" />
+                <img src="../../assets/reglages.svg" class="w-6 h-6" />
                 </router-link>
             </button>
         </div>
 
 
-
+<!---
         <div id="profilPicture" class="flex justify-center m-auto" >
-            <img src="../../assets/avatar.jpg" id="avatar" class="h-40 w-40"  v-if="isConnected"/>
-            <img src="../../assets/NoConnectedPicture.jpg" id="avatar" class="h-40 w-40" v-if="!isConnected"/>
+            <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40"  v-if="isConnected"/>
+            <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40" v-if="!isConnected"/>
             <button v-if="isConnected">
-                    <img src="../../assets/modifier.png" id="changeAvatar" class="h-10 w-10"/>
+                    <img src="../../assets/appareil-photo.svg" id="changeAvatar" class="h-10 w-10"/>
                 </button>
         </div>
+
+
+        ---->
+        <div id="profilPicture" class="flex justify-center m-auto">
+  <div class="image-container relative">
+    <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40" v-if="isConnected" />
+    <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40" v-if="!isConnected" />
+    <div class="absolute left-24 top-24 appareilPhoto">
+        <button class="button-overlay" v-if="isConnected">
+      <img src="../../assets/appareil-photo.svg" id="changeAvatar" class="h-8 w-8" />
+    </button>
+    </div>
+  </div>
+</div>
+
         <div id="profilData">
             <!--Les informations du profils s'affichent quand tu es connecté-->
             <div class="ligneDeForm flex items-center space-x-">
@@ -27,7 +42,7 @@
                 </div>
                 <div class="ml-auto">
                 <button>
-                    <img src="../../assets/modifier.png" />
+                    <img src="../../assets/crayon.svg" />
                 </button>
                 </div>
             </div>
@@ -38,7 +53,7 @@
                 </div>
                 <div class="ml-auto">
                 <button>
-                    <img src="../../assets/modifier.png" />
+                    <img src="../../assets/crayon.svg" />
                 </button>
                 </div>
             </div>
@@ -49,7 +64,7 @@
                 </div>
                 <div class="ml-auto">
                 <button>
-                    <img src="../../assets/modifier.png" />
+                    <img src="../../assets/crayon.svg" />
                 </button>
                 </div>
             </div>
@@ -60,7 +75,7 @@
                 </div>
                 <div class="ml-auto">
                 <button>
-                    <img src="../../assets/modifier.png" />
+                    <img src="../../assets/crayon.svg" />
                 </button>
                 </div>
             </div>
@@ -82,6 +97,9 @@ export default {
 </script>
 
 <style>
+.appareilPhoto{
+    top: 110px;
+}
 #profilData img{
     width: 20px;
     height: 20px;
@@ -139,4 +157,6 @@ export default {
   border: none;
   cursor: pointer;
 }
+
+
 </style>

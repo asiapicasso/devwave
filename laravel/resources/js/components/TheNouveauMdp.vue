@@ -1,64 +1,58 @@
 <template>
     <div>
-        <button id="cancel" @click="$emit('close')"><img id="cancelcross" src="../../assets/cancel.png"/></button>
         <div id="formProfil">
-            <form methods="post">
-                <label for="ancienmdp">Votre ancien mot de passe : </label>
-                <input
-                    type="text"
-                    id="password"
-                    name="password"
-                    required
-                />
-                <br />
-                <label for="nouveaumotdepasse1">Votre nouveau mot de passe :</label>
-                <input
-                    type="text"
-                    id="newpassword1"
-                    name="newpassword1"
-                    required
-                />
-                <br />
-                <label for="nouveaumotdepasse2">Répétez votre nouveau mot de passe :</label>
-                <input
-                    type="text"
-                    id="newpassword2"
-                    name="newpassword2"
-                    required
-                />
-                <br/>
-                <button id="cancel" @click="$emit('close')">Annuler</button>
-                <button type="submit">
-                    Valider
-                </button>
-            </form>
+            <form class="flex flex-col">
+        <label for="mdp" class="mb-2 font-semibold">Ancien mot de passe</label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="..."
+            class="h-8 rounded mb-2 pt-5 pl-2 pb-5 border border-gray-300"
+            required/>
+        <label for="password" class="mb-2 font-semibold">Nouveau mot de passe</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="...."
+            class="h-8 rounded mb-2 pt-5 pl-2 pb-5 border border-gray-300"
+            required/>
+            <label for="password" class="mb-2 font-semibold">Répétez le nouveau mot de passe</label>
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="...."
+            class="h-8 rounded mb-2 pt-5 pl-2 pb-5 border border-gray-300"
+            required/>       
+        <div class="flex justify-center mb-5">
+            <BaseButton type="submit" text="Valider" class="mt-7"/>
+        </div>
+    </form>
         </div>
     </div>
     
 </template>
 
 <script>
+import BaseButton from './BaseButton.vue'
     export default {
         name: 'TheNouveauMdp',
         data() {
             return {
                 message: 'The NouveauMdp'
             }
+        },
+        components: {
+            BaseButton
         }
     }
 </script>
 
 <style scoped>
-    #logoutBtn{
-        background-color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px;
-        margin-top: 20px;
-        cursor: pointer;
+    #formProfil input{
+        margin-right: 40px;
     }
-    #cancelcross{
-        width: 20px;
-        height: 20px;
-    }
+    
 </style>

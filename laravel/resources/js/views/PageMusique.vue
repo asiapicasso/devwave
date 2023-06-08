@@ -10,12 +10,10 @@
               <div v-for="post in post" :post="song"></div>
             </ul>
             <div class="my-5">
-              <div class="ml-5 mr-5 input-group">
-                <input class="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500" type="text" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="handleClick">
-                <span class="input-group-btn">
-                    <button>
-                     <BaseButton class="ml-6" text="Envoyer" :clickHandler="handleClick" role="principal" />
-                 </button>
+              <div class="inline-block align-middle ml-5 mr-5 input-group">
+                <span class="flex w64 items-center">                
+                    <BaseInput type="text" v-model="song" @keyup.enter="handleClick"/>
+                     <BaseButton class="ml-6" text="Envoyer" :clickHandler="handleClick" role="secondaire" />
         		</span>
               </div>
             </div>
@@ -60,7 +58,8 @@ export default {
     name: "PageMusique",
     components: {
     BaseVoteMusique,
-    BaseButton,
+        BaseButton,
+        BaseInput,
     
 },
     data() {
@@ -109,7 +108,5 @@ export default {
 </script>
 
 <style scoped>
-
-
 </style>
 

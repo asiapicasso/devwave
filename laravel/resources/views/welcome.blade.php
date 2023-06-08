@@ -19,6 +19,21 @@
     </head>
     <body id="main-container" class="min-w-screen min-h-screen">
         <div id="app">
+            <div class="container">
+    <div class="row justify-content-center">
+         
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header text-center">Laravel 8 Vue Autocomplete Example</div>
+                     
+                <div class="card-body">
+                  <BaseInput></BaseInput>
+                </div>
+                 
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </body>
 </html>

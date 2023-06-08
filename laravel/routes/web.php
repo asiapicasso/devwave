@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PollController;
+use App\Http\Controllers\SongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,13 @@ use App\Http\Controllers\PollController;
 |
 */
 Route::resource('poll', PollController::class);
+// Route::get('/song', [SongController::class, 'index'])->name('reddit');
+// Route::get('/getsong', [SongController::class, 'getSong']);
 
 
+// Route::resource('song', SongController::class);
+// Route::get('/song/getSong', [SongController::class, 'getSong']);
+Route::post('song/getSong', [SongController::class, 'getSong']);
 Route::get('/auth', function () {
     return view('auth.login');
 });

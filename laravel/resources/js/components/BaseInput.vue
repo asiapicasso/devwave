@@ -1,54 +1,50 @@
 <template>
-    <div>
-        <input type="text" v-on="searchKey" placeholder="Search..." />
-        <ul>
-            <li v-for="item in filteredItems" :key="item.id">{{ item.title }}</li>
+    <small class="justify-items-center">
+        <input class="flex-1 w-64 border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"  type="text" v-model="keyword" placeholder="Cherche ta chanson..." />
+        <ul v-if="Songs.length > 0">
+            <li v-for="song in Songs" :key="song.id">{{ song.title }}</li>
         </ul>
-    </div>
+    </small>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: "BaseInput",
-    props: {
-        items: {
-            type: Array,
-            required: false,
-            default: () => []
-        },
-        searchKey: {
-            type: String,
-            default: ''
-        }
-    },
-    data() {
+     data() {
         return {
-            filteredItems: []
+            keyword: null, 
+            Songs: [],
         };
     },
     watch: {
-        searchKey: {
-            immediate: true,
-            handler() {
-                this.filterItems();
-            }
+        keyword(after, before) {
+            this.getSong();
         },
-        items: {
-            immediate: true,
-            handler() {
-                this.filterItems();
-            }
-        }
     },
     methods: {
-        filterItems() {
-            const regex = new RegExp(this.searchKey, 'i');
-            this.filteredItems = this.items.filter(item => regex.test(item.title));
-        }
+        // getResults() {
+        //     axios.post('/getSong', {
+        //             keyword: this.keyword,
+        //     })
+        //     .then((response) => {
+        //         this.Songs = response.data;
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+        // },
+        async getSong() {
+            const response = await axios.post('song/getSong', {
+                keyword: this.keyword,
+            });
+            this.Songs = response.data;
+        },
     }
-};
+}
+
 </script>
 
 <style scoped>
-/* Add any custom styles for the component here */
 </style>

@@ -19,7 +19,7 @@ class PollController extends Controller
 
         $polls = Poll::all();
 
-        return view('poll', ['polls' => $polls, 'currentUser'=> $currentUser]);
+        return view('poll')->whith(['polls' => $polls, 'currentUser'=> $currentUser]);
     }
 
     /**

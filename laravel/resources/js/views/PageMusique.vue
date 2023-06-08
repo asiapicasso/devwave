@@ -96,25 +96,14 @@ export default {
                     title: this.song,
                     votes: 0,
                 })
+                console.log(this.post),
                 this.song = "";
             }
         },
         
     },
 
-    computed: {
-        votes: function () {
-            if (this.handleUpvote) {
-                return this.post.votes + 1;
-            } else if (this.handleDownvote) {
-                return this.post.votes - 1;
-            } else {
-                return this.post.votes;
-            }
 
-        },
-
-}
 }
 
 </script>

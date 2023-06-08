@@ -8,25 +8,14 @@
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "@vitejs/plugin-vue": "^4.0.0",
-        "autoprefixer": "^10.4.14",
-        "axios": "^1.4.0",
+        "axios": "^1.1.2",
         "bootstrap": "^5.2.3",
-        "laravel-echo": "^1.15.1",
         "laravel-vite-plugin": "^0.7.5",
-        "postcss": "^8.4.23",
-        "pusher-js": "^8.0.2",
         "sass": "^1.56.1",
-        "tailwindcss": "^3.3.2",
         "vite": "^4.0.0",
         "vue": "^3.2.37"
     },
     "dependencies": {
-        "@tailwindcss/aspect-ratio": "^0.4.2",
-        "@tailwindcss/forms": "^0.5.3",
-        "tailwindcss-border-gradient-radius": "^3.0.1",
-        "tailwindcss-border-gradients": "^2.0.3",
-        "vue-poll": "^0.1.8",
-        "vue-router": "^4.0.13",
-        "vue-search-input": "^1.1.11"
+        "tailwindcss": "^3.3.2"
     }
 }

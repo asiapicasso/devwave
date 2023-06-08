@@ -1,19 +1,20 @@
 <template>
-            <h1 id="musiVoteTitre">MusiVote</h1>
-            <h2 id="musiVote">Propose ta musique ou vote pour les musiques en dessous 🎶</h2>
-
+    <div class="flex flex-col mx-5 mt-8">
+        <h1 class="text-center" id="musiVoteTitre">MusiVote</h1>
+        <h2 id="musiVote" class="text-center">Propose ta musique ou vote pour les musiques en dessous 🎶</h2>
+    </div>
     <div>
     <div id="principal">
           <div class="container-fluid">
             <ul class="list-group">
               <div v-for="post in post" :post="song"></div>
             </ul>
-            <div id="song-box">
-              <div class="input-group">
+            <div class="my-5">
+              <div class="ml-5 mr-5 input-group">
                 <input class="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500" type="text" placeholder="Cherche ta chanson..." v-model="song" @keyup.enter="handleClick">
                 <span class="input-group-btn">
                     <button>
-                     <BaseButton text="Envoyer" :clickHandler="handleClick" role="principal" />
+                     <BaseButton class="ml-6" text="Envoyer" :clickHandler="handleClick" role="principal" />
                  </button>
         		</span>
               </div>
@@ -121,30 +122,5 @@ export default {
 <style scoped>
 
 
- #musiVoteTitre {
-    padding-block: 10px;
-    margin-left : 10px;
-    margin-right: 10px;
- }
-
-    .input-group {
-    stroke: #000000;
-    stroke-width: 1px;
-    stroke-opacity: 1;
-    }
-
-
-#principal {
-    text-align: center;
-    font-family: 'Frank Ruhl Libre', serif;
-    font-weight: 300;
-    color: #000000;
-}
- #musiVote {
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    color: #000000;
- }
 </style>
 

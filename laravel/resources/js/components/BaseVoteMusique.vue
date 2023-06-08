@@ -1,16 +1,21 @@
 <template>
-    <div class="music-box">
+    <div class="flex items-center h-34 ml-5 mr-5 mb-5 rounded-xl music-box border border-2 border-black">
 
-        <div class="flex flex-col">
-            <button id="icon-button" class="stroke-pink-500 focus:bg-pink-500" @click="handleUpvote">
+        <div class="">
+            <div class="flex flex-col mx-4 my-2"> 
+                <button id="up" class=" focus:bg-rose" @click="handleUpvote">
                 <span id="icon" class="active:bg-white-500" v-html="iconUp"></span>
             </button>
-            <span class="button-score">{{ score }}</span>
-            <button id="icon-button" @click="handleDownvote">
-                <span id="icon" v-html="iconDown"></span>
+                <div class="flex justify-center button-score ">{{ score }}</div>
+                <button id="down" class="focus:bleu-clair" @click="handleDownvote">
+                <span id="icon" class="active:bg-white-500" v-html="iconDown"></span>
             </button>
+            </div>
         </div>
-        <span class="button-text">{{ text }}</span>
+        <div class="items-center">
+            <div class="button-text">{{ text }}</div>
+        </div>
+
     </div>
 </template>
 
@@ -72,41 +77,21 @@ export default {
 
 
 <style scoped>
-.music-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    border: 3px solid black;
-    padding: 0.3rem;
-    border-radius: 0.6rem;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-    margin-top: 1rem;
-}
 
-#icon-button {
+
+
+#up {
     padding: 0.5rem;
-    border: 1px solid #e5e7eb;
+    border: 0.2rem solid #D744EE;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+#down {
+    padding: 0.5rem;
+    border: 0.2rem solid #C0F6FC;
     border-radius: 0.4rem;
     cursor: pointer;
 }
 
-#icon {
-    display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
-}
 
-.button-text {
-    font-size: 1rem;
-    color: #4a5568;
-}
-
-.button-score {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #4a5568;
-    text-align: center;
-}
 </style>

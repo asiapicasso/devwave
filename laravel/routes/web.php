@@ -17,13 +17,8 @@ use App\Http\Controllers\SongController;
 |
 */
 Route::resource('poll', PollController::class);
-// Route::get('/song', [SongController::class, 'index'])->name('reddit');
-// Route::get('/getsong', [SongController::class, 'getSong']);
 
-
-// Route::resource('song', SongController::class);
-// Route::get('/song/getSong', [SongController::class, 'getSong']);
-Route::post('song/getSong', [SongController::class, 'getSong']);
+Route::get('/getSong', [SongController::class, 'getSong']);
 Route::get('/auth', function () {
     return view('auth.login');
 });

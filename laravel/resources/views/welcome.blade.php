@@ -13,7 +13,6 @@
         @vite(['resources/js/app.js'])
         @vite('resources/css/app.css')
         <script src="vue.js"></script> 
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
       
 
     </head>
@@ -24,10 +23,8 @@
          
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">Laravel 8 Vue Autocomplete Example</div>
                      
                 <div class="card-body">
-                  <BaseInput></BaseInput>
                 </div>
                  
             </div>

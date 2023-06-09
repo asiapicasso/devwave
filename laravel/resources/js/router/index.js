@@ -11,10 +11,6 @@ import baseSondage from "../components/baseSondage.vue";
 import pageSignIn from "../views/pageSignIn.vue";
 import pageSignUp from "../views/pageSignUp.vue";
 import pageLiveVoiture from "../views/pageLiveVoiture.vue";
-import BaseInput from "../components/BaseInput.vue";
-import axios from "axios";
-
-axios.defaults.baseURL = "http://localhost:5173";
 
 const routes = [
     {
@@ -74,11 +70,6 @@ const routes = [
         path: "/pageLiveVoiture",
         name: "pageLiveVoiture",
         component: pageLiveVoiture,
-    },
-    {
-        path: "/pageMusique",
-        component: BaseInput,
-        name: "pageMusique",
     },
 ];
 

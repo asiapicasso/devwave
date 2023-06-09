@@ -42,12 +42,12 @@ const routes = [{
         path: "/pagePlayer",
         name: "pagePlayer",
         component: pagePlayer,
-    }, ,
+    },
     {
         path: "/chat",
         name: "chat",
         component: TheChat,
-    }, ,
+    },
     {
         path: "/sondage",
         name: "sondage",
@@ -67,13 +67,13 @@ const routes = [{
     {
         path: '/pageLiveVoiture',
         name: 'pageLiveVoiture',
-        component: pageLiveVoiture
+        component: pageLiveVoiture,
     },
     {
         path: '/galerie',
         name: 'galerie',
-        component: pageGalerie
-    },
+        component: pageGalerie,
+    }
 ];
 
 const router = createRouter({

@@ -20,15 +20,10 @@
 </template>
 
 <script>
-import PageSignIn from "../views/PageSignIn.vue";
-import PageSignUp from "../views/PageSignUp.vue";
+
 
     export default {
     name: 'BaseFormSign',
-    components: {
-        PageSignIn,
-        PageSignUp
-    },
     props: ['showProfile', 'showFormSign'],
     data() {
         return {

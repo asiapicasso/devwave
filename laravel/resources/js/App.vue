@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       //Si vous modifier cette variable en true, vous passez comme si vous étiez connecté.
-      isConnected: false,
+      isConnected: true,
     };
   },
   components: {

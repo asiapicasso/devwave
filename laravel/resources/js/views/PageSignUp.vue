@@ -63,7 +63,7 @@
             <router-link to="/pagesignin" class="mb-5 underline">Déjà un compte ?</router-link>
             </div>
             <div v-if="confirmForm">
-                <p class="text-center mx-10">Nous vous avons envoyé un e-mail. Veuilez rentrer le ode que vous avez reçu.</p>
+                <p class="text-center mx-10">Nous vous avons envoyé un e-mail. Veuilez rentrer le code que vous avez reçu.</p>
                 <form class="form-flex-columns mt-0">
                 <div class="input-group mx-10 mt-20">
                     <label class="labelFormSign" for="code">Code</label>
@@ -85,7 +85,6 @@
 
 <script>
 import BaseButton from "../components/BaseButton.vue";
-import router from "../router";
 export default {
     name: "PageSignUp",
     data() {
@@ -93,7 +92,7 @@ export default {
             confirmForm: false
         };
     },
-    components: { BaseButton, router }
+    components: { BaseButton }
 };
 </script>
 

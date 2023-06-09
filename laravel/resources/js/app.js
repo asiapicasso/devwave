@@ -8,6 +8,9 @@ import "./bootstrap";
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
+//ajout
+import VueAxios from 'vue-axios';
+import axios from 'axios'
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -43,6 +46,7 @@ createApp(App, {
     },
 })
     .use(router)
+    .use(VueAxios, axios)
     .mount("#app");
 
 //Vue.component("base-message", require("./components/BaseMessage.vue").default);

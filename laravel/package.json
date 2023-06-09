@@ -25,8 +25,9 @@
         "@tailwindcss/forms": "^0.5.3",
         "tailwindcss-border-gradient-radius": "^3.0.1",
         "tailwindcss-border-gradients": "^2.0.3",
+        "vue-axios": "^3.5.2",
         "vue-poll": "^0.1.8",
-        "vue-router": "^4.0.13",
+        "vue-router": "^4.2.2",
         "vue-search-input": "^1.1.11"
     }
 }

@@ -137,7 +137,6 @@ CREATE TABLE IF NOT EXISTS `devwave`.`chosen_song` (
   `date` VARCHAR(45) NOT NULL,
   `nb_vote` VARCHAR(45) NOT NULL,
   `user_id` INT NOT NULL,
-  `user_group_id` INT NOT NULL,
   `song_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_chosen_song_user1_idx` (`user_id` ASC, `user_group_id` ASC) VISIBLE,
@@ -268,7 +267,7 @@ COLLATE = utf8mb4_unicode_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `devwave`.`random_sentence` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `sentence` VARCHAR(45) NOT NULL,
+  `sentence` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;

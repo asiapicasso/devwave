@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 //import PageSondage
 import pageSondage from '../views/pageSondage.vue'
 import pageMusique from '../views/pageMusique.vue'
@@ -19,50 +19,50 @@ const routes = [{
         component: pageSondage
     },
     {
-        path: '/pageMusique',
-        name: 'PageMusique',
-        component: pageMusique
+        path: "/pageMusique",
+        name: "PageMusique",
+        component: pageMusique,
     },
     {
-        path: '/pageProfil',
-        name: 'pageProfil',
-        component: pageProfil
+        path: "/pageProfil",
+        name: "pageProfil",
+        component: pageProfil,
     },
     {
-        path: '/pageLive',
-        name: 'pageLive',
-        component: pageLive
+        path: "/pageLive",
+        name: "pageLive",
+        component: pageLive,
     },
     {
-        path: '/pageReglages',
-        name: 'pageReglages',
-        component: pageReglages
+        path: "/pageReglages",
+        name: "pageReglages",
+        component: pageReglages,
     },
     {
-        path: '/pagePlayer',
-        name: 'pagePlayer',
-        component: pagePlayer
+        path: "/pagePlayer",
+        name: "pagePlayer",
+        component: pagePlayer,
     }, ,
     {
-        path: '/chat',
-        name: 'chat',
-        component: TheChat
+        path: "/chat",
+        name: "chat",
+        component: TheChat,
     }, ,
     {
-        path: '/sondage',
-        name: 'sondage',
-        component: baseSondage
+        path: "/sondage",
+        name: "sondage",
+        component: baseSondage,
     },
 
     {
-        path: '/pageSignIn',
-        name: 'pageSignIn',
-        component: pageSignIn
+        path: "/pageSignIn",
+        name: "pageSignIn",
+        component: pageSignIn,
     },
     {
-        path: '/pageSignUp',
-        name: 'pageSignUp',
-        component: pageSignUp
+        path: "/pageSignUp",
+        name: "pageSignUp",
+        component: pageSignUp,
     },
     {
         path: '/pageLiveVoiture',
@@ -76,10 +76,9 @@ const routes = [{
     },
 ];
 
-
 const router = createRouter({
     history: createWebHistory(),
-    routes
-})
+    routes,
+});
 
 export default router;

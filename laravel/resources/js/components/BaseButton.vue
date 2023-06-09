@@ -1,10 +1,10 @@
 <template>
     <div :class="['base-button', roleClass]">
-        <button @click="clickHandler">
+        <button class="text-center flex items-center justify-center p-6 cursor-pointer h-10" @click="clickHandler">
             <span v-if="icon" class="button-icon">
                 <img :src="icon" alt="Button Icon" />
             </span>
-            <span class="button-text">{{ text }}</span>
+            <p class="button-text">{{ text }}</p>
         </button>
     </div>
 </template>
@@ -39,29 +39,12 @@ export default {
 </script>
 
 <style scoped>
-.base-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-}
-
-.button-icon {
-    margin-right: 0.5rem;
-}
-
-.button-text {
-    font-size: 1rem;
-    margin : 20px;
-}
 
   .role-principal {
     
       @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose rounded-md;
       color: black;
     
-  
   }
   .bg-svg {
   background-image: url('../../assets/CTA-secondaire.svg');
@@ -79,22 +62,6 @@ export default {
   
       @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose opacity-50 text-gray-500 rounded-md;
     
-}
-
-.base-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-}
-
-.button-icon {
-  margin-right: 0.5rem;
-}
-
-.button-text {
-  font-size: 1rem;
 }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use Illuminate\Http\Request;
 use App\Models\Poll;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,10 @@ class PollController extends Controller
     public function index()
     {
         $currentUser = Auth::user();
+        $polls = Poll::with('answers')->get();
+        // dd($polls);
 
-        $polls = Poll::all();
-
-        return view('poll', ['polls' => $polls, 'currentUser'=> $currentUser]);
+       return view('poll', ['polls' => $polls, 'currentUser' => $currentUser]);
     }
 
     /**
@@ -46,12 +47,43 @@ class PollController extends Controller
         return redirect()->route('poll.index')->with('success', 'Sondage créé avec succès');
     }
 
+    public function vote(Request $request)
+    {
+        /*dd($request->all());*/
+
+
+        $answerId = $request->input('answer_id');
+        $answer = Answer::findOrFail($answerId);
+
+        // Vérifier si l'utilisateur a déjà voté pour le sondage
+        $user = Auth::user();
+        if ($user->polls()->where('poll_id', $answer->poll_id)->exists()) {
+            // L'utilisateur a déjà voté pour ce sondage
+            return redirect()->route('poll.show')->with('error', 'Vous avez déjà voté pour ce sondage');
+        }
+
+        // Incrémenter le nombre de votes pour la réponse sélectionnée
+        $answer->timestamps = false;
+        $answer->increment('nb_vote');
+
+        // Associer l'utilisateur au sondage
+        $user->polls()->attach($answer->poll_id, ['user_status' => 'voted']);
+
+        return redirect()->route('poll.show')->with('success', 'Votre vote a été enregistré avec succès !');
+
+    }
+
+
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        /*         dd($id);
+         */$poll = Poll::findOrFail($id);
+
+        return view('poll.show', ['poll' => $poll]);
+
     }
 
     /**

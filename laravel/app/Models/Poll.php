@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Poll extends Model
 {
     use HasFactory;
@@ -23,4 +24,9 @@ class Poll extends Model
         'theme',
         'question',
     ];
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
 }

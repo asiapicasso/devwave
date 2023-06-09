@@ -1,7 +1,7 @@
 <template>
     <div id="profil">
         <div id="pageTitle" class="flex items-center justify-center" :class="{'blur-background': displayChangeValue}">
-            <h1 class="flex-1 text-center">Mon profil</h1>
+            <h1 class="flex-1 text-center text-bleu+4">Mon profil</h1>
             <button id="settingsBtn" class="cursor-pointer mr-2 ml-auto">
                 <router-link to="/pageReglages">
                 <img src="../../assets/reglages.svg" class="w-6 h-6" />
@@ -24,9 +24,9 @@
         <div id="profilData" :class="{'blur-background': displayChangeValue}">
             <!--Les informations du profils s'affichent quand tu es connecté-->
             <div class="ligneDeForm flex items-center space-x-">
-                <div class="flex flex-col" >
-                <label>Pseudo</label>
-                <label>TartePion</label>
+                <div class="flex flex-col text-bleu+4" >
+                <label class="text-bleu+4" >Pseudo</label>
+                <label class="text-bleuFoncé+4">TartePion</label>
                 </div>
                 <div class="ml-auto">
                 <button @click="changeMessage('Pseudo')">
@@ -36,8 +36,9 @@
             </div>
             <div class="ligneDeForm flex items-center space-x-">
                 <div class="flex flex-col" >
-                <label>E-mail</label>
-                <label>tart12@gmail.com</label>
+                      <!--style="white-space: nowrap;" pour ne pas écrire sur deux lignes "e-mail"-->
+                <label class="text-bleu+4" style="white-space: nowrap;">E-mail</label>
+                <label class="text-bleuFoncé+4">tart12@gmail.com</label>
                 </div>
                 <div class="ml-auto">
                     <button @click="changeMessage('E-mail')">
@@ -47,8 +48,8 @@
             </div>
             <div class="ligneDeForm flex items-center space-x-">
                 <div class="flex flex-col" >
-                <label for="pseudo">Nom</label>
-                <label>Tartem</label>
+                <label class="text-bleu+4" for="pseudo">Nom</label>
+                <label class="text-bleuFoncé+4">Tartem</label>
                 </div>
                 <div class="ml-auto">
                     <button @click="changeMessage('Nom')">
@@ -58,8 +59,8 @@
             </div>
             <div class="ligneDeForm flex items-center space-x-">
                 <div class="flex flex-col" >
-                <label for="pseudo">Prénom</label>
-                <label>TartePion</label>
+                <label class="text-bleu+4" for="pseudo">Prénom</label>
+                <label class="text-bleuFoncé+4">TartePion</label>
                 </div>
                 <div class="ml-auto">
                     <button @click="changeMessage('Prénom')">
@@ -120,7 +121,6 @@ export default {
     margin-bottom: 10%;
     font-size: 30px;
     margin-bottom: 20px;
-    color: #055488;
 }
 #profilData {
     margin-top: 5%;

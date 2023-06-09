@@ -1,54 +1,59 @@
 <template>
-    <div>
-        <input type="text" v-on="searchKey" placeholder="Search..." />
-        <ul>
-            <li v-for="item in filteredItems" :key="item.id">{{ item.title }}</li>
+    <div class="base-input">
+        <input class="w-full border border-gray-300 rounded-md p-2 focus: outline-none focus:border-blue-500;
+    margin-bottom: 10px;" type="text" v-model="keyword" placeholder="J'veux cette musique..." />
+        <ul class="list-none max-h-36 overflow-y-auto p-0 m-0" v-if="songs.length > 0">
+            <li v-for="song in songs.slice(0, 7)" :key="song.id" class="result-item">
+                {{ song.title }} - {{ song.album }}
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: "BaseInput",
-    props: {
-        items: {
-            type: Array,
-            required: false,
-            default: () => []
-        },
-        searchKey: {
-            type: String,
-            default: ''
-        }
-    },
     data() {
         return {
-            filteredItems: []
+            keyword: null,
+            songs: [],
         };
     },
     watch: {
-        searchKey: {
-            immediate: true,
-            handler() {
-                this.filterItems();
-            }
+        keyword(after, before) {
+            this.getSong();
         },
-        items: {
-            immediate: true,
-            handler() {
-                this.filterItems();
-            }
-        }
     },
     methods: {
-        filterItems() {
-            const regex = new RegExp(this.searchKey, 'i');
-            this.filteredItems = this.items.filter(item => regex.test(item.title));
-        }
-    }
+        async getSong() {
+            try {
+                const response = await axios.get('/getSong', {
+                    params: {
+                        keyword: this.keyword,
+                    },
+                });
+                this.songs = response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+    },
 };
 </script>
 
 <style scoped>
-/* Add any custom styles for the component here */
+.base-input {
+    @apply flex flex-col items-center;
+}
+
+
+.result-item {
+    @apply px-4 py-2 cursor-pointer;
+}
+
+.result-item:hover {
+    @apply bg-gray-200;
+}
 </style>

@@ -35,6 +35,20 @@ export default {
             return `role-${this.role}`;
         },
     },
+    methods: {
+        async insertChosenSong() {
+            try {
+                const response = await axios.get('/insertChosenSong', {
+                    params: {
+                        keyword: this.keyword,
+                    },
+                });
+                this.songs = response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+    }
 };
 </script>
 

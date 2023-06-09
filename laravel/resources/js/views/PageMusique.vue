@@ -13,7 +13,7 @@
               <div class="inline-block align-middle ml-5 mr-5 input-group">
                 <span class="flex w64 items-center">                
                     <BaseInput type="text" @keyup.enter="handleClick"/>
-                     <BaseButton class="ml-6" text="Envoyer" :clickHandler="handleClick" role="secondaire" />
+                     <BaseButton class="ml-6" text="Envoyer" :clickHandler="handleClick" role="principal" />
         		</span>
               </div>
             </div>

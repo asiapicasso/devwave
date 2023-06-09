@@ -11,7 +11,7 @@ import baseSondage from '../components/baseSondage.vue'
 import pageSignIn from '../views/pageSignIn.vue'
 import pageSignUp from '../views/pageSignUp.vue'
 import pageLiveVoiture from '../views/pageLiveVoiture.vue'
-
+import pageGalerie from '../views/pageGalerie.vue'
 
 const routes = [{
         path: '/pageSondage',
@@ -68,7 +68,12 @@ const routes = [{
         path: '/pageLiveVoiture',
         name: 'pageLiveVoiture',
         component: pageLiveVoiture
-    }
+    },
+    {
+        path: '/galerie',
+        name: 'galerie',
+        component: pageGalerie
+    },
 ];
 
 

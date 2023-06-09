@@ -1,11 +1,11 @@
 <template>
-    <div class="mt-10 ml-10">
+    <div class="mt-10 ml-10 mr-10">
         <div class="flex flex-col items-center">
             <h2 class="text-2xl font-semibold mr-10">Notification</h2>
             <div class="my-5 text-center mr-10">Choisis les notifications que tu souhaites recevoir.</div>
         </div>
       <form>
-        <div class="pageMenuReglage">
+        <div class="pageMenuReglage mr-0">
           <div class="ligneDeForm flex items-center space-x- justify-between">
             <div class="flex flex-col">
               <label class="" style="white-space: nowrap;">Live</label>

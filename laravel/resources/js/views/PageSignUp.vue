@@ -1,8 +1,11 @@
 <template>
     <div id="formSignUp">
+        <router-link to="/">
         <img src="../../assets/back.png" class="absolute top-5 left-0 w-10 h-10 ml-2"/>
+        </router-link>
             <h1 id="titlePageSignUp">S'inscrire</h1>
-            <form class="form-flex-columns mt-9">
+            <div v-if="!confirmForm">
+                <form class="form-flex-columns mt-0">
                 <div class="input-group">
                     <label class="labelFormSign" for="pseudo">Pseudo</label>
                     <input
@@ -54,24 +57,43 @@
                         required/>
                 </div>
                 <div class="flex justify-center mb-5">
-                    <BaseButton type="submit" text="S'inscrire" class="boutonForm"/>
+                    <BaseButton type="submit" text="S'inscrire" class="boutonForm" @click="confirmForm=true"/>
                 </div>
             </form>
             <router-link to="/pagesignin" class="mb-5 underline">Déjà un compte ?</router-link>
+            </div>
+            <div v-if="confirmForm">
+                <p class="text-center mx-10">Nous vous avons envoyé un e-mail. Veuilez rentrer le ode que vous avez reçu.</p>
+                <form class="form-flex-columns mt-0">
+                <div class="input-group mx-10 mt-20">
+                    <label class="labelFormSign" for="code">Code</label>
+                    <input
+                        type="text"
+                        id="code"
+                        name="code"
+                        placeholder="XXXX"/>
+                </div>
+                <div class="flex justify-center mb-5">
+                    <BaseButton type="submit" text="Valider" class="boutonForm" @click="confirmForm=false"/>
+                </div>
+            </form>
+            <router-link to="/pagesignin" class="mb-5 underline mx-40">renvoyer un e-mail</router-link>
+            </div>
         </div>
 </template>
 
 
 <script>
 import BaseButton from "../components/BaseButton.vue";
+import router from "../router";
 export default {
     name: "PageSignUp",
     data() {
         return {
-            isConnected: false,
+            confirmForm: false
         };
     },
-    components: { BaseButton }
+    components: { BaseButton, router }
 };
 </script>
 

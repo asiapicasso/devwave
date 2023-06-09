@@ -1,9 +1,9 @@
 <template>
-  <div id="pageReglage">
+  <div id="pageReglage" :class="{'blur-background': showLogoutPopup || showDeletePopup}">
     <router-link to="/pageProfil" v-if="inSettingPage"><img src="../../assets/back.png" class="absolute left-0 w-10 h-10 ml-2"/></router-link>
-    <button v-if="!inSettingPage" @click="displaySettingPage"><img src="../../assets/back.png" class="absolute left-0 w-10 h-10 ml-2"/></button>
+    <button v-if="!inSettingPage" @click="displaySettingPage()"><img src="../../assets/back.png" class="absolute left-0 w-10 h-10 ml-2"/></button>
       <div id="pageTitle" class="flex items-center justify-center">
-        Réglages
+        <h1>Réglages</h1>
       </div>
       <div id="reglageContent" class="mt-10 ml-10">
         <div class="pageMenuReglage" v-if="inSettingPage">
@@ -41,16 +41,28 @@
         </div>
         <hr align="center" width="90%" class="my-4" />
         <BaseButton @click="displayLogoutPopup()" class="w-1/2 h-10 m-auto mt-40 mb-8" text="Déconnexion" role="secondaire"/>
-        <router-link to="/pageProfil" v-if="inSettingPage" class="underline flex items-center justify-center">supprimer mon compte</router-link>
+        <button @click="displayDeletePopup()" class="underline flex items-center justify-center mx-auto">supprimer mon compte</button>
       </div>
-        <TheLogout v-if="showLogoutPopup" @close="showLogoutPopup = false" />
         <Notif v-if="showNotifPopup" @close="showNotifPopup = false" />
         <NouveauMdp v-if="showMdpPopup" @close="showMdpPopup = false" />
-        <div v-if="showConfid">C'est le truc de confidentialité.</div>
-      
+        <div v-if="showConfid" class="mr-5">
+          <h2 class="text-center">Notre politique de confidentialité</h2>
+          <div class="text-xs mt-5 mr-5">
+          <p>Couleur 3 tiens à ce que tes données restent confidentielles.</p><br/>
+          <p>Nous collections seulement les informations que tu nous a transmises lors de ton inscription (pseudo,email, nom, prénom, mot de passe crypté).</p><br/>
+          <p>Ces données sont classées dans notre base de données privée.</p><br/>
+          <p>Nous n'utilisons tes informations personnelles seulement pour te permettre de te connecter, et pouvoir écrire dans le chat en affichant ton pseudo.</p><br/>
+          <p>Tes données ne sont pas partagés avec des tiers.</p><br/>
+          <p>Pour supprimer tes données, il suffit de supprimer ton compte.</p><br/>
+          </div>
+          
+        </div>
       </div>
-
-
+      
+  </div>
+  <div>
+    <TheLogout v-if="showLogoutPopup" @close="showLogoutPopup = false" @cancelLogout="displaySettingPage" />
+    <TheDelete v-if="showDeletePopup" @close="showDeletePopup = false" @cancelDelete="displaySettingPage" />
   </div>
 </template>
 
@@ -60,13 +72,15 @@ import NouveauMdp from '../components/TheNouveauMdp.vue';
 import Notif from '../components/TheNotification.vue';
 import BaseButton from '../components/BaseButton.vue';
 import TheLogout from '../components/TheLogout.vue';
+import TheDelete from '../components/TheDelete.vue';
 export default {
   components: {
     Logout,
     NouveauMdp,
     Notif,
     BaseButton,
-    TheLogout
+    TheLogout,
+    TheDelete
 },
   data() {
     return {
@@ -74,7 +88,8 @@ export default {
       showLogoutPopup: false,
       showMdpPopup: false,
       showNotifPopup: false,
-      showConfid: false
+      showConfid: false,
+      showDeletePopup: false
     };
   },
   methods:{
@@ -112,12 +127,24 @@ export default {
       this.showNotifPopup = false;
       this.inSettingPage = true;
       this.showConfid = false;
+      this.showDeletePopup = false;
+    },
+    displayDeletePopup(){
+      this.showDeletePopup = true;
+      this.showMdpPopup = false;
+      this.showNotifPopup = false;
+      this.inSettingPage = false;
+      this.showConfid = false;
     }
   }
 };
 </script>
 
 <style scoped>
-
+.blur-background {
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+  }
 
 </style>

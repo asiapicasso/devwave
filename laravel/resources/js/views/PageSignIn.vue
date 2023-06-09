@@ -1,6 +1,8 @@
 <template>
     <div id="formSignIn" class="flex flex-col items-center justify-center bg-white blur-none">
     <img src="../../assets/back.png" class="absolute top-0 left-0 w-10 h-10 ml-2"/>
+    <router-link to="/">
+        <img src="../../assets/back.png" class="absolute top-0 left-0 w-10 h-10 ml-2"/>        </router-link>
     <h1 id="titlePageSignIn" class="text-3xl mb-5 text-teal-600">Se connecter</h1>
 
     <form class="flex flex-col">

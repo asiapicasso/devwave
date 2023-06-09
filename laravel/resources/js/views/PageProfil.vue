@@ -1,6 +1,6 @@
 <template>
     <div id="profil">
-        <div id="pageTitle" class="flex items-center justify-center">
+        <div id="pageTitle" class="flex items-center justify-center" :class="{'blur-background': displayChangeValue}">
             <h1 class="flex-1 text-center">Mon profil</h1>
             <button id="settingsBtn" class="cursor-pointer mr-2 ml-auto">
                 <router-link to="/pageReglages">
@@ -8,32 +8,20 @@
                 </router-link>
             </button>
         </div>
-
-
-<!---
-        <div id="profilPicture" class="flex justify-center m-auto" >
-            <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40"  v-if="isConnected"/>
-            <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40" v-if="!isConnected"/>
-            <button v-if="isConnected">
-                    <img src="../../assets/appareil-photo.svg" id="changeAvatar" class="h-10 w-10"/>
-                </button>
-        </div>
-
-
-        ---->
-        <div id="profilPicture" class="flex justify-center m-auto">
+        <div id="profilPicture" class="flex justify-center m-auto" :class="{'blur-background': displayChangeValue}">
   <div class="image-container relative">
     <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40" v-if="isConnected" />
-    <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40" v-if="!isConnected" />
+    <img src="../../assets/profils-03.png" id="avatar" class="h-40 w-40" v-if="!isConnected" />
     <div class="absolute left-24 top-24 appareilPhoto">
-        <button class="button-overlay" v-if="isConnected">
-      <img src="../../assets/appareil-photo.svg" id="changeAvatar" class="h-8 w-8" />
+        <button class="button-overlay" v-if="isConnected" @click="changeAvatar">
+            <router-link to="/Galerie"><img src="../../assets/appareil-photo.svg" id="changeAvatar" class="h-8 w-8" /></router-link>
     </button>
     </div>
   </div>
 </div>
+<BaseChangeValue v-if="displayChangeValue" @cancelChangeValue="displayProfil" z-10 :message="message" />
 
-        <div id="profilData">
+        <div id="profilData" :class="{'blur-background': displayChangeValue}">
             <!--Les informations du profils s'affichent quand tu es connecté-->
             <div class="ligneDeForm flex items-center space-x-">
                 <div class="flex flex-col" >
@@ -41,7 +29,7 @@
                 <label>TartePion</label>
                 </div>
                 <div class="ml-auto">
-                <button>
+                <button @click="changeMessage('Pseudo')">
                     <img src="../../assets/crayon.svg" />
                 </button>
                 </div>
@@ -52,7 +40,7 @@
                 <label>tart12@gmail.com</label>
                 </div>
                 <div class="ml-auto">
-                <button>
+                    <button @click="changeMessage('E-mail')">
                     <img src="../../assets/crayon.svg" />
                 </button>
                 </div>
@@ -63,7 +51,7 @@
                 <label>Tartem</label>
                 </div>
                 <div class="ml-auto">
-                <button>
+                    <button @click="changeMessage('Nom')">
                     <img src="../../assets/crayon.svg" />
                 </button>
                 </div>
@@ -74,7 +62,7 @@
                 <label>TartePion</label>
                 </div>
                 <div class="ml-auto">
-                <button>
+                    <button @click="changeMessage('Prénom')">
                     <img src="../../assets/crayon.svg" />
                 </button>
                 </div>
@@ -84,14 +72,31 @@
 </template>
 
 <script>
+import BaseChangeValue from '../components/BaseChangeValue.vue';
+
 export default {
     name: "PageProfil",
     components: {
-    },
+    BaseChangeValue
+},
     data() {
         return {
             isConnected: true,
+            displayChangeValue: false,
+            message: ''
         };
+    },
+    methods: {
+        changeAvatar() {
+            console.log("changeAvatar");
+        },
+        displayProfil(){
+            this.displayChangeValue=false;
+        },       
+        changeMessage(newMessage) {
+            this.displayChangeValue = true;
+            this.message = newMessage;
+}
     }
 };
 </script>
@@ -157,6 +162,10 @@ export default {
   border: none;
   cursor: pointer;
 }
-
+.blur-background {
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+  }
 
 </style>

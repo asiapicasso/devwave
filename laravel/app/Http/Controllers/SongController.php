@@ -39,7 +39,7 @@ class SongController extends Controller
    public function getSong(Request $request)
     {
     $keyword = $request->input('keyword');
-    $data = Song::where('title', 'LIKE', '%' . $keyword . '%')->with('album')->orderBy('song.title', 'asc')->get();
+    $data = Song::where('title', 'LIKE', '%' . $keyword . '%')->with(['album.artist'])->orderBy('song.title', 'asc')->get();
     return response()->json($data);
     }
 

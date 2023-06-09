@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Poll;
 use Illuminate\Support\Facades\Auth;
 
+
 class PollController extends Controller
 {
 
@@ -27,7 +28,20 @@ class PollController extends Controller
     {
     
     $data = Poll::all();
-    return response()->json($data);
+
+    //Récupérer les answer associées à chaque poll
+    // $dataJoined = Poll::join('answers', 'polls.id', '=', 'answers.poll_id')->get();
+    // dd($dataJoined);
+
+    // $polls = DB::table('polls')
+    // ->join('answers', 'polls.id', '=', 'answers.poll_id')
+    // ->select('polls.*', 'answers.*')
+    // ->get();
+
+    $polls = Poll::with('answers')->get();
+
+
+    return response()->json($polls);
     }
 
     /**

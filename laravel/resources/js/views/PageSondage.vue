@@ -5,7 +5,7 @@
     <!-- <BaseSondage v-for="poll in polls" v-bind="poll.question" @addvote="addVote" >{{poll.question }}</BaseSondage> -->
     <ul class="">
             <li v-for="poll in polls" :key="poll.id" class="">
-                {{ poll.question }}
+                {{ poll.question }} {{ poll.answers  }}
             </li>
         </ul>
 </template>

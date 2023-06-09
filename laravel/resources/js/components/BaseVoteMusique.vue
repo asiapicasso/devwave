@@ -7,7 +7,7 @@
                 <span id="icon" class="active:bg-white-500" v-html="iconUp"></span>
             </button>
                 <div class="flex justify-center button-score ">{{ score }}</div>
-                <button id="down" class="focus:bleu-clair" @click="handleDownvote">
+                <button id="down" class="focus:bg-bleu-clair" @click="handleDownvote">
                 <span id="icon" class="active:bg-white-500" v-html="iconDown"></span>
             </button>
             </div>
@@ -47,14 +47,7 @@ export default {
             this.$emit("downvote");
         },
     },
-    // handleUpvote: function () {
-    //     this.handleUpvoted = !this.handleUpvote;
-    //     this.handleDownvote = false;
-    // },
-    // handleDownvote: function () {
-    //     this.handleDownvote = !this.handleDownvote;
-    //     this.handleUpvote = false;
-    // },
+   
     setup(props) {
         const score = ref(0);
 
@@ -75,10 +68,7 @@ export default {
 };
 </script>
 
-
 <style scoped>
-
-
 
 #up {
     padding: 0.5rem;

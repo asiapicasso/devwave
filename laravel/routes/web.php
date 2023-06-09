@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PollController;
+use App\Http\Controllers\SongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,8 @@ use App\Http\Controllers\PollController;
 */
 Route::resource('poll', PollController::class);
 
+Route::get('/getSong', [SongController::class, 'getSong']);
 Route::resource('song', SongController::class);
-
 
 Route::get('/auth', function () {
     return view('auth.login');

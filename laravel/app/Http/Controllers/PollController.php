@@ -18,9 +18,16 @@ class PollController extends Controller
     {
         $currentUser = Auth::user();
         $polls = Poll::with('answers')->get();
-        // dd($polls);
+         //dd($polls);
 
        return view('poll', ['polls' => $polls, 'currentUser' => $currentUser]);
+    }
+
+    public function getPoll()
+    {
+    
+    $data = Poll::all();
+    return response()->json($data);
     }
 
     /**

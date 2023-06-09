@@ -21,7 +21,11 @@ class PollController extends Controller
         // dd($polls);
 
 
+<<<<<<< HEAD
         return view('poll', ['polls' => $polls, 'currentUser' => $currentUser]);
+=======
+        return view('poll')->whith(['polls' => $polls, 'currentUser'=> $currentUser]);
+>>>>>>> tryConnectingBaseSondageWithLaravel
     }
 
     /**

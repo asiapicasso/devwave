@@ -2,7 +2,7 @@
     <!--Changer v-for et  :key et :options-->
     <!--npm install vue-router vue-axios --save-->
     <!-- <BaseSondage v-for="poll in polls" :key="poll.id" :question="poll.question" :answers="poll.answers" @addvote="addVote"></BaseSondage> -->
-    <BaseSondage v-for="poll in polls" v-bind="poll.options" @addvote="addVote" ></BaseSondage>
+    <BaseSondage  v-for="poll in polls"  :bgColor="bgColor" v-bind="poll.options" @addvote="addVote" ></BaseSondage>
     <!-- <ul class="">
             <li v-for="poll in polls" :key="poll.id" class="">
                 {{ poll.question }} {{ poll.answers }} 
@@ -12,9 +12,9 @@
             </li>
         </ul> -->
 
-        <ul>
+        <!-- <ul>
             <li v-for="poll in polls">{{ poll }}</li>
-        </ul>
+        </ul> -->
 </template>
 
 <script>
@@ -50,6 +50,7 @@ export default {
     mounted() {
         console.log('Component mounted.')
         this.getPoll();
+        this.changeBgColor();
         
     },
     methods: {
@@ -66,7 +67,22 @@ export default {
                 console.error(error);
             }
         },
+        changeBgColor() {
+            const colors = [
+                "bg-bleu-clair",
+                "bg-rose-clair",
+                "bg-jaune-fonce",
+                "bg-violet",
+            ];
+
+            // Génère un index aléatoire pour sélectionner une couleur
+            const randomIndex = Math.floor(Math.random() * colors.length);
+
+            // Met à jour la couleur de fond
+            this.bgColor = colors[randomIndex];
+        },
     },
+    
 
     //ajout de cette partie
 

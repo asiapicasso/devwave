@@ -1,12 +1,19 @@
 <template>
     <!--Changer v-for et  :key et :options-->
     <!--npm install vue-router vue-axios --save-->
-    <!-- <BaseSondage v-for="poll in polls" :key="poll.id" :options="poll.question" @addvote="addVote"></BaseSondage> -->
-    <!-- <BaseSondage v-for="poll in polls" v-bind="poll.question" @addvote="addVote" >{{poll.question }}</BaseSondage> -->
-    <ul class="">
+    <!-- <BaseSondage v-for="poll in polls" :key="poll.id" :question="poll.question" :answers="poll.answers" @addvote="addVote"></BaseSondage> -->
+    <BaseSondage v-for="poll in polls" v-bind="poll.options" @addvote="addVote" ></BaseSondage>
+    <!-- <ul class="">
             <li v-for="poll in polls" :key="poll.id" class="">
-                {{ poll.question }} {{ poll.answers  }}
+                {{ poll.question }} {{ poll.answers }} 
+                <li v-for="answer in poll.answers">
+                    {{ answer.title  }}
+                </li>
             </li>
+        </ul> -->
+
+        <ul>
+            <li v-for="poll in polls">{{ poll }}</li>
         </ul>
 </template>
 

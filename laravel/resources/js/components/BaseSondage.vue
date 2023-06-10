@@ -1,6 +1,6 @@
 <template>
     <!--Ajout de cette ligne-->
-    <div>{{ options }}</div>
+    
     
 <div class=" m-5 sm:m-5 xl:m-56 vue-poll border-2 rounded-xl border-black p-0">
     <!-- /* afficher la question */ -->

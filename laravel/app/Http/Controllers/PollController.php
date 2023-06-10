@@ -39,9 +39,29 @@ class PollController extends Controller
     // ->get();
 
     $polls = Poll::with('answers')->get();
+    
+    $formattedPolls = $polls->map(function ($poll) {
+        $formattedAnswers = $poll->answers->map(function ($answer) {
+            return [
+                'value' => $answer->id,
+                'text' => $answer->title,
+                'votes' => $answer->nb_vote,
+            ];
+        });
+    
+        return [
+            'options' => [
+                'question' => $poll->question,
+                'answers' => $formattedAnswers,
+            ],
+        ];
+    });
+    
+    // Retourner les données formatées
+    return response()->json($formattedPolls);
 
 
-    return response()->json($polls);
+    // return response()->json($polls);
     }
 
     /**

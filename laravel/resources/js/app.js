@@ -8,7 +8,6 @@ import "./bootstrap";
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import axios from "axios";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -16,11 +15,9 @@ import axios from "axios";
  * to use in your application's views. An example is included for you.
  */
 
-import TheChat from "./components/TheChat.vue";
-import BaseMessage from "./components/BaseMessage.vue";
+createApp(App).use(router).mount("#app");
 
-createApp(
-    App /* {
+/* createApp(App, {
     data: {
         messages: [],
     },
@@ -46,13 +43,12 @@ createApp(
             });
         },
     },
-} */
-)
+})
     .component("BaseMessage", BaseMessage)
     .component("TheChat", TheChat)
     .use(router)
     //.use(axios)
-    .mount("#app");
+    .mount("#app"); */
 
 //Vue.component("base-message", require("./components/BaseMessage.vue").default);
 //Vue.component("the-chat", require("./components/TheChat.vue").default);

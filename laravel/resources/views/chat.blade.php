@@ -1,6 +1,6 @@
  <!-- resources/views/chat.blade.php -->
-<!--@extends('layouts.app')-->
 @extends('welcome')
+<!-- @extends('welcome') -->
 @section('content')
 <div class="container">
     <div class="card">

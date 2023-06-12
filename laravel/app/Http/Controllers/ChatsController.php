@@ -13,22 +13,23 @@ class ChatsController extends Controller
         $this->middleware('auth');
     } */
 
-    public function index()
+    /* public function index()
     {
-        return view('chat');
+        //return view('chat');
     }
-
+ */
     public function fetchMessages()
     {
         return Message::with('user')->get();
     }
 
     public function sendMessage(Request $request)
-    {
+    {//controler le message reçu 
         $user = Auth::user();
         $message = $user->messages()->create([
             'message' => $request->input('message')
         ]);
+        //broadcast pusher 
         return ['status' => 'Message Sent!'];
     }
 }

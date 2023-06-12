@@ -1,5 +1,3 @@
-// resources/js/components/ChatMessages.vue
-
 <template>
   <ul class="chat">
     <li class="left clearfix" v-for="message in messages" :key="message.id">

@@ -21,11 +21,25 @@
   
 </template>
 <script setup>
+import { onMounted } from "vue";
+import axios from "axios";
 import BaseMessage from "./BaseMessage.vue";
 import { ref, defineProps, defineEmits } from "vue";
 import Echo from "laravel-echo";
 const props = defineProps(["user"]);
-  //Takes the "user" props from <chat-form> … :user="{{ Auth::user() }}"></chat-form> in the parent chat.blade.php.
+
+/* onMounted(() => {
+  //Fetch all the messages from the server
+  fetchMessages();
+  //Listen for a "messagesent" event broadcasted from Laravel server
+  Echo.private("chat").listen("MessageSent", (e) => {
+    //Push the message to the messages array
+    messages.value.push({
+      message: e.message.message,
+      user: e.user,
+    });
+  });
+}); */
  
 const messages = ref([{
   user: { name: "Admin" },
@@ -34,7 +48,9 @@ const messages = ref([{
 
 const newMessage = ref("");
    
- const emit = defineEmits (["messagesent"]);
+const emit = defineEmits(["messagesent"]);
+
+
   
  function sendMessage() {
       //Emit a "messagesent" event including the user who sent the message along with the message content
@@ -54,14 +70,27 @@ const newMessage = ref("");
                 messages.value = response.data;
             });
 
-            window.Echo.public("chat").listen("MessageSent", (e) => {
-             messages.value.push({
-        message: e.message.message.value,
-        user: e.user,
-    });
-  })
+            
+             /* this.messages.push({ 
+                message: newMessage.value,
+                user: props.user, 
+    });*/
 
-        }
+ }
+
+ async function getMessages () { 
+            try {
+                const response = await axios.get('/getMessages', {}
+                );
+                newMessage.value = response.data;
+            } catch (error) {
+                console.error(error);
+            }
+};
+
+getMessages();
+
+ fetchMessages();
 
  function addMessage() {
             //Pushes it to the messages array
@@ -70,6 +99,13 @@ const newMessage = ref("");
             axios.post("/messages", { message: newMessage.value }).then((response) => {
                 console.log(response.data);
             });
+
+            console.log(messages.value);
+
+   sendMessage();
+   fetchMessages();
+
+   console.log(messages.value);
         }
  /* ,
         //Receives the message that was emitted from the ChatForm Vue component
@@ -83,7 +119,5 @@ const newMessage = ref("");
         } */
 
 
-function echo (){
-  
-};
+
 </script>

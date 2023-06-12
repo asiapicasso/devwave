@@ -5,6 +5,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\ChosenSongController;
+use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ChatsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,11 +68,21 @@ Route::get('/update/{lastname}', [ProfileController::class, 'showProfile'])->mid
 Route::get('/poll', [PollController::class, 'index'])->name('poll.index');
 
 
+Route::post('/profile/update-email', [ProfileController::class, 'updateEmail'])->name('profile.updateEmail');
+Route::post('/profile/update-firstname', [ProfileController::class, 'updateFirstname'])->name('profile.updateFirstname');
+Route::post('/profile/update-username', [ProfileController::class, 'updateUsername'])->name('profile.updateUsername');
+Route::post('/profile/update-phonenumber', [ProfileController::class, 'updatePhonenumber'])->name('profile.updatePhonenumber');
+Route::post('/profile/update-lastname', [ProfileController::class, 'updateLastname'])->name('profile.updateLastname');
+
+Route::post('/chosen/vote', [ChosenSongController::class, 'vote'])->name('chosen.vote');
+
+Route::post('/answer/vote', [AnswerController::class, 'vote'])->name('answer.vote');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-//Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index']);
 Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
 Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);

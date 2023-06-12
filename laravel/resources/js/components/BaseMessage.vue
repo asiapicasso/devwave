@@ -3,9 +3,9 @@
     <li class="left clearfix" v-for="message in messages" :key="message.id">
       <div class="clearfix">
         <div class="header">
-          <strong>
+          <!-- <strong>
             {{ message.user.name }}
-          </strong>
+          </strong> -->
         </div>
         <p>
           {{ message.message }}
@@ -15,9 +15,10 @@
   </ul>
 </template>
 
-<script>
-export default {
-  name: "BaseMessage",
-  props: ["messages"],
-};
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps(["messages"]);
+
+
 </script>

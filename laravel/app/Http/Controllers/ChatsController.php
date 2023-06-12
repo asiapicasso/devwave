@@ -33,4 +33,10 @@ class ChatsController extends Controller
         broadcast(new MessageSent($user, $message))->toOthers();
         return ['status' => 'Message Sent!'];
     }
+
+    public function getSong(Request $request)
+    {
+    $data = Message::where('message', 'like', '%' . $request->input('message') . '%')->get();
+    return response()->json($data);
+    }
 }

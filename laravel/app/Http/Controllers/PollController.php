@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Poll;
 use Illuminate\Support\Facades\Auth;
 
+
 class PollController extends Controller
 {
 
@@ -18,9 +19,49 @@ class PollController extends Controller
     {
         $currentUser = Auth::user();
         $polls = Poll::with('answers')->get();
-        // dd($polls);
+         //dd($polls);
 
        return view('poll', ['polls' => $polls, 'currentUser' => $currentUser]);
+    }
+
+    public function getPoll()
+    {
+    
+    $data = Poll::all();
+
+    //Récupérer les answer associées à chaque poll
+    // $dataJoined = Poll::join('answers', 'polls.id', '=', 'answers.poll_id')->get();
+    // dd($dataJoined);
+
+    // $polls = DB::table('polls')
+    // ->join('answers', 'polls.id', '=', 'answers.poll_id')
+    // ->select('polls.*', 'answers.*')
+    // ->get();
+
+    $polls = Poll::with('answers')->get();
+    
+    $formattedPolls = $polls->map(function ($poll) {
+        $formattedAnswers = $poll->answers->map(function ($answer) {
+            return [
+                'value' => $answer->id,
+                'text' => $answer->title,
+                'votes' => $answer->nb_vote,
+            ];
+        });
+    
+        return [
+            'options' => [
+                'question' => $poll->question,
+                'answers' => $formattedAnswers,
+            ],
+        ];
+    });
+    
+    // Retourner les données formatées
+    return response()->json($formattedPolls);
+
+
+    // return response()->json($polls);
     }
 
     /**

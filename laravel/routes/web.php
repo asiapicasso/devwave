@@ -17,6 +17,7 @@ use App\Http\Controllers\SongController;
 |
 */
 Route::resource('poll', PollController::class);
+Route::get('/getPoll', [PollController::class, 'getPoll']);
 
 Route::get('/getSong', [SongController::class, 'getSong']);
 Route::resource('song', SongController::class);
@@ -52,7 +53,6 @@ Route::post('/search', 'ChosenSongController@search')->name('search');
 
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');
-
 
 Route::get('/{profile}', [ProfileController::class, 'showProfile'])->middleware('auth')->name('profile');
 Route::get('/update/{email}', [ProfileController::class, 'showProfile'])->middleware('auth')->name('update_email');

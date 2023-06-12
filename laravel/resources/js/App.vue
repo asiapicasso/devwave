@@ -27,8 +27,7 @@ const isConnected = ref(true);
         </div>
          
         <div class="sticky bottom-0 ">
-
-            <BasePlayer class="z-20"/>
+            <BasePlayer v-if="$route.path !== '/pageLiveVoiture'" class="z-20"/>
             <BaseNav class="z-0"  />
         </div>
 </template>

@@ -6,14 +6,14 @@
                 :class="{ 'bg-white': showChat }"
                 class="flex-1 rounded-l-md text-black focus:outline-none"
             >
-                Chat
+                <h2>Chat</h2>
             </button>
             <button
                 @click="showComponentSondage"
                 :class="{ 'bg-white': showSondage }"
                 class="flex-1 rounded-r-md text-black focus:outline-none"
             >
-                Sondage
+                <h2>Sondages Live</h2>
             </button>
         </div>
         <div>

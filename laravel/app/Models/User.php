@@ -127,4 +127,16 @@ class User extends Authenticatable
             ->withPivot(['created_at', 'updated_at']) // Ignorer les timestamps
             ->withTimestamps();
     } */
+
+    public function messages()
+
+    {
+
+        return $this->hasMany(Message::class);
+
+    }    
+
+
+
+    
 }

@@ -20,6 +20,7 @@
                         <li><a href="{{ route('profile', ['profile' => 'profile']) }}">Profile</a></li>
                     </ul>
                     {{ __('You are logged in!') }}
+                    
                 </div>
             </div>
         </div>

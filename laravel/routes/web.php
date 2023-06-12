@@ -32,23 +32,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // user must be signed in to access the following routes
-Route::get('/chat', function () {
+/* Route::get('/chat', function () {
     return view('chat');
-})->middleware('auth')->name('chat');
+})->middleware('auth')->name('chat'); */
 
 /* Route::get('/poll', function () {
     return view('poll');
 })->middleware('auth')->name('poll');
  */
-
-
-/* Route::get('/reddit', [SongController::class, 'index'])->middleware('auth')->name('reddit');
- */
-Route::get('/reddit', [ChosenSongController::class, 'index'])->middleware('auth')->name('reddit');
+Route::get('/reddit', function () {
+    return view('reddit');
+})->middleware('auth')->name('reddit');
 
 /* Route::post('/vote', 'VoteController@vote')->name('vote');*/
 Route::post('/vote', [PollController::class, 'vote'])->name('poll.vote');
 
+Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
+Route::post('/search', 'ChosenSongController@search')->name('search');
 
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');
@@ -63,17 +63,12 @@ Route::get('/update/{firstname}', [ProfileController::class, 'showProfile'])->mi
 Route::get('/update/{lastname}', [ProfileController::class, 'showProfile'])->middleware('auth')->name('update_lastname');
 Route::get('/poll', [PollController::class, 'index'])->name('poll.index');
 
-Route::post('/profile/update-email', [ProfileController::class, 'updateEmail'])->name('profile.updateEmail');
-Route::post('/profile/update-firstname', [ProfileController::class, 'updateFirstname'])->name('profile.updateFirstname');
-Route::post('/profile/update-username', [ProfileController::class, 'updateUsername'])->name('profile.updateUsername');
-Route::post('/profile/update-phonenumber', [ProfileController::class, 'updatePhonenumber'])->name('profile.updatePhonenumber');
-Route::post('/profile/update-lastname', [ProfileController::class, 'updateLastname'])->name('profile.updateLastname');
-
-Route::post('/chosen/vote', [ChosenSongController::class, 'vote'])->name('chosen.vote');
-Route::post('/song/choose', [SongController::class, 'addToChosenSong'])->name('song.choose');
-
-Route::post('/answer/vote', [AnswerController::class, 'vote'])->name('answer.vote');
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index']);
+Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
+Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);

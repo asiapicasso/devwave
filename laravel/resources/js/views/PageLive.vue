@@ -1,5 +1,5 @@
 <template class="blur">
-<TheVideo></TheVideo>
+<div><TheVideo></TheVideo></div>
 <TheToggleChatSondage >
 </TheToggleChatSondage>
     <!-- <Chat></Chat>

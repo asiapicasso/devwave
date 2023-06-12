@@ -1,48 +1,65 @@
 <template>
-    <div id="player" class="h-20 shadow-2xl bg-jaune-clair">
-        <div class="flex-grow">
-            <router-link to="/pagePlayer">
-                <div class="grow ml-5" id="info-emission">
-                    <p>Nom de l'émission</p>
-                    <p>Nom animateurs</p>
-                </div>
-            </router-link>
-        </div>
-        <div class="flex-grow-1"> 
-            <button @click="togglePlayPause">
-                <img :src="playbackIcon" class="h-6 w-6 mr-9" />
-            </button>
-        </div>
-    </div>
+    <div id="player_audio_container" class="w-full h-12"></div>
 </template>
+
 <script>
-import playIcon from "../../assets/Play.svg";
-import pauseIcon from "../../assets/Pause.svg";
 export default {
-    name: "BasePlayer",
-    data() {
-        return {
-            isPlaying: false,
-        };
+    async beforeMount() {
+        await this.loadExternalScript(
+            "https://letterbox-web.srgssr.ch/production/letterbox.js"
+        );
+        this.letterbox = new window.SRGLetterbox({
+            container: "#player_audio_container",
+        });
+        /*URN*//*urn:rts:audio:3262363*/
+        this.letterbox.loadUrn("urn:rts:video:8841634");
+    },
+    created() {
+        this.loadExternalStylesheet(
+            "https://letterbox-web.srgssr.ch/production/letterbox.css"
+        );
     },
     methods: {
-        togglePlayPause() {
-            this.isPlaying = !this.isPlaying;
+        loadExternalScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = src;
+                script.onload = () => resolve(script);
+                script.onerror = (error) => reject(error);
+                document.head.appendChild(script);
+            });
         },
-    },
-    computed: {
-        playbackIcon() {
-            return this.isPlaying ? pauseIcon : playIcon;
+        loadExternalStylesheet(href) {
+            const link = document.createElement("link");
+            link.href = href;
+            link.rel = "stylesheet";
+            document.head.appendChild(link);
         },
     },
 };
 </script>
 <style>
-#player {
-    text-align: center;
-    display: flex;
+.vjs-control-bar {
+    background-color: #FFFFE5 !important;
+}
+.vjs-srgssr-skin .vjs-play-progress{
+    background-color: #034249 !important;
+}
+.vjs-current-time-display{
+    color: #034249 !important;
+}
+vjs-play-progress vjs-slider-bar::before{
+    background-color: #034249 !important;
+}
 
-    align-items: center;
-    text-align: left;
+span.vjs-icon-placeholder {
+color: #034249 !important;
+}
+
+div.vjs-progress-holder.vjs-slider.vjs-slider-horizontal{
+    background-color: #D4D2E0 !important;
+}
+div.vjs-play-progress.vjs-slider-bar::before{
+    color: #034249 !important;
 }
 </style>

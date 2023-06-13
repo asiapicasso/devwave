@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\ChosenSongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,9 @@ Route::post('/vote', [PollController::class, 'vote'])->name('poll.vote');
 
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');
+//route post pour insert la chansons choisie
+Route::post('/addChosenSong', [SongController::class, 'addChosenSong'])->name('song.choose');
+Route::post('/store', [SongController::class, 'store']);
 
 
 Route::get('/{profile}', [ProfileController::class, 'showProfile'])->middleware('auth')->name('profile');
@@ -70,7 +74,6 @@ Route::post('/profile/update-phonenumber', [ProfileController::class, 'updatePho
 Route::post('/profile/update-lastname', [ProfileController::class, 'updateLastname'])->name('profile.updateLastname');
 
 Route::post('/chosen/vote', [ChosenSongController::class, 'vote'])->name('chosen.vote');
-Route::post('/song/choose', [SongController::class, 'addToChosenSong'])->name('song.choose');
 
 Route::post('/answer/vote', [AnswerController::class, 'vote'])->name('answer.vote');
 

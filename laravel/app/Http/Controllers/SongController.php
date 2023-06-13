@@ -63,8 +63,14 @@ class SongController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required',
+            // 'title' => 'required',
         ]);
+        $song = new Song();
+        $song = Song::with('chosen_song')->get();
+        $songtitle = $song->title('title');
+        $song->votes = $request->input('votes', 0);
+        // $song->album_id = $request->input('album_id');
+        $song->save();
 
         Song::create($validatedData);
 
@@ -72,27 +78,33 @@ class SongController extends Controller
     }
 
 
-    public function addToChosenSong(Request $request)
+    public function addChosenSong(Request $request)
     {
-        $songId = $request->input('input_song_id');
-        $userId = Auth::id();
+        $song->title = $request->input('title');
+        $song->nb_vote = $request->input('nb_vote');
+        //$userId = Auth::id();
 
-        // Vérifier si le song_id n'est pas déjà présent dans la table ChosenSong pour cet utilisateur
-        $existingChosenSong = ChosenSong::where('song_id', $songId)->first();
+        // Check if the song_id is already present in the ChosenSong table for this user
+        // $existingChosenSong = ChosenSong::where('song_id', $songId)
+        //     ->where('user_id', $userId)
+        //     ->first();
 
-        if ($existingChosenSong) {
-            return redirect()->back()->with('error', 'La chanson est déjà présente dans la liste des chansons choisies.');
-        }
+        // if ($existingChosenSong) {
+        //     return redirect()->back()->with('error', 'The song is already present in the list of chosen songs.');
+        // }
 
-        // Si le song_id n'est pas déjà présent, ajoutez-le à la table ChosenSong
+        // If the song_id is not already present, add it to the ChosenSong table
         $chosenSong = new ChosenSong();
         $chosenSong->song_id = $songId;
-        $chosenSong->user_id = $userId;
-        $chosenSong->date = Carbon::now();
+
+        $chosenSong->title = $songTitle;
+        //$chosenSong->user_id = $userId;
+        //$chosenSong->date = Carbon::now();
         $chosenSong->nb_vote = 1;
         $chosenSong->save();
+        $dd = $chosenSong;
 
-        return redirect()->back()->with('success', 'Chanson ajoutée avec succès.');
+        //return redirect()->back()->with('success', 'Song added successfully.');
     }
 
 

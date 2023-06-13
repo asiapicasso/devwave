@@ -1,6 +1,6 @@
 <template>
     <div :class="['base-button', roleClass]">
-        <button class="text-center flex items-center justify-center p-6 cursor-pointer h-10" @click="clickHandler">
+        <button class="w-24 text-center flex items-center justify-center p-6 cursor-pointer h-10" @click="clickHandler">
             <span v-if="icon" class="button-icon">
                 <img :src="icon" alt="Button Icon" />
             </span>
@@ -30,25 +30,17 @@ export default {
             default: "principal",
         },
     },
+    methods: {
+        clickHandler() {
+            this.$emit("clickHandler");
+        },
+    },
     computed: {
         roleClass() {
             return `role-${this.role}`;
         },
     },
-    methods: {
-        async insertChosenSong() {
-            try {
-                const response = await axios.get('/insertChosenSong', {
-                    params: {
-                        keyword: this.keyword,
-                    },
-                });
-                this.songs = response.data;
-            } catch (error) {
-                console.error(error);
-            }
-        },
-    }
+   
 };
 </script>
 
@@ -67,10 +59,19 @@ export default {
     background-size: 100%;
 }
 
+.bg-svg-gris {
+  background-image: url('../../assets/fondGris-1.png'); 
+  background-repeat: no-repeat;
+  background-position: center;  
+    background-size: 100%;
+}
+
 .role-secondaire {
-  
       @apply bg-svg;
-    
+}
+
+.role-secondairegris {
+          @apply bg-svg-gris;
 }
   .role-inactif {
   

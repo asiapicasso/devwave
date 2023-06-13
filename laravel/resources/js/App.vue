@@ -26,7 +26,7 @@ const isConnected = ref(true);
             <BaseFormSign />
         </div>
          
-        <div class="sticky bottom-0 ">
+        <div class="fixed bottom-0 ">
             <BasePlayer v-if="$route.path !== '/pageLiveVoiture'" class="z-20"/>
             <BaseNav v-if="$route.path !== '/pageLiveVoiture'" class="z-0"  />
         </div>

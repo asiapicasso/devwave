@@ -1,5 +1,5 @@
 <template>
-    <h1 class="flex justify-center"> Sondages</h1>
+    <h1 class="mt-8 flex justify-center"> Sondages</h1>
     <!--Changer v-for et  :key et :options-->
     <!--npm install vue-router vue-axios --save-->
     <!-- <BaseSondage v-for="poll in polls" :key="poll.id" :question="poll.question" :answers="poll.answers" @addvote="addVote"></BaseSondage> -->
@@ -62,6 +62,7 @@ export default {
             try {
                 const response = await axios.get('getPoll')
                 this.polls = response.data;
+                
                 
 
             } catch (error) {

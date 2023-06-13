@@ -20,7 +20,7 @@ const isConnected = ref(true);
 
 <template>
         <BaseHeader class="sticky top-0 w-full"/>
-        <router-view :class="{ notConnected: !isConnected }"></router-view>
+        <div class="mb-40"><router-view class="contenu pb-24" :class="{ notConnected: !isConnected }"></router-view></div>
         <div class="formContainer" v-if="!isConnected">
             <BaseFormSign />
         </div>

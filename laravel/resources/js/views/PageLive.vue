@@ -1,6 +1,6 @@
 <template class="blur">
-<div><TheVideo></TheVideo></div>
-<TheToggleChatSondage >
+<div class="sticky top-20 z-30"><TheVideo></TheVideo></div>
+<TheToggleChatSondage>
 </TheToggleChatSondage>
     <!-- <Chat></Chat>
     <Sondage v-bind="options" @addvote="addVote"></Sondage> -->

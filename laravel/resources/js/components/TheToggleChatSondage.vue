@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="justify-center bg-bleu-clair flex items-center flex-wrap">
+        <div class="sticky top-80 z-30 justify-center bg-bleu-clair flex items-center flex-wrap">
             <button
                 @click="showComponentChat"
                 :class="{ 'bg-white': showChat }"

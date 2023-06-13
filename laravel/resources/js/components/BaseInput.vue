@@ -9,8 +9,7 @@
         />
         <ul class="z-10 list-none max-h-36 overflow-y-auto p-0 m-0" v-if="songs.length > 0">
             <li v-for="song in songs.slice(0, 7)" :key="song.id" class="px-4 py-2 cursor-pointer hover:bg-gray-200" @click="selectSong(song)" @keydown.enter="keyEnter">
-                {{ song.title }} 
-                <!-- - {{ song.album.artist.name }}  ca marche paaaaaaaaaaaas-->
+                {{ song.title }} - {{song.name}}
             </li>
         </ul>
     </div>
@@ -53,9 +52,9 @@ export default {
         async getSong() { 
             try {
                 const response = await axios.get('/getSong', {
-                    params: {
-                        keyword: this.keyword,
-                    },
+                    // params: {
+                    //     keyword: this.keyword,
+                    // },
                 });
                 this.songs = response.data;
             } catch (error) {
@@ -63,7 +62,7 @@ export default {
             }
         },
         selectSong(song) {
-            this.keyword = song.title;
+            this.keyword = song.title, song.name;
             this.$emit('song-selected', song)
         },
 

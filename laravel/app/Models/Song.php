@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Album;
 use App\Models\ChosenSong;
 
+
 class Song extends Model
 {
     use HasFactory;
@@ -17,12 +18,10 @@ class Song extends Model
     public function album() {
     return $this->belongsTo(Album::class);
     }
-   
 
-    public function chosenSong()
+    public function chosenSongs()
     {
-        return $this->hasOne(ChosenSong::class, 'song_id');
+        return $this->hasMany(ChosenSong::class);
     }
-
    
 }

@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Song;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SongController extends Controller
 {
@@ -39,7 +40,12 @@ class SongController extends Controller
    public function getSong(Request $request)
     {
     $keyword = $request->input('keyword');
-    $data = Song::where('title', 'LIKE', '%' . $keyword . '%')->with('album.artist')->orderBy('song.title', 'asc')->get();
+    $data = Song::where('song.title', 'LIKE', '%' . $keyword . '%')
+        ->join('album', 'song.album_id', '=', 'album.id')
+        ->join('album_artist','album.id', '=', 'album_artist.album_id')
+        ->join('artist','album_artist.artist_id', '=', 'artist.id')
+        ->orderBy('song.title', 'asc')
+        ->get(['song.title', 'album.title', 'artist.name']);
     return response()->json($data);
     }
 
@@ -62,19 +68,19 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        //$song->title = $request->input('title');
+        //$song->nb_vote = $request->input('nb_vote');
+        // $validatedData = $request->validate([
             // 'title' => 'required',
-        ]);
-        $song = new Song();
+        // ]);
+        // $song = new Song();
         $song = Song::with('chosen_song')->get();
-        $songtitle = $song->title('title');
-        $song->votes = $request->input('votes', 0);
+        
+        // $songtitle = $song->title('title');
         // $song->album_id = $request->input('album_id');
-        $song->save();
-
-        Song::create($validatedData);
-
-        return redirect()->back()->with('success', 'Chanson ajouté avec succès');
+        $chosenSong->save();
+        //Song::create($validatedData);
+        return response()->json($song);
     }
 
 
@@ -84,28 +90,24 @@ class SongController extends Controller
         $song->nb_vote = $request->input('nb_vote');
         //$userId = Auth::id();
 
-        // Check if the song_id is already present in the ChosenSong table for this user
-        // $existingChosenSong = ChosenSong::where('song_id', $songId)
-        //     ->where('user_id', $userId)
-        //     ->first();
-
-        // if ($existingChosenSong) {
-        //     return redirect()->back()->with('error', 'The song is already present in the list of chosen songs.');
-        // }
-
+        //Check if the song_id is already present in the ChosenSong table for this user
+        $existingChosenSong = ChosenSong::
+        where('song_id', $songId);
+            // ->where('user_id', $userId)
+            // ->first();
+        if ($existingChosenSong) {
+            return response()->json(['error' => 'Cette chanson a déjà été choisie... trouve-en une autre :)']);
+        }
         // If the song_id is not already present, add it to the ChosenSong table
         $chosenSong = new ChosenSong();
         $chosenSong->song_id = $songId;
 
         $chosenSong->title = $songTitle;
         //$chosenSong->user_id = $userId;
-        //$chosenSong->date = Carbon::now();
+        $chosenSong->date = Carbon::now();
         $chosenSong->nb_vote = 1;
         $chosenSong->save();
-        $dd = $chosenSong;
-
-        //return redirect()->back()->with('success', 'Song added successfully.');
-    }
+        return response()->json($chosenSong);    }
 
 
     /**

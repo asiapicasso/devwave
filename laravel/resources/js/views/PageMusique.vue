@@ -7,14 +7,14 @@
     <div id="principal">
           <div class="container-fluid">
             <ul class="list-group">
-              <div v-for="song in model.chosenSong" :key="song.title">
+              <div v-for="song in chosenSong" :key="song.title">
             {{ song.title }} - {{ song.votes }}
             </div>
             </ul>
             <div class="my-5">
               <div class="inline-block align-middle ml-5 mr-5 input-group">
                 <span class="flex w64 items-center">                
-                    <BaseInput type="text" @song-selected="store" @keydown.Enter="addChosenSongOnEnter"/>
+                    <BaseInput type="text"  @keyup.enter="addChosenSongOnEnter"/>
                     <BaseButton class="ml-6" text="Envoyer" @click="store" role="principal" />
         		</span>
               </div>
@@ -24,7 +24,7 @@
 
         <div class="flex flex-col">
         <BaseVoteMusique 
-        v-for="(song, index) in model.chosenSong" 
+        v-for="(song, index) in chosenSong" 
         :key="index"
         :text= "song.title + '-' + song.votes"
         @upvote="handleUpvote(index)" 
@@ -56,18 +56,9 @@ export default {
 
     },
     data() {
-        return {
-            model: {
-                song: "",
-                'chosenSong': {
-                    'id': '',
-                    'title': '',
-                    'artist': '',
-                    'votes': '',
-                }
+        return {            
+                song: [],
                 //créer un objet qui correspond à ma db 
-
-            },
         }
     },
 
@@ -81,9 +72,9 @@ export default {
             }
         },
 
-        store(selectedSong) {
+        store(song) {
             const data = {
-                keyword: selectedSong.id,
+                selectedSong: this.song,
             };
             axios.post('/store', data)
                 .then(response => {

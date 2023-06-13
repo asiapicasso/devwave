@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 use App\Events\MessageSent;
+use Illuminate\Support\Facades\DB;
 
 class ChatsController extends Controller
 {
@@ -21,7 +22,14 @@ class ChatsController extends Controller
  */
     public function fetchMessages()
     {
-        return Message::with('user')->get();
+        $messages = DB::table('messages')
+        ->join('users', function($join)
+        {
+            $join->on('users.id', '=', 'messages.user_id');
+        })
+        ->get();
+        //$messages = Message::with('users')->get();
+        return response()->json($messages);
     }
 
     public function sendMessage(Request $request)
@@ -34,7 +42,7 @@ class ChatsController extends Controller
         return ['status' => 'Message Sent!'];
     }
 
-    public function getSong(Request $request)
+    public function getMessages(Request $request)
     {
     $data = Message::where('message', 'like', '%' . $request->input('message') . '%')->get();
     return response()->json($data);

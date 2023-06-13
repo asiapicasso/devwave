@@ -20,6 +20,12 @@ use App\Http\Controllers\ChatsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+Route::get('/fetchMessages', [ChatsController::class, 'fetchMessages']);
+Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
+
+
 Route::resource('poll', PollController::class);
 
 Route::get('/getSong', [SongController::class, 'getSong']);
@@ -84,5 +90,5 @@ Route::get('/', function () {
 });
 
 
-Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
-Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
+
+//Route::get('/getMessages', [App\Http\Controllers\ChatsController::class, 'getMessages']);

@@ -1,18 +1,25 @@
 <template>
 <div class="container">
     <div class="card">
-        <div class="card-header">Chats</div>
-        <div class="card-body">
-            <BaseMessage :messages="messages"></BaseMessage>
+       <!--  <h1 >Chat</h1> -->
+        <!-- <div>
+            <BaseMessage  v-for="message in messages":messages="messages"></BaseMessage>
+        </div> -->
+        <div>
+          <!--<div>{{ messages.data }}</div>-->
+          <ul>
+            <li class=" bg-indigo-500" v-for="message in messages.data"><p>{{ message.username }}: {{message.message}}  </p></li>
+          </ul>
         </div>
         <div class="card-footer">
           <div class="input-group">
             <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." 
             v-model="newMessage" @keyup.enter="addMessage"/>
             <span class="input-group-btn">
-              <button class="btn btn-primary btn-sm" id="btn-chat" @click="addMessage">
+              <BaseButton class="ml-6" text="Envoyer" @click="addMessage" role="principal"/>
+              <!-- <button class="btn btn-primary btn-sm" id="btn-chat" @click="addMessage">
                 Send
-              </button>
+              </button> -->
             </span>
           </div>
         </div>
@@ -21,31 +28,62 @@
   
 </template>
 <script setup>
-import { onMounted } from "vue";
+import BaseButton from "./BaseButton.vue";
 import axios from "axios";
+import { onMounted } from "vue";
 import BaseMessage from "./BaseMessage.vue";
 import { ref, defineProps, defineEmits } from "vue";
 import Echo from "laravel-echo";
+import Pusher from "pusher-js";
+
 const props = defineProps(["user"]);
 
-/* onMounted(() => {
-  //Fetch all the messages from the server
-  fetchMessages();
-  //Listen for a "messagesent" event broadcasted from Laravel server
-  Echo.private("chat").listen("MessageSent", (e) => {
-    //Push the message to the messages array
-    messages.value.push({
-      message: e.message.message,
-      user: e.user,
-    });
-  });
-}); */
- 
-const messages = ref([{
-  user: { name: "Admin" },
-  message: "Welcome to the chat!"
-}]);
+async function fetchMessages() {
+  console.log("fetchMessages")
+  
 
+  try {
+    axios.get('/fetchMessages').then((response) => {
+      messages.value = response;
+    });
+  }
+  catch (error) {
+    console.log(error);
+  }
+
+}
+
+onMounted(() => {
+
+  console.log("onMounted");
+  fetchMessages();
+ 
+  });
+
+
+/* //GET request to the messages route in our Laravel server to fetch all the messages
+            await axios.get("/messages").then((response) => {
+                //Save the response in the messages array to display on the chat view
+                // messages.value = response.data;
+                messages = response.data;
+            }); */
+
+
+             /* this.messages.push({
+                message: newMessage.value,
+                user: props.user, 
+    });*/
+
+
+
+
+
+// const messages = ref([{
+//   user: { name: "Admin" },
+//   message: "Welcome to the chat!"
+// }]);
+
+const messages = ref([]);
 const newMessage = ref("");
    
 const emit = defineEmits(["messagesent"]);
@@ -63,24 +101,16 @@ const emit = defineEmits(["messagesent"]);
      newMessage.value = "";
  }
 
- function fetchMessages() {
-            //GET request to the messages route in our Laravel server to fetch all the messages
-            axios.get("/messages").then((response) => {
-                //Save the response in the messages array to display on the chat view
-                messages.value = response.data;
-            });
 
-            
-             /* this.messages.push({ 
-                message: newMessage.value,
-                user: props.user, 
-    });*/
 
- }
+
 
  async function getMessages () { 
             try {
-                const response = await axios.get('/getMessages', {}
+              const response = await axios.get('/getMessages', {
+                  params: {
+                  }
+                }
                 );
                 newMessage.value = response.data;
             } catch (error) {
@@ -88,11 +118,11 @@ const emit = defineEmits(["messagesent"]);
             }
 };
 
-getMessages();
 
- fetchMessages();
 
- function addMessage() {
+
+
+function addMessage() {
             //Pushes it to the messages array
             messages.value.push(newMessage.value);
             //POST request to the messages route with the message data in order for our Laravel server to broadcast it.
@@ -103,7 +133,7 @@ getMessages();
             console.log(messages.value);
 
    sendMessage();
-   fetchMessages();
+   //fetchMessages();
 
    console.log(messages.value);
         }

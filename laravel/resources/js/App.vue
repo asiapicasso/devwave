@@ -19,7 +19,6 @@ const isConnected = ref(true);
 </script>
 
 <template>
- 
         <BaseHeader class="sticky top-0 w-full"/>
         <router-view :class="{ notConnected: !isConnected }"></router-view>
         <div class="formContainer" v-if="!isConnected">
@@ -27,19 +26,13 @@ const isConnected = ref(true);
         </div>
          
         <div class="fixed bottom-0 ">
-            <BasePlayer v-if="$route.path !== '/pageLiveVoiture'" class="z-20"/>
+            <BasePlayer v-if="$route.path !== '/pageLiveVoiture'" class="z-20 w-screen"/>
             <BaseNav v-if="$route.path !== '/pageLiveVoiture'" class="z-0"  />
         </div>
 </template>
 
 <style scoped>
-#app {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: space-between;
-    height: 100vh;
-}
+
 .notConnected {
     filter: blur(5px);
 }

@@ -19,7 +19,7 @@
       
 
     </head>
-    <body id="main-container" class="min-w-screen min-h-screen">
+    <body id="main-container" class="">
         <div id="app">
            
         </div>

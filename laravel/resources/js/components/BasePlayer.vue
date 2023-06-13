@@ -1,5 +1,5 @@
 <template>
-    <div id="player_audio_container" class="w-full h-12"></div>
+    <div id="player_audio_container" class="w-full h-12 "></div>
 </template>
 
 <script>

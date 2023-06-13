@@ -19,15 +19,15 @@ const isConnected = ref(true);
 </script>
 
 <template>
-        <BaseHeader class="sticky top-0 w-full"/>
+        <BaseHeader class="sticky top-0 w-full z-30"/>
         <div class="mb-40"><router-view class="contenu pb-24" :class="{ notConnected: !isConnected }"></router-view></div>
         <div class="formContainer" v-if="!isConnected">
             <BaseFormSign />
         </div>
          
-        <div class="fixed bottom-0 ">
+        <div class="fixed bottom-0 z-30">
             <BasePlayer v-if="$route.path !== '/pageLiveVoiture'" class="z-20 w-screen"/>
-            <BaseNav v-if="$route.path !== '/pageLiveVoiture'" class="z-0"  />
+            <BaseNav v-if="$route.path !== '/pageLiveVoiture'"  />
         </div>
 </template>
 

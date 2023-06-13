@@ -39,6 +39,7 @@ class PollController extends Controller
     // ->get();
 
     $polls = Poll::with('answers')->get();
+    //dd($polls);
     
     $formattedPolls = $polls->map(function ($poll) {
         $formattedAnswers = $poll->answers->map(function ($answer) {

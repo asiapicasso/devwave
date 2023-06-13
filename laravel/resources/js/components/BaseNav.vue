@@ -1,18 +1,18 @@
 <template>
   <div id="nav" class="flex flex-row justify-evenly bg-bleu-clair text-black mt-0">
-      <router-link to="/pageLive" class=" flex-link">
+      <router-link to="/pageLive" :class="{ 'bg-bleu-1': $route.path === '/pageLive' }" class=" flex-link">
         <img class="w-8 h-6 m-auto mb-1" src="../../assets/Live-actif.svg" alt="icon-live">
         <p>Live/Chat</p>
       </router-link>
-      <router-link to="/pageSondage">
+      <router-link to="/pageSondage" :class="{ 'bg-bleu-1': $route.path === '/pageSondage' }">
         <img class="w-6 h-6 m-auto mb-1" src="../../assets/Sondages.svg" alt="icon-live">
         <p>Sondages</p>
       </router-link>
-      <router-link to="/pageMusique">
+      <router-link to="/pageMusique" :class="{ 'bg-bleu-1': $route.path === '/pageMusique' }">
         <img class="w-6 h-6 m-auto mb-1" src="../../assets/Votes-musique.svg" alt="icon-live">
         <p>MusiVote</p>
       </router-link>
-      <router-link to="/pageProfil">
+      <router-link to="/pageProfil" :class="{ 'bg-bleu-1': $route.path === '/pageProfil' }">
         <img class="w-6 h-6 m-auto mb-1" src="../../assets/Profil.svg" alt="icon-live">
         <p>Profil</p>
       </router-link>

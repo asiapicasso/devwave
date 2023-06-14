@@ -14,7 +14,7 @@
             <div class="my-5">
               <div class="inline-block align-middle ml-5 mr-5 input-group">
                 <span class="flex w64 items-center">                
-                    <BaseInput type="text"  @keyup.enter="addChosenSongOnEnter"/>
+                    <BaseInput type="text"  @keyup.enter="store"/>
                     <BaseButton class="ml-6" text="Envoyer" @click="store" role="principal" />
         		</span>
               </div>
@@ -58,24 +58,15 @@ export default {
     data() {
         return {            
             selectedSongId: null,
-            userId: null, 
         }
     },
 
 
     methods: {
 
-        // Lorsque la touche "Enter" est enfoncée
-        addChosenSongOnEnter(event) {
-            if (event.key === 'Enter') {
-                this.store();
-            }
-        },
-
         store() {
             const data = {
                 song_id: this.selectedSongId,
-                user_id: this.userId,
             };
             axios.post('/chosenSong', data)
                 .then(response => {
@@ -87,6 +78,7 @@ export default {
                     alert('Error adding song.');
                 });
         },
+        
     },
 }
 

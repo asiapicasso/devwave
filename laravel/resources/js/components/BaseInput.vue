@@ -58,9 +58,9 @@ export default {
         async getSong() { 
             try {
                 const response = await axios.get('/getSong', {
-                    // params: {
-                    //     keyword: this.keyword,
-                    // },
+                    params: {
+                        keyword: this.keyword,
+                    },
                 });
                 this.songs = response.data;
             } catch (error) {
@@ -74,7 +74,6 @@ export default {
                 if (this.selectedSong) {
                    this.$emit("song-selected", this.selectedSong);
                 }
-                this.store();
             }
         },
 

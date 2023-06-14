@@ -20,7 +20,7 @@
                                 :src="getImagePath(message.picture_path)"
                                 alt="Profile Image"/>
                             <span class="text-bleuFonce+2" >&nbsp;:{{ message.user }}</span>
-                            <span>{{ message.message }}
+                            <span class="flex items-center">{{ message.message }}
                               <span v-if="message.icon_path">
                                 <img class="h-10 w-8" :src="message.icon_path" alt="Icon"/>
                               </span>
@@ -140,6 +140,7 @@ function sendMessage() {
     };
     messagesWritten.value.push(message);
     newMessage.value = ""; // Clear the input field
+  
 
     console.log(messagesWritten.value);
 }

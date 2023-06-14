@@ -5,14 +5,16 @@
         </router-link>
             <h1 id="titlePageSignUp">S'inscrire</h1>
             <div v-if="!confirmForm">
-                <form class="form-flex-columns mt-0">
+                <form class="form-flex-columns mt-0" @submit.prevent="submitForm">
                 <div class="input-group">
                     <label class="labelFormSign" for="pseudo">Pseudo</label>
                     <input
                         type="text"
                         id="pseudo"
                         name="pseudo"
-                        placeholder="unPseudo123"/>
+                        placeholder="unPseudo123"
+                        v-model="formData.username"
+                        required/>
                 </div>
                 <div class="input-group">
                     <label class="labelFormSign" for="email">Email</label>
@@ -20,7 +22,9 @@
                         type="email"
                         id="email"
                         name="email"
-                        placeholder="exemple@exemple.com"/>
+                        placeholder="exemple@exemple.com"
+                        v-model="formData.email"
+                        required/>
                 </div>
                 <div class="input-group">
                     <label class="labelFormSign" for="prenom">Prénom</label>
@@ -28,7 +32,8 @@
                         type="text"
                         id="prenom"
                         name="prenom"
-                        placeholder="unPrenom"/>
+                        placeholder="unPrenom"
+                        v-model="formData.firstname"/>
                 </div>
                 <div class="input-group">
                     <label class="labelFormSign" for="nom">Nom</label>
@@ -36,7 +41,8 @@
                         type="text"
                         id="nom"
                         name="nom"
-                        placeholder="unNom"/>
+                        placeholder="unNom"
+                        v-model="formData.lastname"/>
                 </div>
                 <div class="input-group">
                     <label class="labelFormSign" for="password">Mot de passe</label>
@@ -45,19 +51,21 @@
                         id="password"
                         name="password"
                         placeholder="..."
-                        required/>
+                        required
+                        v-model="formData.password"/>
                 </div>
                 <div class="input-group">
                     <label class="font-bold" for="password">Confirmer le mot de passe</label>
                     <input
                         type="password"
-                        id="password"
-                        name="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
                         placeholder="..."
-                        required/>
+                        required
+                        v-model="formData.password_confirmation"/>
                 </div>
                 <div class="flex justify-center mb-5">
-                    <BaseButton type="submit" text="S'inscrire" class="boutonForm" @click="confirmForm=true"/>
+                    <BaseButton type="submit" text="S'inscrire" class="boutonForm"/>
                 </div>
             </form>
             <router-link to="/pagesignin" class="mb-5 underline">Déjà un compte ?</router-link>
@@ -85,13 +93,37 @@
 
 <script>
 import BaseButton from "../components/BaseButton.vue";
+import axios from 'axios';
+
 export default {
     name: "PageSignUp",
     data() {
         return {
-            confirmForm: false
+            confirmForm: false,
+            formData: {
+            username: '',
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+            picture_path: '1',
+            }
         };
     },
+    methods: {
+    async submitForm() {
+        console.log('Données du formulaire:', this.formData);
+      try {
+        const response = await axios.post('register', this.formData);
+        console.log('Inscription réussie:', response);
+        // Vous pouvez rediriger l'utilisateur ou afficher un message de succès ici
+      } catch (error) {
+        console.error('Erreur lors de l\'inscription:', error);
+        // Gérer l'erreur, par exemple afficher un message d'erreur à l'utilisateur
+      }
+    }
+  },
     components: { BaseButton }
 };
 </script>

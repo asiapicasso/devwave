@@ -34,7 +34,7 @@ class ChatsController extends Controller
 
     public function sendMessage(Request $request)
     {//controler le message reçu 
-        $user = Auth::user();
+        //$user = Auth::user();
         $message = $user->messages()->create([
             'message' => $request->input('message')
         ]);
@@ -42,9 +42,4 @@ class ChatsController extends Controller
         return ['status' => 'Message Sent!'];
     }
 
-    public function getMessages(Request $request)
-    {
-    $data = Message::where('message', 'like', '%' . $request->input('message') . '%')->get();
-    return response()->json($data);
-    }
 }

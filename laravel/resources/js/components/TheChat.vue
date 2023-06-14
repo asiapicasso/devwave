@@ -8,15 +8,16 @@
         <div>
           <!--<div>{{ messages.data }}</div>-->
           <ul>
-            <li class=" bg-indigo-500" v-for="message in messages.data"><p>{{ message.username }}: {{message.message}}  </p></li>
+            <li class=" bg-indigo-500" v-for="message in messages.data"><p>{{ message.username }}: {{message.message}}</p></li>
+            
           </ul>
         </div>
         <div class="card-footer">
           <div class="input-group">
             <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." 
-            v-model="newMessage" @keyup.enter="addMessage"/>
+            v-model="newMessage" @keyup.enter="sendMessage"/>
             <span class="input-group-btn">
-              <BaseButton class="ml-6" text="Envoyer" @click="addMessage" role="principal"/>
+              <BaseButton class="ml-6" text="Envoyer" @click="sendMessage" role="principal"/>
               <!-- <button class="btn btn-primary btn-sm" id="btn-chat" @click="addMessage">
                 Send
               </button> -->
@@ -87,44 +88,28 @@ const messages = ref([]);
 const newMessage = ref("");
    
 const emit = defineEmits(["messagesent"]);
+/* const messagesWritten = ref([""]); */
 
 
   
- function sendMessage() {
+function sendMessage() {
+  console.log("sendMessage");
       //Emit a "messagesent" event including the user who sent the message along with the message content
-      emit("messagesent", {
-        user: props.user,
+             //user: props.user,
       //newMessage is bound to the earlier "btn-input" input field
-        message: newMessage.value,
-      });
+      //messagesWritten.push(newMessage.value); 
       //Clear the input
-     newMessage.value = "";
+  newMessage.value = "";
+
+ // console.log(messagesWritten);
  }
 
 
 
 
-
- async function getMessages () { 
-            try {
-              const response = await axios.get('/getMessages', {
-                  params: {
-                  }
-                }
-                );
-                newMessage.value = response.data;
-            } catch (error) {
-                console.error(error);
-            }
-};
-
-
-
-
-
 function addMessage() {
-            //Pushes it to the messages array
-            messages.value.push(newMessage.value);
+           //Pushes it to the messages array
+            messages.push(newMessage.value);
             //POST request to the messages route with the message data in order for our Laravel server to broadcast it.
             axios.post("/messages", { message: newMessage.value }).then((response) => {
                 console.log(response.data);
@@ -133,7 +118,7 @@ function addMessage() {
             console.log(messages.value);
 
    sendMessage();
-   //fetchMessages();
+   fetchMessages();
 
    console.log(messages.value);
         }

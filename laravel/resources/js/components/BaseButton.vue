@@ -1,6 +1,7 @@
 <template>
     <div :class="['base-button', roleClass]">
-        <button class="w-24 text-center flex items-center justify-center p-6 cursor-pointer h-10" @click="clickHandler">            <span v-if="icon" class="button-icon">
+        <button class="h-6 px-4 m-2 text-center text-sm text-[#211F2D] flex items-center justify-center cursor-pointer focus:shadow-outline " @click="clickHandler">
+            <span v-if="icon" class="button-icon">
                 <img :src="icon" alt="Button Icon" />
             </span>
             <p class="button-text">{{ text }}</p>
@@ -29,11 +30,17 @@ export default {
             default: "principal",
         },
     },
+    methods: {
+        clickHandler() {
+            this.$emit("clickHandler");
+        },
+    },
     computed: {
         roleClass() {
             return `role-${this.role}`;
         },
     },
+   
 };
 </script>
 
@@ -52,10 +59,19 @@ export default {
     background-size: 100%;
 }
 
+.bg-svg-gris {
+  background-image: url('../../assets/fondGris-1.png'); 
+  background-repeat: no-repeat;
+  background-position: center;  
+    background-size: 100%;
+}
+
 .role-secondaire {
-  
       @apply bg-svg;
-    
+}
+
+.role-secondairegris {
+          @apply bg-svg-gris;
 }
   .role-inactif {
   

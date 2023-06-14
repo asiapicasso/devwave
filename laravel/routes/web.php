@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ChosenSongController;
-use App\Http\Controllers\AnswerController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ChatsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +60,7 @@ Route::post('/search', 'ChosenSongController@search')->name('search');
 
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');
+
 
 Route::get('/{profile}', [ProfileController::class, 'showProfile'])->middleware('auth')->name('profile');
 Route::get('/update/{email}', [ProfileController::class, 'showProfile'])->middleware('auth')->name('update_email');

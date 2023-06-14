@@ -15,9 +15,10 @@
   </ul>
 </template>
 
-<script>
-export default {
-  name: "BaseMessage",
-  props: ["messages"],
-};
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps(["messages"]);
+
+
 </script>

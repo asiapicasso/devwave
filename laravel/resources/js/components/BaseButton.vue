@@ -1,7 +1,6 @@
 <template>
     <div :class="['base-button', roleClass]">
-        <button class="text-center flex items-center justify-center p-6 cursor-pointer h-10" @click="clickHandler">
-            <span v-if="icon" class="button-icon">
+        <button class="w-24 text-center flex items-center justify-center p-6 cursor-pointer h-10" @click="clickHandler">            <span v-if="icon" class="button-icon">
                 <img :src="icon" alt="Button Icon" />
             </span>
             <p class="button-text">{{ text }}</p>

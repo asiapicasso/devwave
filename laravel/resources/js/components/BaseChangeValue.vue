@@ -5,8 +5,8 @@
         <input type="text" class="mt-4 border rounded py-3 pl-2 w-full" id="unNouveauPseudo" :placeholder="'unNouveau' + message" />
         <div id="twoChoiceBtn" class="">
           <BaseButton id="cancelBtn" @click="cancelChangeValue()" class="m-auto mb-8 mt-5 w-50 u" text="Annuler" role="secondaire" />
-          <router-link to="/logout">
-            <BaseButton id="validChangeValue" @click="logout()" class="mb-8 mt-5 w-50 no-underline" text="Valider" />
+          <router-link to="/logout" class="no-underline">
+            <BaseButton id="validChangeValue" @click="logout()" class="mb-8 mt-5 h-10 py-0.5 w-50" text="Valider" />
           </router-link>
         </div>
       </div>

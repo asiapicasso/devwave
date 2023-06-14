@@ -17,7 +17,7 @@
             <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." 
             v-model="newMessage" @keyup.enter="sendMessage"/>
             <span class="input-group-btn">
-              <BaseButton class="ml-6" text="Envoyer" @click="sendMessage" role="principal"/>
+              <BaseButton class="ml-6 btnSend" text="Envoyer" @click="sendMessage" role="principal"/>
               <!-- <button class="btn btn-primary btn-sm" id="btn-chat" @click="addMessage">
                 Send
               </button> -->
@@ -136,3 +136,11 @@ function addMessage() {
 
 
 </script>
+<style scoped>
+  .btnSend{
+    padding: 5px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+  }
+</style>

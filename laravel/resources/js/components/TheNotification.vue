@@ -30,7 +30,7 @@
           </div>
           <hr align="center" width="80%" class="my-4" />
         
-          <BaseButton class="w-20 h-10 mt-10 mx-20" text="Valider" />
+          <BaseButton class="w-30 h-10 mt-10 mx-20 pt-0.5" text="Valider" />
         
         </div>
       </form>

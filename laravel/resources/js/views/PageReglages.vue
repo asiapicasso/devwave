@@ -55,7 +55,7 @@
           </div>
           
         </div>
-        <BaseButton @click="displayLogoutPopup()" class="h-10 m-auto mt-40 mb-8 logoutBtn" text="Déconnexion" role="secondaire"/>
+        <BaseButton @click="displayLogoutPopup()" class="h-20 pt-5 m-auto mt-40 mb-8 logoutBtn" text="Déconnexion" role="secondaire"/>
         <button @click="displayDeletePopup()" class="underline flex items-center justify-center mx-auto">supprimer mon compte</button>
       </div>
       

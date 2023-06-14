@@ -14,7 +14,7 @@
                 </ul>
                 <template v-if="messagesWritten.length > 0">
                     <ul>
-                        <li class="flex flex-row-reverse items-center mx-2" v-for="message in messagesWritten">
+                        <li class="flex flex-row-reverse items-center mx-3" v-for="message in messagesWritten">
                             <img
                                 class="w-10 h-10"
                                 :src="getImagePath(message.picture_path)"
@@ -25,27 +25,29 @@
                     </ul>
                 </template>
             </div>
-            <div class="flex fixed bottom-32 bg-gris-1 bg-opacity-75 items-center" >
+            <div class="flex fixed w-full bottom-32 bg-gris-1 bg-opacity-75 items-center" >
                  
                     <input
                         id="btn-input"
                         type="text"
                         name="message"
-                        class="form-control input-sm"
+                        class="pl-2 form-control input-sm ml-3 mr-3 flex-grow"
                         placeholder="T'en penses quoi?"
                         v-model="newMessage"
                         @keyup.enter="sendMessage"/>
-                    <span class="input-group-btn">
-                        <BaseButton
-                            class="btnSend"
-                            text="Envoyer"
-                            @click="sendMessage"
-                            role="principal"/>
+                    <div class="flex items-center">
+                      <span class="input-group-btn mr-2">
+                        <button
+                            class="btnSend w-9 bg-gradient-to-t from-bleu-clair via-middle-rose to-rose rounded-md"
+                            @click="sendMessage">
+                            <img class="ml-1.5 h-8 w-7" src="../../assets/envoyer.png"/>
+                          </button>
                     </span>
-                    <div class="flex">
-                      <img src="../../assets/emojis-reaction-saucisse.png" alt="emojis saucisse" class="h-20 w-20">
-                      <img src="../../assets/emojis-reaction-soleil.png" alt="emojis saucisse" class="h-20 w-20">
-                      <img src="../../assets/emojis-reaction-punch.png" alt="emojis saucisse" class="h-20 w-20">
+                      <div class="flex">
+                        <img src="../../assets/emojis-reaction-saucisse.png" alt="emojis saucisse" class="h-12 w-10 -mx-1">
+                        <img src="../../assets/emojis-reaction-soleil.png" alt="emojis saucisse" class="h-12 w-10 -mx-1">
+                        <img src="../../assets/emojis-reaction-punch.png" alt="emojis saucisse" class="h-12 w-10 ">
+                      </div>
                     </div>
                   
             </div>

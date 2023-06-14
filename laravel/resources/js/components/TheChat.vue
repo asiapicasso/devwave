@@ -1,48 +1,56 @@
 <template>
-
-<div class="container">
-    <div class="card">
-       <!--  <h1 >Chat</h1> -->
-        <!-- <div>
-            <BaseMessage  v-for="message in messages":messages="messages"></BaseMessage>
-        </div> -->
-        <div>
-          <!--<div>{{ messages.data }}</div>-->
-          <ul>
-    <li class="flex items-center mx-2" v-for="message in messages.data" :key="message.id">
-      <img class="w-10 h-10" :src="getImagePath(message.picture_path)" alt="Profile Image" />
-      <span class="text-Rose-principale"> {{ message.username }}: </span>
-      <span>&nbsp;{{ message.message }}</span>
-    </li>
-    <li v-if="messages.data === 0">
-      Aucun message trouvé.
-    </li>
-  </ul>
-          <template v-if="messagesWritten.length > 0">
-      <ul>
-        <li class="flex flex-row-reverse items-center mx-2" v-for="message in messagesWritten">
-          <img class="w-10 h-10" :src="getImagePath(message.picture_path)" alt="Profile Image" />
-          <span class="text-bleuFonce+2">&nbsp;:{{message.user}}</span>
-          <span>{{ message.message }}</span>
-        </li>
-      </ul>
-    </template>
-        </div>
-        <div class="card-footer">
-          <div class="input-group">
-            <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="T'en penses quoi?" 
-            v-model="newMessage" @keyup.enter="sendMessage"/>
-            <span class="input-group-btn">
-              <BaseButton class="ml-6 btnSend" text="Envoyer" @click="sendMessage" role="principal"/>
-              <!-- <button class="btn btn-primary btn-sm" id="btn-chat" @click="addMessage">
-                Send
-              </button> -->
-            </span>
-          </div>
+    <div class="container">
+        <div class="card">
+            <div>
+                <ul>
+                    <li class="flex items-center mx-2" v-for="message in messages.data" :key="message.id">
+                        <img class="w-10 h-10" :src="getImagePath(message.picture_path)" alt="Profile Image"/>
+                        <span class="text-Rose-principale">
+                            {{ message.username }}:
+                        </span>
+                        <span>&nbsp;{{ message.message }}</span>
+                    </li>
+                    <li v-if="messages.data === 0">Aucun message trouvé.</li>
+                </ul>
+                <template v-if="messagesWritten.length > 0">
+                    <ul>
+                        <li class="flex flex-row-reverse items-center mx-2" v-for="message in messagesWritten">
+                            <img
+                                class="w-10 h-10"
+                                :src="getImagePath(message.picture_path)"
+                                alt="Profile Image"/>
+                            <span class="text-bleuFonce+2" >&nbsp;:{{ message.user }}</span>
+                            <span>{{ message.message }}</span>
+                        </li>
+                    </ul>
+                </template>
+            </div>
+            <div class="flex fixed bottom-32 bg-gris-1 bg-opacity-75 items-center" >
+                 
+                    <input
+                        id="btn-input"
+                        type="text"
+                        name="message"
+                        class="form-control input-sm"
+                        placeholder="T'en penses quoi?"
+                        v-model="newMessage"
+                        @keyup.enter="sendMessage"/>
+                    <span class="input-group-btn">
+                        <BaseButton
+                            class="btnSend"
+                            text="Envoyer"
+                            @click="sendMessage"
+                            role="principal"/>
+                    </span>
+                    <div class="flex">
+                      <img src="../../assets/emojis-reaction-saucisse.png" alt="emojis saucisse" class="h-20 w-20">
+                      <img src="../../assets/emojis-reaction-soleil.png" alt="emojis saucisse" class="h-20 w-20">
+                      <img src="../../assets/emojis-reaction-punch.png" alt="emojis saucisse" class="h-20 w-20">
+                    </div>
+                  
+            </div>
         </div>
     </div>
-</div>
-  
 </template>
 <script setup>
 import BaseButton from "./BaseButton.vue";
@@ -53,87 +61,80 @@ import { ref, defineProps, defineEmits } from "vue";
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
 
-
-
-
 const props = defineProps(["user"]);
 
 async function fetchMessages() {
-  console.log("fetchMessages")
-  
+    console.log("fetchMessages");
 
-  try {
-    axios.get('/fetchMessages').then((response) => {
-      messages.value = response;
-    });
-  }
-  catch (error) {
-    console.log(error);
-  }
-
+    try {
+        axios.get("/fetchMessages").then((response) => {
+            messages.value = response;
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 onMounted(() => {
-
-  console.log("onMounted");
-  fetchMessages();
-  importProfileImages();
-  console.log(profileImages);
- 
-  });
+    console.log("onMounted");
+    fetchMessages();
+    importProfileImages();
+    console.log(profileImages);
+});
 
 const messages = ref([]);
 const newMessage = ref("");
-   
+
 const messagesWritten = ref([]);
 let profileImages = [];
- 
+
 async function importProfileImages() {
-  for (let i = 1; i <= 16; i++) {
-        const imagePath = `../../assets/profils-${i.toString().padStart(2, '0')}.png`;
+    for (let i = 1; i <= 16; i++) {
+        const imagePath = `../../assets/profils-${i
+            .toString()
+            .padStart(2, "0")}.png`;
         const image = await import(imagePath);
         profileImages.push({
-          path: image.default,
-          fileName: `profils-${i.toString().padStart(2, '0')}.png`,
+            path: image.default,
+            fileName: `profils-${i.toString().padStart(2, "0")}.png`,
         });
-      }
     }
-  
-    function getImagePath(fileName) {
-      const image = profileImages.find((img) => img.fileName === fileName);
-      return image ? image.path : '';
-    }
+}
 
-  function sendMessage() {
+function getImagePath(fileName) {
+    const image = profileImages.find((img) => img.fileName === fileName);
+    return image ? image.path : "";
+}
+
+function sendMessage() {
     console.log("sendMessage");
     const message = {
-      user: 'Moi',
-      message: newMessage.value,
-      picture_path: 'profils-08.png',
-   };
+        user: "Moi",
+        message: newMessage.value,
+        picture_path: "profils-08.png",
+    };
     messagesWritten.value.push(message);
-    newMessage.value = ''; // Clear the input field
+    newMessage.value = ""; // Clear the input field
 
     console.log(messagesWritten.value);
 }
 
-
 function addMessage() {
-           //Pushes it to the messages array
-            messages.push(newMessage.value);
-            //POST request to the messages route with the message data in order for our Laravel server to broadcast it.
-            axios.post("/messages", { message: newMessage.value }).then((response) => {
-                console.log(response.data);
-            });
+    //Pushes it to the messages array
+    messages.push(newMessage.value);
+    //POST request to the messages route with the message data in order for our Laravel server to broadcast it.
+    axios.post("/messages", { message: newMessage.value }).then((response) => {
+        console.log(response.data);
+    });
 
-            console.log(messages.value);
+    console.log(messages.value);
 
-   sendMessage();
-   fetchMessages();
+    sendMessage();
+    fetchMessages();
 
-   console.log(messages.value);
-        }
- /* ,
+    console.log(messages.value);
+}
+/* ,
         //Receives the message that was emitted from the ChatForm Vue component
         addMessage(message) {
             //Pushes it to the messages array
@@ -143,15 +144,11 @@ function addMessage() {
                 console.log(response.data);
             });
         } */
-
-
-
 </script>
 <style scoped>
-  .btnSend{
-    padding: 5px 10px;
+.btnSend {
     text-align: center;
     display: inline-block;
     font-size: 16px;
-  }
+}
 </style>

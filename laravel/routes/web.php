@@ -7,6 +7,8 @@ use App\Http\Controllers\PollController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ChosenSongController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\ChatsController;
 
 /*
 |--------------------------------------------------------------------------

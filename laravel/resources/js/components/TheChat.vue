@@ -1,4 +1,5 @@
 <template>
+
 <div class="container">
     <div class="card">
        <!--  <h1 >Chat</h1> -->
@@ -8,13 +9,14 @@
         <div>
           <!--<div>{{ messages.data }}</div>-->
           <ul>
-            <li class="" v-for="message in messages.data">
-              <img src="../../assets/profils-01.png" />
-              <span> {{ message.username }}: {{message.message}}</span>
-              <!-- {{message.picture_path}} -->
-            </li>
-            
-          </ul>
+    <li class="flex" v-for="message in messages.data" :key="message.id">
+      <img class="w-10 h-10" :src="getImagePath(message.picture_path)" alt="Profile Image" />
+      <span>{{ message.username }}: {{ message.message }}</span>
+    </li>
+    <li v-if="messages.data === 0">
+      Aucun message trouvé.
+    </li>
+  </ul>
           <template v-if="messagesWritten.length > 0">
       <ul>
         <li class="bg-indigo-500" v-for="message in messagesWritten">
@@ -48,6 +50,9 @@ import { ref, defineProps, defineEmits } from "vue";
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
 
+
+
+
 const props = defineProps(["user"]);
 
 async function fetchMessages() {
@@ -69,6 +74,8 @@ onMounted(() => {
 
   console.log("onMounted");
   fetchMessages();
+  importProfileImages();
+  console.log(profileImages);
  
   });
 
@@ -76,7 +83,23 @@ const messages = ref([]);
 const newMessage = ref("");
    
 const messagesWritten = ref([]);
+let profileImages = [];
  
+async function importProfileImages() {
+  for (let i = 1; i <= 10; i++) {
+        const imagePath = `../../assets/profils-${i.toString().padStart(2, '0')}.png`;
+        const image = await import(imagePath);
+        profileImages.push({
+          path: image.default,
+          fileName: `profils-${i.toString().padStart(2, '0')}.png`,
+        });
+      }
+    }
+  
+    function getImagePath(fileName) {
+      const image = profileImages.find((img) => img.fileName === fileName);
+      return image ? image.path : '';
+    }
 
   function sendMessage() {
     console.log("sendMessage");

@@ -8,13 +8,24 @@
         <div>
           <!--<div>{{ messages.data }}</div>-->
           <ul>
-            <li class=" bg-indigo-500" v-for="message in messages.data"><p>{{ message.username }}: {{message.message}}</p></li>
+            <li class="" v-for="message in messages.data">
+              <img src="../../assets/profils-01.png" />
+              <span> {{ message.username }}: {{message.message}}</span>
+              <!-- {{message.picture_path}} -->
+            </li>
             
           </ul>
+          <template v-if="messagesWritten.length > 0">
+      <ul>
+        <li class="bg-indigo-500" v-for="message in messagesWritten">
+          <p>{{ message.user }}: {{ message.message }}</p>
+        </li>
+      </ul>
+    </template>
         </div>
         <div class="card-footer">
           <div class="input-group">
-            <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="Type your message here..." 
+            <input id="btn-input" type="text" name="message" class="form-control input-sm" placeholder="T'en penses quoi?" 
             v-model="newMessage" @keyup.enter="sendMessage"/>
             <span class="input-group-btn">
               <BaseButton class="ml-6 btnSend" text="Envoyer" @click="sendMessage" role="principal"/>
@@ -31,7 +42,7 @@
 <script setup>
 import BaseButton from "./BaseButton.vue";
 import axios from "axios";
-import { onMounted } from "vue";
+import { onMounted, reactive } from "vue";
 import BaseMessage from "./BaseMessage.vue";
 import { ref, defineProps, defineEmits } from "vue";
 import Echo from "laravel-echo";
@@ -61,50 +72,23 @@ onMounted(() => {
  
   });
 
-
-/* //GET request to the messages route in our Laravel server to fetch all the messages
-            await axios.get("/messages").then((response) => {
-                //Save the response in the messages array to display on the chat view
-                // messages.value = response.data;
-                messages = response.data;
-            }); */
-
-
-             /* this.messages.push({
-                message: newMessage.value,
-                user: props.user, 
-    });*/
-
-
-
-
-
-// const messages = ref([{
-//   user: { name: "Admin" },
-//   message: "Welcome to the chat!"
-// }]);
-
 const messages = ref([]);
 const newMessage = ref("");
    
-const emit = defineEmits(["messagesent"]);
-/* const messagesWritten = ref([""]); */
+const messagesWritten = ref([]);
+ 
 
+  function sendMessage() {
+    console.log("sendMessage");
+    const message = {
+      user: 'Moi',
+      message: newMessage.value,
+   };
+    messagesWritten.value.push(message);
+    newMessage.value = ''; // Clear the input field
 
-  
-function sendMessage() {
-  console.log("sendMessage");
-      //Emit a "messagesent" event including the user who sent the message along with the message content
-             //user: props.user,
-      //newMessage is bound to the earlier "btn-input" input field
-      //messagesWritten.push(newMessage.value); 
-      //Clear the input
-  newMessage.value = "";
-
- // console.log(messagesWritten);
- }
-
-
+    console.log(messagesWritten.value);
+}
 
 
 function addMessage() {

@@ -8,7 +8,7 @@ import BaseFormSign from "./components/BaseFormSign.vue";
 
 
 
-const isConnected = ref(false);
+const isConnected = ref(true);
    
       //Si vous modifier cette variable en true, vous passez comme si vous étiez connecté.
    

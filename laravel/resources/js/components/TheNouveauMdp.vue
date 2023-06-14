@@ -8,7 +8,7 @@
             id="email"
             name="email"
             placeholder="..."
-            class="h-8 rounded mb-2 pt-5 pl-2 pb-5 border border-gray-300"
+            class="h-14 rounded mb-2 pt-5 pl-2 pb-5 border border-gray-300"
             required/>
         <label for="password" class="mb-2 font-semibold">Nouveau mot de passe</label>
         <input
@@ -16,7 +16,7 @@
             id="password"
             name="password"
             placeholder="...."
-            class="h-8 rounded mb-2 pt-5 pl-2 pb-5 border border-gray-300"
+            class="h-14 rounded mb-2 pt-5 pl-2 pb-5 border border-gray-300"
             required/>
             <label for="password" class="mb-2 font-semibold">Répétez le nouveau mot de passe</label>
         <input
@@ -24,7 +24,7 @@
             id="password"
             name="password"
             placeholder="...."
-            class="h-8 rounded mb-2 pt-5 pl-2 pb-5 border border-gray-300"
+            class="h-14 rounded mb-2 pt-5 pl-2 pb-5 border border-gray-300"
             required/>       
         <div class="flex justify-center mb-5">
             <BaseButton type="submit" text="Valider" class="mt-7"/>

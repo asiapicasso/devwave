@@ -1,9 +1,9 @@
 <template>
   <div id="pageReglage" :class="{'blur-background': showLogoutPopup || showDeletePopup}">
-    <router-link to="/pageProfil" v-if="inSettingPage"><img src="../../assets/back.png" class="absolute left-0 w-10 h-10 ml-2"/></router-link>
-    <button v-if="!inSettingPage" @click="displaySettingPage()"><img src="../../assets/back.png" class="absolute left-0 w-10 h-10 ml-2"/></button>
+    <router-link to="/pageProfil" v-if="inSettingPage"><img src="../../assets/back.png" class="absolute left-0 w-10 h-10 ml-2 mt-3"/></router-link>
+    <button v-if="!inSettingPage" @click="displaySettingPage()"><img src="../../assets/back.png" class="absolute left-0 w-10 h-10 ml-2 mt-4"/></button>
       <div id="pageTitle" class="flex items-center justify-center">
-        <h1>Réglages</h1>
+        <h1 class="text-bleu+4">Réglages</h1>
       </div>
       <div id="reglageContent" class="mt-10 ml-10">
         <div class="pageMenuReglage" v-if="inSettingPage">
@@ -40,8 +40,6 @@
           </div>
         </div>
         <hr align="center" width="90%" class="my-4" />
-        <BaseButton @click="displayLogoutPopup()" class="w-1/2 h-10 m-auto mt-40 mb-8" text="Déconnexion" role="secondaire"/>
-        <button @click="displayDeletePopup()" class="underline flex items-center justify-center mx-auto">supprimer mon compte</button>
       </div>
         <Notif v-if="showNotifPopup" @close="showNotifPopup = false" />
         <NouveauMdp v-if="showMdpPopup" @close="showMdpPopup = false" />
@@ -57,6 +55,8 @@
           </div>
           
         </div>
+        <BaseButton @click="displayLogoutPopup()" class="h-10 m-auto mt-40 mb-8 logoutBtn" text="Déconnexion" role="secondaire"/>
+        <button @click="displayDeletePopup()" class="underline flex items-center justify-center mx-auto">supprimer mon compte</button>
       </div>
       
   </div>
@@ -147,4 +147,7 @@ export default {
     user-select: none;
   }
 
+.logoutBtn{
+  width: 150px;
+}
 </style>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ChosenSongController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Auth::routes();
 Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::post('register', [RegisterController::class, 'create']);
 
 // user must be signed in to access the following routes
 /* Route::get('/chat', function () {

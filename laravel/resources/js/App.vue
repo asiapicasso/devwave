@@ -32,7 +32,6 @@ const isConnected = ref(true);
 </template>
 
 <style scoped>
-
 .notConnected {
     filter: blur(5px);
 }

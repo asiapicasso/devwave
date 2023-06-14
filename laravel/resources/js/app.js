@@ -18,7 +18,7 @@ import axios from "axios";
  * to use in your application's views. An example is included for you.
  */
 
-createApp(App).use(router).mount("#app");
+createApp(App).use(VueAxios, axios).use(router).mount("#app");
 
 /**
  * The following block of code may be used to automatically register your

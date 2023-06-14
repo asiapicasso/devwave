@@ -1,35 +1,46 @@
-<script>
-import { watch } from 'vue';
-import Welcome from './components/Welcome.vue'
-import Header from './components/header.vue';
-import Player from './components/Player.vue';
-import Nav from './components/Nav.vue';
+<script setup>
+import { ref } from "vue";
+import { watch } from "vue";
+import BaseHeader from "./components/BaseHeader.vue";
+import BasePlayer from "./components/BasePlayer.vue";
+import BaseNav from "./components/BaseNav.vue";
+import BaseFormSign from "./components/BaseFormSign.vue";
 
-export default {
-  name: 'App',
-  components: {
-    Header,
-    Player,
-    Nav
 
-  }
-}
+
+const isConnected = ref(true);
+   
+      //Si vous modifier cette variable en true, vous passez comme si vous étiez connecté.
+   
+  
+  
+
+
 </script>
 
 <template>
-    <Header/>
-    <Player/>
-    <Nav/>
+        <BaseHeader class="sticky top-0 w-full z-30"/>
+        <div class="mb-40"><router-view class="contenu pb-24" :class="{ notConnected: !isConnected }"></router-view></div>
+        <div class="formContainer" v-if="!isConnected">
+            <BaseFormSign />
+        </div>
+         
+        <div class="fixed bottom-0 z-30">
+            <BasePlayer v-if="$route.path !== '/pageLiveVoiture'" class="z-20 w-screen"/>
+            <BaseNav v-if="$route.path !== '/pageLiveVoiture'"  />
+        </div>
 </template>
 
 <style scoped>
- body{
-  background-color: #000;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.2em;
-  text-align: center;
-  padding: 0;
-  margin: 0;
- }
+.notConnected {
+    filter: blur(5px);
+}
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    z-index: 100;
+}
 </style>

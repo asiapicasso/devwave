@@ -9,9 +9,10 @@
         <div>
           <!--<div>{{ messages.data }}</div>-->
           <ul>
-    <li class="flex" v-for="message in messages.data" :key="message.id">
+    <li class="flex items-center mx-2" v-for="message in messages.data" :key="message.id">
       <img class="w-10 h-10" :src="getImagePath(message.picture_path)" alt="Profile Image" />
-      <span>{{ message.username }}: {{ message.message }}</span>
+      <span class="text-Rose-principale"> {{ message.username }}: </span>
+      <span>&nbsp;{{ message.message }}</span>
     </li>
     <li v-if="messages.data === 0">
       Aucun message trouvé.
@@ -19,8 +20,10 @@
   </ul>
           <template v-if="messagesWritten.length > 0">
       <ul>
-        <li class="bg-indigo-500" v-for="message in messagesWritten">
-          <p>{{ message.user }}: {{ message.message }}</p>
+        <li class="flex flex-row-reverse items-center mx-2" v-for="message in messagesWritten">
+          <img class="w-10 h-10" :src="getImagePath(message.picture_path)" alt="Profile Image" />
+          <span class="text-bleuFonce+2">&nbsp;:{{message.user}}</span>
+          <span>{{ message.message }}</span>
         </li>
       </ul>
     </template>
@@ -86,7 +89,7 @@ const messagesWritten = ref([]);
 let profileImages = [];
  
 async function importProfileImages() {
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 16; i++) {
         const imagePath = `../../assets/profils-${i.toString().padStart(2, '0')}.png`;
         const image = await import(imagePath);
         profileImages.push({
@@ -106,6 +109,7 @@ async function importProfileImages() {
     const message = {
       user: 'Moi',
       message: newMessage.value,
+      picture_path: 'profils-08.png',
    };
     messagesWritten.value.push(message);
     newMessage.value = ''; // Clear the input field

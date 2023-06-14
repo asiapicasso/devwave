@@ -20,7 +20,11 @@
                                 :src="getImagePath(message.picture_path)"
                                 alt="Profile Image"/>
                             <span class="text-bleuFonce+2" >&nbsp;:{{ message.user }}</span>
-                            <span>{{ message.message }}</span>
+                            <span>{{ message.message }}
+                              <span v-if="message.icon_path">
+                                <img class="h-10 w-8" :src="message.icon_path" alt="Icon"/>
+                              </span>
+                            </span>
                         </li>
                     </ul>
                 </template>
@@ -44,9 +48,13 @@
                           </button>
                     </span>
                       <div class="flex">
-                        <img src="../../assets/emojis-reaction-saucisse.png" alt="emojis saucisse" class="h-12 w-10 -mx-1">
-                        <img src="../../assets/emojis-reaction-soleil.png" alt="emojis saucisse" class="h-12 w-10 -mx-1">
-                        <img src="../../assets/emojis-reaction-punch.png" alt="emojis saucisse" class="h-12 w-10 ">
+                        <button  @click="selectIcon(emojiSaucisse)">
+                          <img src="../../assets/emojis-reaction-saucisse.png" alt="emojis saucisse" class="h-12 w-10 -mx-1" />
+                        </button>
+                        <img src="../../assets/emojis-reaction-soleil.png" alt="emojis saucisse" class="h-12 w-10 -mx-1"
+                        @click="selectIcon(emojiSoleil)">
+                        <img src="../../assets/emojis-reaction-punch.png" alt="emojis saucisse" class="h-12 w-10 "
+                        @click="selectIcon(emojiPunch)">
                       </div>
                     </div>
                   
@@ -63,7 +71,18 @@ import { ref, defineProps, defineEmits } from "vue";
 import Echo from "laravel-echo";
 import Pusher from "pusher-js";
 
+import emojiSoleil from "../../assets/emojis-reaction-soleil.png";
+import emojiPunch from "../../assets/emojis-reaction-punch.png";
+import emojiSaucisse from "../../assets/emojis-reaction-saucisse.png";
+
 const props = defineProps(["user"]);
+
+const selectedIcon = ref();
+
+function selectIcon(icon) {
+  selectedIcon.value = icon;
+}
+
 
 async function fetchMessages() {
     console.log("fetchMessages");
@@ -89,6 +108,9 @@ const newMessage = ref("");
 
 const messagesWritten = ref([]);
 let profileImages = [];
+let icones = [emojiSoleil, emojiPunch, emojiSaucisse];
+console.log(icones)
+
 
 async function importProfileImages() {
     for (let i = 1; i <= 16; i++) {
@@ -114,6 +136,7 @@ function sendMessage() {
         user: "Moi",
         message: newMessage.value,
         picture_path: "profils-08.png",
+        icon_path: selectedIcon.value,
     };
     messagesWritten.value.push(message);
     newMessage.value = ""; // Clear the input field

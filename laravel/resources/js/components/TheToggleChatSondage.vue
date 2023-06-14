@@ -18,7 +18,7 @@
         </div>
         <div>
             <div class="flex">
-        <img class="h-6 w-6 m-4" src="https://picsum.photos/200/300" alt="avatar" />
+        <img class="h-6 w-6 m-4" src="../../assets/profils-animateur.png" alt="avatar" />
         <p class="mt-4">Animateur</p> 
     </div>
             <TheChat  v-show="showChat" />

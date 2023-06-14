@@ -4,7 +4,7 @@
     
 <div class=" m-5 sm:m-5 xl:m-56 vue-poll border-2 rounded-xl border-black p-0">
     <!-- /* afficher la question */ -->
-    <h3  :class="bgColor" class="qst border-b-2 border-black rounded-t-xl h-20 flex items-center justify-left p-6 m-0" v-html="question"></h3>
+    <h2  :class="bgColor" class="qst border-b-2 border-black rounded-t-xl h-20 flex items-center justify-left p-6 m-0" v-html="question"></h2>
         <div class="ans-cnt p-0 m-0">
             <div v-for="(a,index) in calcAnswers" :key="index" :class="{ ans: true, [a.custom_class]: (a.custom_class) }">
                 <template v-if="!finalResults"> 

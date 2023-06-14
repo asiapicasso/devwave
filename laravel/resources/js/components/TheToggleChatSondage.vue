@@ -17,7 +17,7 @@
             </button>
         </div>
         <div>
-            <div class="flex">
+            <div v-if="showSondage" class="flex">
         <img class="h-6 w-6 m-4" src="../../assets/profils-animateur.png" alt="avatar" />
         <p class="mt-4">Animateur</p> 
     </div>

@@ -5,7 +5,8 @@
           type="text"
           v-model="keyword"
           placeholder="J'veux cette musique..."
-          @keydown.enter="handleEnter"
+          @keydown.enter="addChosenSongOnEnter"
+          @song-selected="selectSong"
         />
         <ul class="z-10 list-none max-h-36 overflow-y-auto p-0 m-0" v-if="songs.length > 0">
             <li v-for="song in songs.slice(0, 7)" :key="song.id" class="px-4 py-2 cursor-pointer hover:bg-gray-200" @click="selectSong(song)" @keydown.enter="keyEnter">
@@ -31,11 +32,16 @@ export default {
             type: Function,
             required: false,
         },
+        handleSongSelected: {
+            type: Function,
+            required: false,
+        },
     },
     data() {
         return {
             keyword: null,
             songs: [],
+            selectedSong: null,
         };
     },
     watch: {
@@ -61,9 +67,22 @@ export default {
                 console.error(error);
             }
         },
+
+        // Lorsque la touche "Enter" est enfoncée
+        addChosenSongOnEnter(event) {
+            if (event.key === 'Enter') {
+                if (this.selectedSong) {
+                   this.$emit("song-selected", this.selectedSong);
+                }
+                this.store();
+            }
+        },
+
         selectSong(song) {
-            this.keyword = song.title, song.name;
-            this.$emit('song-selected', song)
+            this.keyword = `${song.title} - ${song.name}`;
+            this.selectedSong = song; // Mise à jour de la chanson sélectionnée
+            this.$emit("song-selected", song);
+            this.songs = []; // Ferme la liste
         },
 
         handleEnter() {

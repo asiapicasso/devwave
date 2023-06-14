@@ -57,8 +57,8 @@ export default {
     },
     data() {
         return {            
-                song: [],
-                //créer un objet qui correspond à ma db 
+            selectedSongId: null,
+            userId: null, 
         }
     },
 
@@ -72,11 +72,12 @@ export default {
             }
         },
 
-        store(song) {
+        store() {
             const data = {
-                selectedSong: this.song,
+                song_id: this.selectedSongId,
+                user_id: this.userId,
             };
-            axios.post('/store', data)
+            axios.post('/chosenSong', data)
                 .then(response => {
                     console.log(response.data);
                     alert('Song added successfully.');

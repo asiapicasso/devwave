@@ -1,6 +1,6 @@
 <template>
     <div :class="['base-button', roleClass]">
-        <button class="h-6 px-4 m-2 text-center text-sm text-[#211F2D] flex items-center justify-center cursor-pointer focus:shadow-outline " @click="clickHandler">
+        <button class="h-8 w-auto px-4 m-2 text-center text-sm text-[#211F2D] flex items-center justify-center cursor-pointer focus:shadow-outline " @click="clickHandler">
             <span v-if="icon" class="button-icon">
                 <img :src="icon" alt="Button Icon" />
             </span>

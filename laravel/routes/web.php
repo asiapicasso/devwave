@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ChosenSongController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use App\Http\Controllers\ChosenSongController;
 
 
 Route::get('/fetchMessages', [ChatsController::class, 'fetchMessages']);
-Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
+Route::post('/messages', [hatsController::class, 'sendMessage']);
 
 
 Route::resource('poll', PollController::class);
@@ -35,6 +36,9 @@ Route::get('/auth', function () {
 
 Auth::routes();
 Auth::routes(['register' => false]);
+
+//route pour gérer la création de compte
+Route::post('/register', RegisterController::class, 'create');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -57,6 +61,7 @@ Route::post('/vote', [PollController::class, 'vote'])->name('poll.vote');
 
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');
+Route::post('/chosenSong', [ChosenSongController::class, 'store']);
 
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');

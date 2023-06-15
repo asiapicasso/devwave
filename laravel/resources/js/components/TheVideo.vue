@@ -1,5 +1,5 @@
 <template>
-    <div id="player_container" class="w-full h-60"></div>
+    <div id="player_container" class="w-full"></div>
 </template>
 
 <script>
@@ -38,3 +38,8 @@ export default {
     },
 };
 </script>
+<style >
+#player_container {
+    height: 13rem;
+}
+</style>

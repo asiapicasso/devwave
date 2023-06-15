@@ -11,10 +11,6 @@ import BaseFormSign from "./components/BaseFormSign.vue";
 const isConnected = ref(true);
    
       //Si vous modifier cette variable en true, vous passez comme si vous étiez connecté.
-   
-  
-  
-
 
 </script>
 
@@ -24,7 +20,6 @@ const isConnected = ref(true);
         <div class="formContainer" v-if="!isConnected">
             <BaseFormSign />
         </div>
-         
         <div class="fixed bottom-0 z-30">
             <BasePlayer v-if="$route.path !== '/pageLiveVoiture'" class="z-20 w-screen"/>
             <BaseNav v-if="$route.path !== '/pageLiveVoiture'"  />

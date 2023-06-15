@@ -22,8 +22,8 @@ const isConnected = ref(true);
         <BaseHeader class="sticky top-0 w-full z-30"/>
         <div class="mb-40"><router-view class="contenu pb-24" :class="{ notConnected: !isConnected }"></router-view></div>
         <div class="formContainer" v-if="!isConnected">
-            <BaseFormSign />
-        </div>
+                <BaseFormSign @submit="changeConnectedStatus"/>
+            </div>
          
         <div class="fixed bottom-0 z-30">
             <BasePlayer v-if="$route.path !== '/pageLiveVoiture'" class="z-20 w-screen"/>

@@ -60,6 +60,7 @@ Route::post('/vote', [PollController::class, 'vote'])->name('poll.vote');
 
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');
+Route::post('/chosenSong', [ChosenSongController::class, 'store']);
 
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');

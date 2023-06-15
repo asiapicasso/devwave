@@ -2,14 +2,14 @@
     <div class="flex items-center h-34 ml-5 mr-5 mb-5 rounded-xl music-box border border-2 border-black">
 
         <div class="">
-            <div class="flex flex-col mx-4 my-2"> 
+            <div class="flex flex-col mx-4 my-2">
                 <button id="up" class=" focus:bg-rose" @click="handleUpvote">
-                <span id="icon" class="active:bg-white-500" v-html="iconUp"></span>
-            </button>
+                    <span id="icon" class="active:bg-white-500" v-html="iconUp"></span>
+                </button>
                 <div class="flex justify-center button-score ">{{ score }}</div>
                 <button id="down" class="focus:bg-bleu-clair" @click="handleDownvote">
-                <span id="icon" class="active:bg-white-500" v-html="iconDown"></span>
-            </button>
+                    <span id="icon" class="active:bg-white-500" v-html="iconDown"></span>
+                </button>
             </div>
         </div>
         <div class="items-center">
@@ -38,50 +38,55 @@ export default {
             required: true,
         },
     },
+    data() {
+
+    },
+
 
     methods: {
+
         handleUpvote() {
             this.$emit("upvote");
         },
         handleDownvote() {
             this.$emit("downvote");
         },
+
+
+        setup(props) {
+            const score = ref(0);
+
+            const handleUpvote = () => {
+                score.value++;
+            };
+
+            const handleDownvote = () => {
+                score.value--;
+            };
+
+            return {
+                score,
+                handleUpvote,
+                handleDownvote,
+            };
+        },
     },
-   
-    setup(props) {
-        const score = ref(0);
+}
 
-        const handleUpvote = () => {
-            score.value++;
-        };
-
-        const handleDownvote = () => {
-            score.value--;
-        };
-
-        return {
-            score,
-            handleUpvote,
-            handleDownvote,
-        };
-    },
-};
 </script>
 
 <style scoped>
-
 #up {
     padding: 0.5rem;
     border: 0.2rem solid #D744EE;
     border-radius: 0.4rem;
     cursor: pointer;
 }
+
 #down {
     padding: 0.5rem;
     border: 0.2rem solid #C0F6FC;
     border-radius: 0.4rem;
     cursor: pointer;
 }
-
-
 </style>

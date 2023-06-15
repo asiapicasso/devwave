@@ -6,7 +6,7 @@ use App\Models\Answer;
 use Illuminate\Http\Request;
 use App\Models\Poll;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class PollController extends Controller
 {
@@ -19,10 +19,50 @@ class PollController extends Controller
     {
         $currentUser = Auth::user();
         $polls = Poll::with('answers')->get();
-        // dd($polls);
+         //dd($polls);
+
+       return view('poll', ['polls' => $polls, 'currentUser' => $currentUser]);
+    }
+
+    public function getPoll()
+    {
+    
+    $data = Poll::all();
+
+    //Récupérer les answer associées à chaque poll
+    // $dataJoined = Poll::join('answers', 'polls.id', '=', 'answers.poll_id')->get();
+    // dd($dataJoined);
+
+    // $polls = DB::table('polls')
+    // ->join('answers', 'polls.id', '=', 'answers.poll_id')
+    // ->select('polls.*', 'answers.*')
+    // ->get();
+
+    $polls = Poll::with('answers')->get();
+    //dd($polls);
+    
+    $formattedPolls = $polls->map(function ($poll) {
+        $formattedAnswers = $poll->answers->map(function ($answer) {
+            return [
+                'value' => $answer->id,
+                'text' => $answer->title,
+                'votes' => $answer->nb_vote,
+            ];
+        });
+    
+        return [
+            'options' => [
+                'question' => $poll->question,
+                'answers' => $formattedAnswers,
+            ],
+        ];
+    });
+    
+    // Retourner les données formatées
+    return response()->json($formattedPolls);
 
 
-        return view('poll', ['polls' => $polls, 'currentUser' => $currentUser]);
+    // return response()->json($polls);
     }
 
     /**
@@ -51,7 +91,7 @@ class PollController extends Controller
 
     public function vote(Request $request)
     {
- 
+        /*dd($request->all());*/
 
 
         $answerId = $request->input('answer_id');
@@ -59,16 +99,13 @@ class PollController extends Controller
 
         // Vérifier si l'utilisateur a déjà voté pour le sondage
         $user = Auth::user();
-/*         dd($user->polls()); */ 
         if ($user->polls()->where('poll_id', $answer->poll_id)->exists()) {
             // L'utilisateur a déjà voté pour ce sondage
-
-            return redirect()->back()->with('error', 'Vous avez déjà voté pour ce sondage');
-
-            /* return redirect()->route('poll.show'); */
+            return redirect()->route('poll.show')->with('error', 'Vous avez déjà voté pour ce sondage');
         }
 
         // Incrémenter le nombre de votes pour la réponse sélectionnée
+        $answer->timestamps = false;
         $answer->increment('nb_vote');
 
         // Associer l'utilisateur au sondage

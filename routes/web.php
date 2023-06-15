@@ -36,8 +36,7 @@ Route::get('/auth', function () {
     return view('auth.login');
 });
 
-/* Auth::routes();
-Auth::routes(['register' => false]); */
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('register', [RegisterController::class, 'create']);
@@ -61,6 +60,7 @@ Route::post('/vote', [PollController::class, 'vote'])->name('poll.vote');
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');
 Route::post('/chosenSong', [ChosenSongController::class, 'store']);
+Route::get('/chosenSong', [ChosenSongController::class, 'fetchChosenSong']);
 
 Route::get('/search', 'ChosenSongController@searchForm')->name('search.form');
 Route::post('/search', 'ChosenSongController@search')->name('search');

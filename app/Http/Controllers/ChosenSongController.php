@@ -66,7 +66,17 @@ class ChosenSongController extends Controller
     return response()->json($chosenSong);
 }
 
-
+public function fetchChosenSong() { 
+        $chosenSong = DB::table('chosen_song')
+        ->join('song', 'song.id', '=', 'chosen_song.song_id')
+        ->join('album', 'song.album_id', '=', 'album.id')
+        ->join('album_artist', 'album.id', '=', 'album_artist.album_id')
+        ->join('artist', 'album_artist.artist_id', '=', 'artist.id')
+        ->orderBy('nb_vote', 'desc')
+        ->get();
+        
+    return response()->json($chosenSong);
+    }
 
     public function searchForm()
     {

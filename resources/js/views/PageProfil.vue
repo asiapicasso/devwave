@@ -1,71 +1,72 @@
 <template>
-    <div id="profil">
-        <div id="pageTitle" class="flex items-center justify-center" :class="{'blur-background': displayChangeValue}">
-            <h1 class="flex-1 text-center text-bleu+4">Mon profil</h1>
+    <div id="profil" class="flex flex-col mx-5 mt-8">
+        <div id="pageTitle" class="flex items-center justify-center" :class="{ 'blur-background': displayChangeValue }">
+            <h1 class="flex-1 text-center">Mon profil</h1>
             <button id="settingsBtn" class="cursor-pointer mr-2 ml-auto">
                 <router-link to="/pageReglages">
-                <img src="../../assets/reglages.svg" class="w-6 h-6" />
+                    <img src="../../assets/reglages.svg" class="w-6 h-6" />
                 </router-link>
             </button>
         </div>
-        <div id="profilPicture" class="flex justify-center m-auto" :class="{'blur-background': displayChangeValue}">
-  <div class="image-container relative">
-    <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40" v-if="isConnected" />
-    <img src="../../assets/profils-03.png" id="avatar" class="h-40 w-40" v-if="!isConnected" />
-    <div class="absolute left-24 top-24 appareilPhoto">
-        <button class="button-overlay" v-if="isConnected" @click="changeAvatar">
-            <router-link to="/Galerie"><img src="../../assets/appareil-photo.svg" id="changeAvatar" class="h-8 w-8" /></router-link>
-    </button>
-    </div>
-  </div>
-</div>
-<BaseChangeValue v-if="displayChangeValue" @cancelChangeValue="displayProfil" z-10 :message="message" />
+        <div id="profilPicture" class="flex justify-center m-auto" :class="{ 'blur-background': displayChangeValue }">
+            <div class="image-container relative">
+                <img src="../../assets/profils-08.png" id="avatar" class="h-40 w-40" v-if="isConnected" />
+                <img src="../../assets/profils-03.png" id="avatar" class="h-40 w-40" v-if="!isConnected" />
+                <div class="absolute left-24 top-24 appareilPhoto">
+                    <button class="button-overlay" v-if="isConnected" @click="changeAvatar">
+                        <router-link to="/Galerie"><img src="../../assets/appareil-photo.svg" id="changeAvatar"
+                                class="h-8 w-8" /></router-link>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <BaseChangeValue v-if="displayChangeValue" @cancelChangeValue="displayProfil" z-10 :message="message" />
 
-        <div id="profilData" :class="{'blur-background': displayChangeValue}">
+        <div id="profilData" :class="{ 'blur-background': displayChangeValue }">
             <!--Les informations du profils s'affichent quand tu es connecté-->
             <div class="ligneDeForm flex items-center space-x-">
-                <div class="flex flex-col text-bleu+4" >
-                <label class="text-bleu+4" >Pseudo</label>
-                <label class="text-bleuFoncé+4">TartePion</label>
+                <div class="flex flex-col text-bleu+4">
+                    <label class="text-bleu+4">Pseudo</label>
+                    <label class="text-bleuFoncé+4">TartePion</label>
                 </div>
                 <div class="ml-auto">
-                <button @click="changeMessage('Pseudo')">
-                    <img src="../../assets/crayon.svg" />
-                </button>
+                    <button @click="changeMessage('Pseudo')">
+                        <img src="../../assets/crayon.svg" />
+                    </button>
                 </div>
             </div>
             <div class="ligneDeForm flex items-center space-x-">
-                <div class="flex flex-col" >
-                      <!--style="white-space: nowrap;" pour ne pas écrire sur deux lignes "e-mail"-->
-                <label class="text-bleu+4" style="white-space: nowrap;">E-mail</label>
-                <label class="text-bleuFoncé+4">tart12@gmail.com</label>
+                <div class="flex flex-col">
+                    <!--style="white-space: nowrap;" pour ne pas écrire sur deux lignes "e-mail"-->
+                    <label class="text-bleu+4" style="white-space: nowrap;">E-mail</label>
+                    <label class="text-bleuFoncé+4">tart12@gmail.com</label>
                 </div>
                 <div class="ml-auto">
                     <button @click="changeMessage('E-mail')">
-                    <img src="../../assets/crayon.svg" />
-                </button>
+                        <img src="../../assets/crayon.svg" />
+                    </button>
                 </div>
             </div>
             <div class="ligneDeForm flex items-center space-x-">
-                <div class="flex flex-col" >
-                <label class="text-bleu+4" for="pseudo">Nom</label>
-                <label class="text-bleuFoncé+4">Tartem</label>
+                <div class="flex flex-col">
+                    <label class="text-bleu+4" for="pseudo">Nom</label>
+                    <label class="text-bleuFoncé+4">Tartem</label>
                 </div>
                 <div class="ml-auto">
                     <button @click="changeMessage('Nom')">
-                    <img src="../../assets/crayon.svg" />
-                </button>
+                        <img src="../../assets/crayon.svg" />
+                    </button>
                 </div>
             </div>
             <div class="ligneDeForm flex items-center space-x-">
-                <div class="flex flex-col" >
-                <label class="text-bleu+4" for="pseudo">Prénom</label>
-                <label class="text-bleuFoncé+4">TartePion</label>
+                <div class="flex flex-col">
+                    <label class="text-bleu+4" for="pseudo">Prénom</label>
+                    <label class="text-bleuFoncé+4">TartePion</label>
                 </div>
                 <div class="ml-auto">
                     <button @click="changeMessage('Prénom')">
-                    <img src="../../assets/crayon.svg" />
-                </button>
+                        <img src="../../assets/crayon.svg" />
+                    </button>
                 </div>
             </div>
         </div>
@@ -78,8 +79,8 @@ import BaseChangeValue from '../components/BaseChangeValue.vue';
 export default {
     name: "PageProfil",
     components: {
-    BaseChangeValue
-},
+        BaseChangeValue
+    },
     data() {
         return {
             isConnected: true,
@@ -91,27 +92,29 @@ export default {
         changeAvatar() {
             console.log("changeAvatar");
         },
-        displayProfil(){
-            this.displayChangeValue=false;
-        },       
+        displayProfil() {
+            this.displayChangeValue = false;
+        },
         changeMessage(newMessage) {
             this.displayChangeValue = true;
             this.message = newMessage;
-}
+        }
     }
 };
 </script>
 
 <style>
-.appareilPhoto{
+.appareilPhoto {
     top: 110px;
 }
-#profilData img{
+
+#profilData img {
     width: 20px;
     height: 20px;
     flex-grow: 1;
 }
-#avatar{
+
+#avatar {
     border-radius: 50%;
     position: center;
 }
@@ -122,6 +125,7 @@ export default {
     font-size: 30px;
     margin-bottom: 20px;
 }
+
 #profilData {
     margin-top: 5%;
     margin-left: 10%;
@@ -129,9 +133,11 @@ export default {
     background-color: #fff;
     box-sizing: border-box;
 }
+
 #profilData label {
     display: inline-block;
 }
+
 #profilData input {
     margin-left: 1%;
     margin-right: 1%;
@@ -144,28 +150,31 @@ export default {
     box-sizing: border-box;
 
 }
-.ligneDeForm{
+
+.ligneDeForm {
     display: flex;
     align-items: center;
     margin-bottom: 30px;
 }
+
 .ligneDeForm label {
-  margin-right: 10px;
-  width: 20%;
+    margin-right: 10px;
+    width: 20%;
 }
+
 .ligneDeForm input[type="text"],
 .ligneDeForm input[type="email"] {
-  flex-grow: 1;
+    flex-grow: 1;
 }
+
 .ligneDeForm button {
-  background: none;
-  border: none;
-  cursor: pointer;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
+
 .blur-background {
     filter: blur(5px);
     pointer-events: none;
     user-select: none;
-  }
-
-</style>
+}</style>

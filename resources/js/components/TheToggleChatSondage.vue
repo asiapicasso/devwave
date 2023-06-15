@@ -1,33 +1,22 @@
 <template>
     <div>
-        <div class="sticky top-80 z-30 justify-center bg-bleu-clair flex items-center flex-wrap">
-            <button
-                @click="showComponentChat"
-                :class="{ 'bg-white': showChat }"
-                class="flex-1 rounded-l-md text-black focus:outline-none"
-            >
+        <div class="sticky top-72 z-30 justify-center bg-bleu-clair flex items-center flex-wrap">
+            <button @click="showComponentChat" :class="{ 'bg-white': showChat }"
+                class="flex-1 rounded-l-md text-black focus:outline-none">
                 <h2>Chat</h2>
             </button>
-            <button
-                @click="showComponentSondage"
-                :class="{ 'bg-white': showSondage }"
-                class="flex-1 rounded-r-md text-black focus:outline-none"
-            >
+            <button @click="showComponentSondage" :class="{ 'bg-white': showSondage }"
+                class="flex-1 rounded-r-md text-black focus:outline-none">
                 <h2>Sondages Live</h2>
             </button>
         </div>
         <div>
-            <div class="flex">
-        <img class="h-6 w-6 m-4" src="https://picsum.photos/200/300" alt="avatar" />
-        <p class="mt-4">Animateur</p> 
-    </div>
-            <TheChat  v-show="showChat" />
-            <BaseSondage
-                :bgColor="bgColor"
-                v-show="showSondage"
-                v-bind="options"
-                @addvote="addVote"
-            />
+            <div v-if="showSondage" class="flex">
+                <img class="h-6 w-6 m-4" src="../../assets/profils-animateur.png" alt="avatar" />
+                <p class="mt-4">Animateur</p>
+            </div>
+            <TheChat v-show="showChat" />
+            <BaseSondage :bgColor="bgColor" v-show="showSondage" v-bind="options" @addvote="addVote" />
         </div>
     </div>
 </template>
@@ -59,9 +48,9 @@ export default {
                 showResults: false,
                 multiple: false,
                 customId: 1,
-                
+
             },
-            
+
         };
     },
     methods: {
@@ -75,7 +64,7 @@ export default {
         showComponentSondage() {
             this.showChat = false;
             this.showSondage = true;
-           this.changeBgColor();
+            this.changeBgColor();
         },
         changeBgColor() {
             const colors = [

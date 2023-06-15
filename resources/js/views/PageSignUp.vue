@@ -1,93 +1,59 @@
 <template>
     <div id="formSignUp">
         <router-link to="/">
-        <img src="../../assets/back.png" class="absolute top-5 left-0 w-10 h-10 ml-2"/>
+            <img src="../../assets/back.png" class="absolute top-5 left-0 w-10 h-10 ml-2" />
         </router-link>
-            <h1 id="titlePageSignUp">S'inscrire</h1>
-            <div v-if="!confirmForm">
-                <form class="form-flex-columns mt-0" @submit.prevent="submitForm">
+        <h1 id="titlePageSignUp">S'inscrire</h1>
+        <div v-if="!confirmForm">
+            <form class="form-flex-columns mt-0" @submit.prevent="submitForm">
                 <div class="input-group">
                     <label class="labelFormSign" for="pseudo">Pseudo</label>
-                    <input
-                        type="text"
-                        id="pseudo"
-                        name="pseudo"
-                        placeholder="unPseudo123"
-                        v-model="formData.username"
-                        required/>
+                    <input type="text" id="pseudo" name="pseudo" placeholder="unPseudo123" v-model="formData.username"
+                        required />
                 </div>
                 <div class="input-group">
                     <label class="labelFormSign" for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="exemple@exemple.com"
-                        v-model="formData.email"
-                        required/>
+                    <input type="email" id="email" name="email" placeholder="exemple@exemple.com" v-model="formData.email"
+                        required />
                 </div>
                 <div class="input-group">
                     <label class="labelFormSign" for="prenom">Prénom</label>
-                    <input
-                        type="text"
-                        id="prenom"
-                        name="prenom"
-                        placeholder="unPrenom"
-                        v-model="formData.firstname"/>
+                    <input type="text" id="prenom" name="prenom" placeholder="unPrenom" v-model="formData.firstname" />
                 </div>
                 <div class="input-group">
                     <label class="labelFormSign" for="nom">Nom</label>
-                    <input
-                        type="text"
-                        id="nom"
-                        name="nom"
-                        placeholder="unNom"
-                        v-model="formData.lastname"/>
+                    <input type="text" id="nom" name="nom" placeholder="unNom" v-model="formData.lastname" />
                 </div>
                 <div class="input-group">
                     <label class="labelFormSign" for="password">Mot de passe</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="..."
-                        required
-                        v-model="formData.password"/>
+                    <input type="password" id="password" name="password" placeholder="..." required
+                        v-model="formData.password" />
                 </div>
                 <div class="input-group">
                     <label class="font-bold" for="password">Confirmer le mot de passe</label>
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        placeholder="..."
-                        required
-                        v-model="formData.password_confirmation"/>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="..." required
+                        v-model="formData.password_confirmation" />
                 </div>
                 <div class="flex justify-center mb-5">
-                    <BaseButton type="submit" text="S'inscrire" class="boutonForm"/>
+                    <BaseButton type="submit" text="S'inscrire" class="boutonForm" />
                 </div>
             </form>
             <router-link to="/pagesignin" class="mb-5 underline">Déjà un compte ?</router-link>
-            </div>
-            <div v-if="confirmForm">
-                <p class="text-center mx-10">Nous vous avons envoyé un e-mail. Veuilez rentrer le code que vous avez reçu.</p>
-                <form class="form-flex-columns mt-0">
+        </div>
+        <div v-if="confirmForm">
+            <p class="text-center mx-10">Nous vous avons envoyé un e-mail. Veuilez rentrer le code que vous avez reçu.</p>
+            <form class="form-flex-columns mt-0">
                 <div class="input-group mx-10 mt-20">
                     <label class="labelFormSign" for="code">Code</label>
-                    <input
-                        type="text"
-                        id="code"
-                        name="code"
-                        placeholder="XXXX"/>
+                    <input type="text" id="code" name="code" placeholder="XXXX" />
                 </div>
                 <div class="flex justify-center mb-5">
-                    <BaseButton type="submit" text="Valider" class="boutonForm" @click="confirmForm=false"/>
+                    <BaseButton type="submit" text="Valider" class="boutonForm" @click="confirmForm = false" />
                 </div>
             </form>
             <router-link to="/pagesignin" class="mb-5 underline mx-40">renvoyer un e-mail</router-link>
-            </div>
         </div>
+    </div>
 </template>
 
 
@@ -97,34 +63,59 @@ import axios from 'axios';
 
 export default {
     name: "PageSignUp",
+    components: { BaseButton },
+
     data() {
         return {
             confirmForm: false,
             formData: {
-            username: '',
-            firstname: '',
-            lastname: '',
-            email: '',
-            password: '',
-            password_confirmation: '',
-            picture_path: '1',
+                username: '',
+                firstname: '',
+                lastname: '',
+                email: '',
+                password: '',
+                password_confirmation: '',
+                picture_path: '1',
             }
         };
     },
     methods: {
-    async submitForm() {
-        console.log('Données du formulaire:', this.formData);
-      try {
-        const response = await axios.post('register', this.formData);
-        console.log('Inscription réussie:', response);
-        // Vous pouvez rediriger l'utilisateur ou afficher un message de succès ici
-      } catch (error) {
-        console.error('Erreur lors de l\'inscription:', error);
-        // Gérer l'erreur, par exemple afficher un message d'erreur à l'utilisateur
-      }
+        submit() {
+            this.$emit = ('submit');
+        },
+        register() {
+            if (this.password !== this.confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            const registrationData = {
+                username: this.username,
+                firstname: this.firstname,
+                lastname: this.lastname,
+                email: this.email,
+                password: this.password,
+                confirmPassword: this.confirmPassword,
+                picture_path: this.picture_path,
+            };
+
+            axios.post('/api/register', registrationData)
+                .then(response => {
+                    // Handle successful registration
+                    console.log(response.data);
+                    alert('Registration successful');
+
+                    // Rediriger l'utilisateur vers la page Live
+                    this.$router.push({ name: 'pageLive' });
+                    submit();
+                })
+                .catch(error => {
+                    // Handle registration error
+                    console.error(error);
+                    alert('Error during registration');
+                });
+        }
     }
-  },
-    components: { BaseButton }
 };
 </script>
 

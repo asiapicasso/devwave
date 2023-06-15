@@ -107,7 +107,7 @@ class SongController extends Controller
         $chosenSong->date = Carbon::now();
         $chosenSong->nb_vote = 1;
         $chosenSong->save();
-        return response()->json($chosenSong);    }
+        return response()->json($song);    }
 
 
     /**

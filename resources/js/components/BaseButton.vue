@@ -1,6 +1,8 @@
 <template>
     <div :class="['base-button', roleClass]">
-        <button class="h-6 px-4 m-2 text-center text-sm text-[#211F2D] flex items-center justify-center cursor-pointer focus:shadow-outline " @click="clickHandler">
+        <button
+            class="h-8 w-auto px-4 m-2 text-center text-sm text-[#211F2D] flex items-center justify-center cursor-pointer focus:shadow-outline "
+            @click="clickHandler">
             <span v-if="icon" class="button-icon">
                 <img :src="icon" alt="Button Icon" />
             </span>
@@ -40,45 +42,43 @@ export default {
             return `role-${this.role}`;
         },
     },
-   
+
 };
 </script>
 
 <style scoped>
+.role-principal {
 
-  .role-principal {
-    
-      @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose rounded-md;
-      color: black;
-    
-  }
-  .bg-svg {
-  background-image: url('../../assets/CTA-secondaire.svg');
-  background-repeat: no-repeat;
-  background-position: center;  
+    @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose rounded-md;
+    color: black;
+
+}
+
+.bg-svg {
+    background-image: url('../../assets/CTA-secondaire.svg');
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: 100%;
 }
 
 .bg-svg-gris {
-  background-image: url('../../assets/fondGris-1.png'); 
-  background-repeat: no-repeat;
-  background-position: center;  
+    background-image: url('../../assets/fondGris-1.png');
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: 100%;
 }
 
 .role-secondaire {
-      @apply bg-svg;
+    @apply bg-svg;
 }
 
 .role-secondairegris {
-          @apply bg-svg-gris;
-}
-  .role-inactif {
-  
-      @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose opacity-50 text-gray-500 rounded-md;
-    
+    @apply bg-svg-gris;
 }
 
+.role-inactif {
 
+    @apply bg-gradient-to-t from-bleu-clair via-middle-rose to-rose opacity-50 text-gray-500 rounded-md;
 
+}
 </style>

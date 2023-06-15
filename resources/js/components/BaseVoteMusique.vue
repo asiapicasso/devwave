@@ -37,6 +37,10 @@ export default {
             type: String,
             required: true,
         },
+        vote: {
+            type: Number,
+            required: false,
+        },
     },
     data() {
 

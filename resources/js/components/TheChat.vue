@@ -104,7 +104,7 @@ console.log(icones)
 
 async function importProfileImages() {
   for (let i = 1; i <= 16; i++) {
-    const imagePath = `/resources/assets/profils-${i
+    const imagePath = `../../assets/profils-${i
       .toString()
       .padStart(2, "0")}.png`;
     const image = await import(imagePath);

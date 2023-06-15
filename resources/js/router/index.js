@@ -76,6 +76,12 @@ const routes = [
         name: "galerie",
         component: pageGalerie,
     },
+
+    {
+        path: "/",
+        name: "home",
+        component: pageSondage,
+    }
 ];
 
 const router = createRouter({

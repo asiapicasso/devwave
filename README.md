@@ -12,3 +12,6 @@ L’application est disponible directement ici : [devwave.com](https:devwave-pin
 Notre rapport complet est disponible à la racine de ce repo.
 
 Concernant la mise en place du projet sur votre machine, veuillez consulter l'annexe concernant la mise en place sur le serveur. Toutes les commandes lié aux dépendances y sont répértoriées. 
+
+Le lien de la présentation visuel est disponible ici : [présentation canva](https://www.canva.com/design/DAFl4anMlAI/rLRK_cRHeh5Lyu1EpRbAUw/view?utm_content=DAFl4anMlAI&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+Le lien de la présentation vidéo est disponible ici : [présentation final](mettre le lien ici)

@@ -1,30 +1,11 @@
-# devwave
-## Description du projet
+# Dev’Wave
 
-## Run le projet
-1. Se déplacer dans le dossier laravel
-2. Lancer la commande : npm install
-3. Lancer la commande : composer require laravel/ui
-5. Copier/coller .env.example et le renommer en .env
-6. Lancer la commande : php artisan key:generate
-7. npm install tailwindcss
-8. npm install -S vue-router@next
-10. Dans le .env: changer BROADCAST_DRIVER en BROADCAST_DRIVER=pusher
-11. Rajouter en bas du .env:  
-PUSHER_APP_ID=1613596  
-PUSHER_APP_KEY=84fb51e2155b226d3025  
-PUSHER_APP_SECRET=cdc9f9d8bc4ff6d81422  
-PUSHER_APP_CLUSTER=eu  
+!![logo](https://github.com/asiapicasso/devwave/blob/main/logo_devwave.png)
 
-VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"  
-VITE_PUSHER_HOST="${PUSHER_HOST}"  
-VITE_PUSHER_PORT="${PUSHER_PORT}"  
-VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"  
-VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"  
+Ce repository contient notre projet d’un mois pour le projet d’articulation.
 
-À ÉCRIRE DANS LE DOSSIER LARAVEL !!!!!
+Dans le cadre d’un projet scolaire, nous avons réalisé de A à Z une PWA avec les deux framework : Laravel pour le back-end et Vue.JS pour le front-end.
 
-12. Ouvrir un terminal et la commande composer require pusher/pusher-php-server
-13. Ouvrir un terminal et la commande npm install --save laravel-echo pusher-js
-14. Ouvrir un terminal et lancer la commande php artisan serve pour lancer le backend
-15. Ouvrir un deuxième terminal et lancer la commande npm run dev pour lancer le frontend
+L’application est disponible directement ici : [devwave.com](https:devwave-pingouin.heig-vd.ch)
+
+Notre rapport complet est disponible à la racine de ce repo.

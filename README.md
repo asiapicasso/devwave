@@ -1,6 +1,6 @@
 # Dev’Wave
 
-!![logo](https://github.com/asiapicasso/devwave/blob/main/logo_devwave.png)
+![logo](https://github.com/asiapicasso/devwave/blob/main/logo_devwave.png)
 
 Ce repository contient notre projet d’un mois pour le projet d’articulation.
 
